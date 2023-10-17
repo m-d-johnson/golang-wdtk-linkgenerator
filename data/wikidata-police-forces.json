@@ -1,0 +1,734 @@
+[
+  {
+    "item": "http://www.wikidata.org/entity/Q3403354",
+    "itemLabel": "Dyfed–Powys Police",
+    "website": "https://dyfed-powys.police.uk",
+    "wdtk": "dyfed_powys_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5061805",
+    "itemLabel": "Central Scotland Police",
+    "website": "http://www.centralscotland.police.uk/",
+    "wdtk": "central_scotland_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7649467",
+    "itemLabel": "Sussex Police",
+    "website": "https://www.sussex.police.uk/",
+    "wdtk": "sussex_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5572099",
+    "itemLabel": "Gloucestershire Constabulary",
+    "website": "http://www.gloucestershire.police.uk/",
+    "wdtk": "gloucestershire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5447362",
+    "itemLabel": "Fife Constabulary",
+    "website": "http://www.fife.police.uk/",
+    "wdtk": "fife_constabulary"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q1139213",
+    "itemLabel": "Metropolitan Police",
+    "website": "https://www.met.police.uk/",
+    "wdtk": "the_met"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q4879244",
+    "itemLabel": "Bedfordshire Police",
+    "website": "https://www.beds.police.uk/",
+    "wdtk": "bedfordshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5646041",
+    "itemLabel": "Hampshire and Isle of Wight Constabulary",
+    "website": "https://www.hampshire.police.uk/",
+    "wdtk": "hampshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7231139",
+    "itemLabel": "Port of Felixstowe Police",
+    "website": "http://www.portoffelixstowe.co.uk/port/health-and-safety-port-protection/",
+    "wdtk": "port_of_felixstowe_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5092942",
+    "itemLabel": "Cheshire Constabulary",
+    "website": "https://www.cheshire.police.uk/",
+    "wdtk": "cheshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q1094151",
+    "itemLabel": "City of London Police",
+    "website": "https://www.cityoflondon.police.uk/",
+    "wdtk": "city_of_london_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q1774842",
+    "itemLabel": "Gwent Police",
+    "website": "https://www.gwent.police.uk/",
+    "wdtk": "gwent_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q4581367",
+    "itemLabel": "Northern Constabulary",
+    "website": "http://www.northern.police.uk/",
+    "wdtk": "northern_constabulary"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q3076859",
+    "itemLabel": "Suffolk Constabulary",
+    "website": "https://www.suffolk.police.uk/",
+    "wdtk": "suffolk_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5600651",
+    "itemLabel": "Greater Manchester Police",
+    "website": "https://www.gmp.police.uk/",
+    "wdtk": "gmp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7231132",
+    "itemLabel": "Port of Dover Police",
+    "website": "http://www.doverport.co.uk/police/",
+    "wdtk": "port_of_dover_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7231183",
+    "itemLabel": "Port of Liverpool Police",
+    "website": "http://www.portofliverpool.police.uk/",
+    "wdtk": "port_of_liverpool_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q6519259",
+    "itemLabel": "Leicestershire Police",
+    "website": "https://www.leics.police.uk/",
+    "wdtk": "leicestershire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5686021",
+    "itemLabel": "Northamptonshire Police",
+    "website": "http://www.northants.police.uk/",
+    "wdtk": "northamptonshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q6551264",
+    "itemLabel": "Lincolnshire Police",
+    "website": "https://www.lincs.police.uk/",
+    "wdtk": "lincolnshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7985948",
+    "itemLabel": "West Midlands Police",
+    "website": "https://www.west-midlands.police.uk/",
+    "wdtk": "wmp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7987045",
+    "itemLabel": "West Yorkshire Police",
+    "website": "https://www.westyorkshire.police.uk/",
+    "wdtk": "west_yorkshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5939895",
+    "itemLabel": "Humberside Police",
+    "website": "https://www.humberside.police.uk/",
+    "wdtk": "humberside_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820838",
+    "itemLabel": "Cumbria Police and Crime Panel",
+    "website": "http://cumbriapcp.org.uk/",
+    "wdtk": "cumbria_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821004",
+    "itemLabel": "Hampshire Police and Crime Panel",
+    "website": "https://www.hants.gov.uk/aboutthecouncil/governmentinhampshire/police-crime-panel",
+    "wdtk": "hampshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821086",
+    "itemLabel": "Lincolnshire Police and Crime Panel",
+    "website": "https://www.e-lindsey.gov.uk/lpcp",
+    "wdtk": "lincolnshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5267784",
+    "itemLabel": "Devon and Cornwall Police",
+    "website": "https://www.devon-cornwall.police.uk/",
+    "wdtk": "devon_and_cornwall_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7596704",
+    "itemLabel": "Staffordshire Police",
+    "website": "https://www.staffordshire.police.uk/",
+    "wdtk": "staffordshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821057",
+    "itemLabel": "Lancashire Police and Crime Panel",
+    "website": "https://www.blackburn.gov.uk/about-council/police-and-crime-panel-lancashire",
+    "wdtk": "lancashire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821128",
+    "itemLabel": "North Wales Police and Crime Panel",
+    "website": "http://www.nwpcp.org.uk/",
+    "wdtk": "north_wales_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821141",
+    "itemLabel": "North Yorkshire Police, Fire and Crime Panel",
+    "website": "https://www.nypartnerships.org.uk/pcp",
+    "wdtk": "north_yorkshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821248",
+    "itemLabel": "Wiltshire Police and Crime Panel",
+    "website": "https://cms.wiltshire.gov.uk/mgCommitteeDetails.aspx?ID=1127",
+    "wdtk": "wiltshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q6482989",
+    "itemLabel": "Lancashire Constabulary",
+    "website": "https://www.lancashire.police.uk",
+    "wdtk": "lancashire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993970",
+    "itemLabel": "Essex Police, Fire and Crime Commissioner",
+    "website": "https://www.essex.pfcc.police.uk/",
+    "wdtk": "essex_pfcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q6684771",
+    "itemLabel": "Lothian and Borders Police",
+    "website": "http://www.lbp.police.uk/",
+    "wdtk": "lothian_and_borders_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993347",
+    "itemLabel": "Devon and Cornwall Police and Crime Commissioner",
+    "website": "http://www.devonandcornwall-pcc.gov.uk/",
+    "wdtk": "devon_and_cornwall_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993973",
+    "itemLabel": "Gwent Police and Crime Commissioner",
+    "website": "https://www.gwent.pcc.police.uk/en/home/",
+    "wdtk": "gwent_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993988",
+    "itemLabel": "North Wales Police and Crime Commissioner",
+    "website": "https://www.northwales-pcc.gov.uk/",
+    "wdtk": "north_wales_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993989",
+    "itemLabel": "South Wales Police and Crime Commissioner",
+    "website": "https://www.southwalescommissioner.org.uk/en/Home.aspx",
+    "wdtk": "south_wales_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7985893",
+    "itemLabel": "West Mercia Police",
+    "website": "https://www.westmercia.police.uk/",
+    "wdtk": "west_mercia_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820767",
+    "itemLabel": "West Yorkshire Police and Crime Panel",
+    "website": "http://www.westyorkshire-pcp.gov.uk",
+    "wdtk": "west_yorkshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q304220",
+    "itemLabel": "Cambridge University Constabulary",
+    "website": "http://www.admin.cam.ac.uk/offices/proctors/constabulary/",
+    "wdtk": "university_of_cambridge_constabulary"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993952",
+    "itemLabel": "Cheshire Police and Crime Commissioner",
+    "website": "https://www.cheshire-pcc.gov.uk/",
+    "wdtk": "cheshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993979",
+    "itemLabel": "Lincolnshire Police and Crime Commissioner",
+    "website": "https://lincolnshire-pcc.gov.uk/",
+    "wdtk": "lincolnshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q6820586",
+    "itemLabel": "Merseyside Police",
+    "website": "https://www.merseyside.police.uk/",
+    "wdtk": "merseyside_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q1774860",
+    "itemLabel": "North Wales Police",
+    "website": "https://www.north-wales.police.uk/",
+    "wdtk": "north_wales_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7569006",
+    "itemLabel": "South Yorkshire Police",
+    "website": "https://www.southyorks.police.uk/",
+    "wdtk": "syp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5399777",
+    "itemLabel": "Essex Police",
+    "website": "https://www.essex.police.uk/",
+    "wdtk": "essex_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993969",
+    "itemLabel": "Dyfed-Powys Police and Crime Commissioner",
+    "website": "https://www.dyfedpowys-pcc.org.uk/en/",
+    "wdtk": "dyfed_powys_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993972",
+    "itemLabel": "Hampshire Police and Crime Commissioner",
+    "website": "https://www.hampshire-pcc.gov.uk/",
+    "wdtk": "hampshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993978",
+    "itemLabel": "Leicestershire Police and Crime Commissioner",
+    "website": "https://www.leics.pcc.police.uk/Home.aspx",
+    "wdtk": "leicestershire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993984",
+    "itemLabel": "Northumbria Police and Crime Commissioner",
+    "website": "https://northumbria-pcc.gov.uk/",
+    "wdtk": "northumbria_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993997",
+    "itemLabel": "West Yorkshire Police and Crime Commissioner",
+    "website": "https://www.westyorkshire-pcc.gov.uk/",
+    "wdtk": "west_yorkshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820887",
+    "itemLabel": "Durham Police and Crime Panel",
+    "website": "https://democracy.durham.gov.uk/mgCommitteeDetails.aspx?ID=872",
+    "wdtk": "durham_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820902",
+    "itemLabel": "Dyfed-Powys Police and Crime Panel",
+    "website": "https://www.dppoliceandcrimepanel.wales/",
+    "wdtk": "dyfed_powys_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821072",
+    "itemLabel": "Leicestershire Police and Crime Panel",
+    "website": "https://www.leicester.gov.uk/your-council/decisions-meetings-and-minutes/leicester-leicestershire-and-rutland-police-and-crime-panel/",
+    "wdtk": "leicestershire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821204",
+    "itemLabel": "Staffordshire Police, Fire and Crime Panel",
+    "website": "https://www.staffordshire.gov.uk/Your-council-and-democracy/Staffordshire-PFC-panel/Police-Fire-and-Crime-Panel-overview.aspx",
+    "wdtk": "staffordshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5132210",
+    "itemLabel": "Cleveland Police",
+    "website": "http://www.cleveland.police.uk/",
+    "wdtk": "cleveland_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5298864",
+    "itemLabel": "Dorset Police",
+    "website": "https://www.dorset.police.uk/",
+    "wdtk": "dorset_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820789",
+    "itemLabel": "Bedfordshire Police and Crime Panel",
+    "website": "https://www.bedford.gov.uk/council-and-democracy/beds-police-crime-panel/",
+    "wdtk": "bedfordshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5261560",
+    "itemLabel": "Derbyshire Constabulary",
+    "website": "https://www.derbyshire.police.uk/",
+    "wdtk": "derbyshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5593937",
+    "itemLabel": "Grampian Police",
+    "website": "http://www.grampian.police.uk/",
+    "wdtk": "grampian_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821215",
+    "itemLabel": "Surrey Police and Crime Panel",
+    "website": "https://www.surreycc.gov.uk/community/emergency-planning-and-community-safety/surrey-police-and-crime-panel",
+    "wdtk": "surrey_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821220",
+    "itemLabel": "Sussex Police and Crime Panel",
+    "website": "https://sussexpcp.gov.uk/",
+    "wdtk": "sussex_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821240",
+    "itemLabel": "West Midlands Police and Crime Panel",
+    "website": "https://www.birmingham.gov.uk/info/50021/committees/2380/west_midlands_police_and_crime_panel",
+    "wdtk": "/west_midlands_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5025653",
+    "itemLabel": "Cambridgeshire Constabulary",
+    "website": "https://www.cambs.police.uk/",
+    "wdtk": "cambridgeshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7690330",
+    "itemLabel": "Tayside Police",
+    "website": "http://www.tayside.police.uk/",
+    "wdtk": "tayside_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993985",
+    "itemLabel": "North Yorkshire Police, Fire and Crime Commissioner",
+    "website": "http://www.northyorkshire-pfcc.gov.uk/",
+    "wdtk": "north_yorkshire_pfcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7209499",
+    "itemLabel": "Police Scotland",
+    "website": "https://www.scotland.police.uk/",
+    "wdtk": "police_scotland"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q17515113",
+    "itemLabel": "West Midlands Police and Crime Commissioner",
+    "website": "https://www.westmidlands-pcc.gov.uk/",
+    "wdtk": "west_midlands_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993962",
+    "itemLabel": "Derbyshire Police and Crime Commissioner",
+    "website": "https://www.derbyshire-pcc.gov.uk",
+    "wdtk": "derbyshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993987",
+    "itemLabel": "Nottinghamshire Police and Crime Commissioner",
+    "website": "https://www.nottinghamshire.pcc.police.uk/",
+    "wdtk": "nottinghamshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993991",
+    "itemLabel": "Suffolk Police and Crime Commissioner",
+    "website": "https://suffolk-pcc.gov.uk/",
+    "wdtk": "suffolk_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q3195294",
+    "itemLabel": "Kent Police",
+    "website": "https://www.kent.police.uk/",
+    "wdtk": "kent_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7051007",
+    "itemLabel": "Norfolk Constabulary",
+    "website": "https://www.norfolk.police.uk/",
+    "wdtk": "norfolk_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5194029",
+    "itemLabel": "Cumbria Constabulary",
+    "website": "https://www.cumbria.police.uk/",
+    "wdtk": "cumbria_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820989",
+    "itemLabel": "Gloucestershire Police and Crime Panel",
+    "website": "https://www.gloucestershire.gov.uk/council-and-democracy/joint-ventures/gloucestershire-police-and-crime-panel/",
+    "wdtk": "gloucestershire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821103",
+    "itemLabel": "Norfolk Police and Crime Panel",
+    "website": "https://www.norfolk.gov.uk/what-we-do-and-how-we-work/policy-performance-and-partnerships/partnerships/crime-and-disorder-partnerships/police-and-crime-panel",
+    "wdtk": "norfolk_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821226",
+    "itemLabel": "Warwickshire Police and Crime Panel",
+    "website": "https://democracy.warwickshire.gov.uk/mgCommitteeDetails.aspx?ID=136",
+    "wdtk": "warwickshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820778",
+    "itemLabel": "Avon and Somerset Police and Crime Panel",
+    "website": "https://www.avonandsomersetpoliceandcrimepanel.org.uk/",
+    "wdtk": "avon_and_somerset_police_and_crime_panel"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821011",
+    "itemLabel": "Hertfordshire Police and Crime Panel",
+    "website": "http://www.hertspcp.org.uk/",
+    "wdtk": "hertfordshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820976",
+    "itemLabel": "Essex Police, Fire and Crime Panel",
+    "website": "https://cmis.essex.gov.uk/essexcmis5/EssexPolice,FireandCrimePanel.aspx",
+    "wdtk": "essex_police_fire_and_crime_panel"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820997",
+    "itemLabel": "Gwent Police and Crime Panel",
+    "website": "https://www.gwentpcp.org.uk/",
+    "wdtk": "gwent_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821052",
+    "itemLabel": "Kent Police and Crime Panel",
+    "website": "https://democracy.kent.gov.uk/mgCommitteeDetails.aspx?ID=776",
+    "wdtk": "kent_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821210",
+    "itemLabel": "Suffolk Police and Crime Panel",
+    "website": "https://www.suffolk.gov.uk/community-and-safety/communities/community-safety/police-and-crime-panel-and-the-police-and-crime-commissioner/police-and-crime-panel/",
+    "wdtk": "suffolk_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993350",
+    "itemLabel": "Bedfordshire Police and Crime Commissioner",
+    "website": "https://www.bedfordshire.pcc.police.uk/",
+    "wdtk": "bedfordshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7646840",
+    "itemLabel": "Surrey Police",
+    "website": "https://www.surrey.police.uk",
+    "wdtk": "surrey_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7971239",
+    "itemLabel": "Warwickshire Police",
+    "website": "https://www.warwickshire.police.uk/",
+    "wdtk": "warwickshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q8578453",
+    "itemLabel": "Thames Valley Police",
+    "website": "https://www.thamesvalley.police.uk/",
+    "wdtk": "thames_valley_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7063746",
+    "itemLabel": "Nottinghamshire Police",
+    "website": "https://www.nottinghamshire.police.uk/",
+    "wdtk": "nottinghamshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993971",
+    "itemLabel": "Gloucestershire Police and Crime Commissioner",
+    "website": "https://www.gloucestershire-pcc.gov.uk/",
+    "wdtk": "gloucestershire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993993",
+    "itemLabel": "Thames Valley Police and Crime Commissioner",
+    "website": "https://www.thamesvalley-pcc.gov.uk/",
+    "wdtk": "thames_valley_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993348",
+    "itemLabel": "Avon and Somerset Police and Crime Commissioner",
+    "website": "https://www.avonandsomerset-pcc.gov.uk",
+    "wdtk": "avon_and_somerset_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5363266",
+    "itemLabel": "Wiltshire Police",
+    "website": "https://www.wiltshire.police.uk/",
+    "wdtk": "wiltshire_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993974",
+    "itemLabel": "Hertfordshire Police and Crime Commissioner",
+    "website": "https://www.hertscommissioner.org/",
+    "wdtk": "hertfordshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993977",
+    "itemLabel": "Lancashire Police and Crime Commissioner",
+    "website": "https://www.lancashire-pcc.gov.uk/",
+    "wdtk": "lancashire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993992",
+    "itemLabel": "Surrey Police and Crime Commissioner",
+    "website": "https://www.surrey-pcc.gov.uk/",
+    "wdtk": "surrey_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993994",
+    "itemLabel": "Warwickshire Police and Crime Commissioner",
+    "website": "https://www.warwickshire-pcc.gov.uk/",
+    "wdtk": "warwickshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q3403362",
+    "itemLabel": "South Wales Police",
+    "website": "https://www.south-wales.police.uk/",
+    "wdtk": "south_wales_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993964",
+    "itemLabel": "Dorset Police and Crime Commissioner",
+    "website": "https://www.dorset.pcc.police.uk/",
+    "wdtk": "dorset_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993981",
+    "itemLabel": "Norfolk Police and Crime Commissioner",
+    "website": "https://www.norfolk-pcc.gov.uk/",
+    "wdtk": "norfolk_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993996",
+    "itemLabel": "Wiltshire Police and Crime Commissioner",
+    "website": "https://www.wiltshire-pcc.gov.uk",
+    "wdtk": "wiltshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q7059842",
+    "itemLabel": "Northumbria Police",
+    "website": "https://www.northumbria.police.uk/",
+    "wdtk": "northumbria_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q4829263",
+    "itemLabel": "Avon and Somerset Police",
+    "website": "https://www.avonandsomerset.police.uk/",
+    "wdtk": "avon_and_somerset_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820800",
+    "itemLabel": "Cambridgeshire Police and Crime Panel",
+    "website": "https://democracy.peterborough.gov.uk/mgCommitteeDetails.aspx?ID=543",
+    "wdtk": "cambridgeshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820805",
+    "itemLabel": "Cheshire Police and Crime Panel",
+    "website": "https://www.cheshireeast.gov.uk/council_and_democracy/your_council/cheshire-police-and-crime-panel.aspx",
+    "wdtk": "cheshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820858",
+    "itemLabel": "Derbyshire Police and Crime Panel",
+    "website": "https://www.derbyshire.gov.uk/community/community-safety/derbyshire-police-and-crime-panel/derbyshire-police-and-crime-panel.aspx",
+    "wdtk": "derbyshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110820863",
+    "itemLabel": "Devon and Cornwall Police and Crime Panel",
+    "website": "https://www.plymouth.gov.uk/councillorscommitteesandmeetings/devonandcornwallpoliceandcrimepanel",
+    "wdtk": "devon_and_cornwall_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821038",
+    "itemLabel": "Humberside Police and Crime Panel",
+    "website": "https://www.northlincs.gov.uk/your-council/humberside-police-and-crime-panel/",
+    "wdtk": "humberside_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821090",
+    "itemLabel": "Merseyside Police and Crime Panel",
+    "website": "https://www.knowsley.gov.uk/your-council/decision-making-and-governance/merseyside-police-and-crime-panel",
+    "wdtk": "merseyside_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821145",
+    "itemLabel": "Nottinghamshire Police and Crime Panel",
+    "website": "https://www.nottinghamshire.gov.uk/council-and-democracy/meetings-and-committees/nottinghamshire-police-and-crime-panel",
+    "wdtk": "nottinghamshire_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821163",
+    "itemLabel": "South Wales Police and Crime Panel",
+    "website": "https://www.merthyr.gov.uk/council/councillors-and-committees/south-wales-police-and-crime-panel/",
+    "wdtk": "south_wales_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q110821224",
+    "itemLabel": "Thames Valley Police and Crime Panel",
+    "website": "https://www.oxfordshire.gov.uk/residents/community-and-living/our-work-communities/tv-police-and-crime-panel",
+    "wdtk": "thames_valley_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q5316488",
+    "itemLabel": "Durham Constabulary",
+    "website": "https://www.durham.police.uk/",
+    "wdtk": "durham_police"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q16975803",
+    "itemLabel": "Greater Manchester Police, Fire and Crime Panel",
+    "website": "https://democracy.greatermanchester-ca.gov.uk/mgCommitteeDetails.aspx?ID=139",
+    "wdtk": "greater_manchester_pcp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993959",
+    "itemLabel": "Cleveland Police and Crime Commissioner",
+    "website": "http://www.cleveland.pcc.police.uk",
+    "wdtk": "cleveland_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q4590862",
+    "itemLabel": "North Yorkshire Police",
+    "website": "https://www.northyorkshire.police.uk/",
+    "wdtk": "nyp"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993950",
+    "itemLabel": "Cambridgeshire Police and Crime Commissioner",
+    "website": "https://www.cambridgeshire-pcc.gov.uk",
+    "wdtk": "cambridgeshire_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993975",
+    "itemLabel": "Humberside Police and Crime Commissioner",
+    "website": "http://www.humberside-pcc.gov.uk/",
+    "wdtk": "humberside_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993958",
+    "itemLabel": "Cumbria Police and Crime Commissioner",
+    "website": "https://cumbria-pcc.gov.uk",
+    "wdtk": "cumbria_pfcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q24993976",
+    "itemLabel": "Kent Police and Crime Commissioner",
+    "website": "https://www.kent-pcc.gov.uk/",
+    "wdtk": "kent_pcc"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q11975230",
+    "itemLabel": "Hertfordshire Constabulary",
+    "website": "https://www.herts.police.uk/",
+    "wdtk": "hertfordshire_police"
+  }
+]

@@ -1,0 +1,1153 @@
+{
+  "head": {
+    "vars": ["item", "itemLabel", "website", "websiteLabel", "wdtkid"]
+  },
+  "results": {
+    "bindings": [
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q11975230"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "hertfordshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.herts.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q11975230"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.herts.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4879244"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "bedfordshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.beds.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q4879244"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.beds.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1094151"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "city_of_london_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.cityoflondon.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q1094151"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.cityoflondon.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5267784"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "devon_and_cornwall_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.devon-cornwall.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5267784"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.devon-cornwall.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5061805"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "central_scotland_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.centralscotland.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5061805"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.centralscotland.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5194029"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "cumbria_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.cumbria.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5194029"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.cumbria.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6820586"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "merseyside_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.merseyside.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q6820586"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.merseyside.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5092942"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "cheshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.cheshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5092942"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.cheshire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5686021"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "northamptonshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.northants.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5686021"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.northants.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1774842"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "gwent_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.gwent.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q1774842"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.gwent.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5363266"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "wiltshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.wiltshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5363266"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.wiltshire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q8578453"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "thames_valley_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.thamesvalley.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q8578453"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.thamesvalley.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6482989"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "lancashire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.lancashire.police.uk"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q6482989"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.lancashire.police.uk"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7059842"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "northumbria_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.northumbria.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7059842"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.northumbria.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5572099"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "gloucestershire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.gloucestershire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5572099"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.gloucestershire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7971239"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "warwickshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.warwickshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7971239"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.warwickshire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7985948"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "wmp"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.west-midlands.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7985948"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.west-midlands.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3403354"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "dyfed_powys_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://dyfed-powys.police.uk"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q3403354"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://dyfed-powys.police.uk"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5316488"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "durham_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.durham.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5316488"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.durham.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5447362"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "fife_constabulary"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.fife.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5447362"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.fife.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4829263"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "avon_and_somerset_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.avonandsomerset.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q4829263"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.avonandsomerset.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7646840"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "surrey_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.surrey.police.uk"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7646840"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.surrey.police.uk"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4581367"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "northern_constabulary"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.northern.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q4581367"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.northern.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7569006"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "syp"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.southyorks.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7569006"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.southyorks.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5593937"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "grampian_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.grampian.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5593937"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.grampian.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1774860"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "north_wales_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.north-wales.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q1774860"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.north-wales.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5399777"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "essex_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.essex.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5399777"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.essex.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3403362"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "south_wales_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.south-wales.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q3403362"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.south-wales.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7985893"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "west_mercia_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.westmercia.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7985893"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.westmercia.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7063746"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "nottinghamshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.nottinghamshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7063746"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.nottinghamshire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5600651"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "gmp"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.gmp.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5600651"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.gmp.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5261560"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "derbyshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.derbyshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5261560"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.derbyshire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7231132"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "port_of_dover_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.doverport.co.uk/police/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7231132"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.doverport.co.uk/police/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7987045"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "west_yorkshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.westyorkshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7987045"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.westyorkshire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7231183"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "port_of_liverpool_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.portofliverpool.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7231183"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.portofliverpool.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5646041"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "hampshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.hampshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5646041"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.hampshire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3195294"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "kent_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.kent.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q3195294"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.kent.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5132210"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "cleveland_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.cleveland.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5132210"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.cleveland.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7596704"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "staffordshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.staffordshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7596704"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.staffordshire.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5939895"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "humberside_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.humberside.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5939895"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.humberside.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1139213"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "the_met"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.met.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q1139213"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.met.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7231139"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "port_of_felixstowe_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.portoffelixstowe.co.uk/port/health-and-safety-port-protection/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7231139"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.portoffelixstowe.co.uk/port/health-and-safety-port-protection/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6551264"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "lincolnshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.lincs.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q6551264"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.lincs.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7690330"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "tayside_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.tayside.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7690330"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.tayside.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5298864"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "dorset_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.dorset.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5298864"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.dorset.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3076859"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "suffolk_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.suffolk.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q3076859"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.suffolk.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6684771"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "lothian_and_borders_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "http://www.lbp.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q6684771"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "http://www.lbp.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5025653"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "cambridgeshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.cambs.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q5025653"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.cambs.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6519259"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "leicestershire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.leics.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q6519259"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.leics.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7051007"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "norfolk_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.norfolk.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7051007"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.norfolk.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7649467"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "sussex_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.sussex.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q7649467"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.sussex.police.uk/"
+        }
+      },
+      {
+        "item": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4590862"
+        },
+        "wdtkid": {
+          "type": "literal",
+          "value": "north_yorkshire_police"
+        },
+        "website": {
+          "type": "uri",
+          "value": "https://www.northyorkshire.police.uk/"
+        },
+        "itemLabel": {
+          "type": "literal",
+          "value": "Q4590862"
+        },
+        "websiteLabel": {
+          "type": "literal",
+          "value": "https://www.northyorkshire.police.uk/"
+        }
+      }
+    ]
+  }
+}
