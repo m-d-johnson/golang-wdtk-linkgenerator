@@ -1,3 +1,35 @@
+/*
+ * Copyright (c) Mike Johnson 2023.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 package main
 
 import (
@@ -5,15 +37,17 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/cavaliergopher/grab/v3"
-	formatter "github.com/mdigger/goldmark-formatter"
-	"github.com/olekukonko/tablewriter"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/cavaliergopher/grab/v3"
+	formatter "github.com/mdigger/goldmark-formatter"
+	"github.com/olekukonko/tablewriter"
 )
 
 // PoliceOrganisation represents a WDTK body
@@ -32,6 +66,19 @@ type PoliceOrganisation struct {
 	WikiDataIdentifier                   string `json:"WikiData_Identifier"`
 	LoCAuthorityID                       string `json:"LoC_Authority_ID"`
 	FOIEmailAddress                      string `json:"FOI_Email_Address"`
+}
+type JSONResponse struct {
+	Id                int
+	UrlName           string     `json:"wdtk_id"`
+	Name              string     `json:"name"`
+	ShortName         string     `json:"WDTK_ID"`
+	CreatedAt         string     `json:"created_At"`
+	UpdatedAt         string     `json:"updated_at"`
+	HomePage          string     `json:"home_page"`
+	Notes             string     `json:"notes"`
+	PublicationScheme string     `json:"publication_scheme"`
+	DisclosureLog     string     `json:"disclosure_log"`
+	Tags              [][]string `json:"tags"`
 }
 
 func main() {
@@ -96,19 +143,6 @@ func main() {
 }
 
 func TestFunction(wdtkID string) {
-	type JSONResponse struct {
-		Id                int        `json:"id"`
-		UrlName           string     `json:"WTDK_ID" :"url___name"`
-		Name              string     `json:"Name" :"name"`
-		ShortName         string     `json:"WDTK_ID" :"short___name"`
-		CreatedAt         string     `json:"created_At" :"created___at"`
-		UpdatedAt         string     `json:"updated_at" :"updated___at"`
-		HomePage          string     `json:"home_page" :"home___page"`
-		Notes             string     `json:"notes" :"notes"`
-		PublicationScheme string     `json:"publication_scheme" :"publication___scheme"`
-		DisclosureLog     string     `json:"disclosure_log" :"disclosure___log"`
-		Tags              [][]string `json:"tags" :"tags"`
-	}
 
 	// Attributes obtained from querying the site API:
 	req, err := http.NewRequest("GET", "https://www.whatdotheyknow.com/body/the_met.json", nil)
@@ -136,27 +170,14 @@ func TestFunction(wdtkID string) {
 	// str, _ := json.MarshalIndent(result, "", "\t")
 	// fmt.Println(string(str))
 
-	policeOrg := new(PoliceOrganisation)
-	policeOrg.DisclosureLogURL = result.DisclosureLog
-	policeOrg.HomePageURL = result.HomePage
-	policeOrg.Name = result.Name
-	policeOrg.PublicationSchemeURL = result.PublicationScheme
+	p := new(PoliceOrganisation)
 
-	print("Force: ", policeOrg.Name)
-	//
-	//// Process tags
-	//for _, tag := range wdtkData["tags"].([]interface{}) {
-	//	tagData := tag.([]interface{})
-	//	switch tagData[0] {
-	//	case "dpr":
-	//		policeOrg.DataProtectionRegistrationIdentifier = tagData[1].(string)
-	//	case "wikidata":
-	//		policeOrg.WikiDataIdentifier = tagData[1].(string)
-	//	case "lcnaf":
-	//		policeOrg.LoCAuthorityID = tagData[1].(string)
-	//	case "defunct":
-	//		policeOrg.IsDefunct = true
-	//	}
+	p.DisclosureLogURL = result.DisclosureLog
+	p.HomePageURL = result.HomePage
+	p.Name = result.Name
+	p.PublicationSchemeURL = result.PublicationScheme
+
+	print("Force: ", p.Name)
 
 }
 
@@ -392,14 +413,27 @@ func RebuildDataset() {
 }
 
 func FormatMarkdownFile(filePath string) {
-	file, err := os.ReadFile(filePath)
+	tmpfilename := "tmp-" + filePath
+
+	err := os.Rename(filePath, tmpfilename)
 	if err != nil {
-		fmt.Println("Error opening file:", err)
-		return
+		log.Fatal(err)
 	}
-	out, _ := os.Create("output_file_formatted.md")
-	_ = formatter.Format(file, out)
-	out.Close()
+
+	inFile, err := os.ReadFile(tmpfilename)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	outFile, _ := os.Create(filePath)
+	_ = formatter.Format(inFile, outFile)
+	err = outFile.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	os.Remove(tmpfilename)
+
 }
 
 func ReadCSVFile(filePath string) ([]map[string]string, error) {
@@ -447,6 +481,11 @@ func GenerateHeader() string {
 func MakeDataset() {
 	fmt.Println("Function to make dataset not implemented.")
 }
+func GenerateReportHeader(title string) string {
+	// 1: Missing Publication Scheme and Disclosure Log
+	hdr := fmt.Sprintf("## %s\n|Name|Org Page|Email|\n|-|-|-|\n", title)
+	return hdr
+}
 
 // GenerateProblemReports generates problem reports based on the provided dataset
 func GenerateProblemReports() {
@@ -456,39 +495,18 @@ func GenerateProblemReports() {
 		fmt.Println("Error reading FOI emails JSON:", err)
 		os.Exit(1)
 	}
-	println("Start of reports routine")
-	// Unmarshaling dataset into slice.
+
+	// and unmarshal that dataset into slice containing PoliceOrganisation objects
 	var listOfForces []PoliceOrganisation
 	err = json.Unmarshal(datasetFile, &listOfForces)
-	// Prepare output files: Text log
-	reportOutputFile, err := os.Create("Zreport-missing_data.txt")
-	if err != nil {
-		fmt.Println("Error creating report output file:", err)
-		os.Exit(1)
-	}
-	defer reportOutputFile.Close()
-	// Prepare output files: MarkDown log
-	reportMarkdownFile, err := os.Create("Zmissing-data.md")
+
+	// Prepare output files: Markdown page
+	reportMarkdownFile, err := os.Create("missing-data.md")
 	if err != nil {
 		fmt.Println("Error creating report markdown file:", err)
 		os.Exit(1)
 	}
 	defer reportMarkdownFile.Close()
-
-	// 1: Missing Publication Scheme and Disclosure Log
-	_, err = reportMarkdownFile.WriteString("## Missing Pub. Scheme and Disclosure Log\n\n")
-	if err != nil {
-		return
-	}
-	_, err = reportMarkdownFile.WriteString("|Name|Org Page|Email|\n")
-	if err != nil {
-		return
-	}
-	_, err = reportMarkdownFile.WriteString("|-|-|-|\n")
-	if err != nil {
-		return
-	}
-	println("Invoked RebuildDataset")
 
 	// Read emails from JSON file.
 	emailsData, err := os.ReadFile("data/foi-emails.json")
@@ -496,8 +514,7 @@ func GenerateProblemReports() {
 		fmt.Println("Error reading FOI emails JSON:", err)
 		os.Exit(1)
 	}
-	// Unmarshal Emails into a slice.
-	//println(string(emailsData))
+	// and unmarshal Forces/Emails into a slice.
 	var emails map[string]string
 	err = json.Unmarshal(emailsData, &emails)
 	if err != nil {
@@ -505,14 +522,85 @@ func GenerateProblemReports() {
 		os.Exit(1)
 	}
 
-	// Unmarshal into list of forces.
+	// Query for Police and Crime Commissioners
+	reportMarkdownFile.WriteString(GenerateReportHeader("Police and Crime Commissioners"))
 	for _, force := range listOfForces {
-		println("Hello, ", force.Name)
-
+		if strings.Contains(force.Name, "Commissioner") {
+			row := "| "
+			row += force.Name
+			row += " | "
+			row += force.WDTKOrgPageURL
+			row += " | "
+			row += force.FOIEmailAddress
+			row += " |"
+			_, err = reportMarkdownFile.WriteString(row + "\n")
+		}
 	}
+	// Query for Police and Crime Commissioners
+	reportMarkdownFile.WriteString("\n")
+	reportMarkdownFile.WriteString(GenerateReportHeader("Police and Crime Panels"))
+	for _, force := range listOfForces {
+		if strings.Contains(force.Name, "Panel") {
+			row := "| "
+			row += force.Name
+			row += " | "
+			row += force.WDTKOrgPageURL
+			row += " | "
+			row += force.FOIEmailAddress
+			row += " |\n"
+			_, err = reportMarkdownFile.WriteString(row)
+		}
+	}
+
+	// Query for Missing Publication Scheme and Disclosure Logs
+	reportMarkdownFile.WriteString(GenerateReportHeader("Disclosure Log and Publication Scheme Missing"))
+	for _, force := range listOfForces {
+		if force.IsDefunct == false && force.DisclosureLogURL == "" && force.PublicationSchemeURL == "" {
+			row := "| "
+			row += force.Name
+			row += " | "
+			row += force.WDTKOrgPageURL
+			row += " | "
+			row += force.FOIEmailAddress
+			row += " |"
+			_, err = reportMarkdownFile.WriteString(row + "\n")
+		}
+	}
+
+	// Query for Missing Publication Scheme but Disclosure Log Present
+	reportMarkdownFile.WriteString(GenerateReportHeader("Missing Publication Scheme but Disclosure Log Present"))
+	for _, force := range listOfForces {
+		if force.IsDefunct == false && strings.Contains(force.DisclosureLogURL, "http") && force.PublicationSchemeURL == "" {
+			row := "| "
+			row += force.Name
+			row += " | "
+			row += force.WDTKOrgPageURL
+			row += " | "
+			row += force.FOIEmailAddress
+			row += " |"
+			_, err = reportMarkdownFile.WriteString(row + "\n")
+		}
+	}
+	// Query for Missing Disclosure Log but Publication Scheme Present
+	reportMarkdownFile.WriteString(GenerateReportHeader("Missing Publication Scheme but Disclosure Log Present"))
+	for _, force := range listOfForces {
+		if force.IsDefunct == false && strings.Contains(force.PublicationSchemeURL, "http") && force.DisclosureLogURL == "" {
+			row := "| "
+			row += force.Name
+			row += " | "
+			row += force.WDTKOrgPageURL
+			row += " | "
+			row += force.FOIEmailAddress
+			row += " |"
+			_, err = reportMarkdownFile.WriteString(row + "\n")
+		}
+	}
+
 	// Housekeeping
-	reportOutputFile.Close()
 	reportMarkdownFile.Close()
+	FormatMarkdownFile(reportMarkdownFile.Name())
+	reportMarkdownFile.Close()
+
 	//	if !force.IsDefunct && len(force.PublicationSchemeURL) < 10 && len(force.DisclosureLogURL) < 10 {
 	//		addressee := force.FOIEmailAddress
 	//		messageBody := fmt.Sprintf(
