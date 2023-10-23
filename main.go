@@ -46,6 +46,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/fatih/color"
 	formatter "github.com/mdigger/goldmark-formatter"
 	"go.uber.org/ratelimit"
 )
@@ -83,16 +84,9 @@ type JSONResponse struct {
 	Tags              [][]string `json:"tags"`
 }
 
-func MakeMarkdownLinkToWdtkBodyPage(urlName string, label string) string {
-	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ")"}
-	markup := strings.Join(markupElements, "")
-	return markup
-}
-func MakeMarkdownLinkToWdtkBodyJson(urlName string, label string) string {
-	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ".json)"}
-	markup := strings.Join(markupElements, "")
-	return markup
-}
+var green = color.New(color.FgHiGreen)
+var red = color.New(color.FgHiRed)
+var magenta = color.New(color.FgHiMagenta)
 
 func main() {
 
@@ -137,14 +131,14 @@ func main() {
 
 	// Describe user-supplied organisation.
 	if len(*describeFlag) > 0 {
-		println("Authority to describe: ", *describeFlag)
+		green.Println("Authority to describe: ", *describeFlag)
 		DescribeAuthority(*describeFlag)
 		os.Exit(0)
 	}
 
 	// Perform query by user-supplied tag.
 	if len(*qtag) > 0 {
-		println("Tag provided for custom query: ", *qtag)
+		green.Println("Tag provided for custom query: ", *qtag)
 		GetCSVDatasetFromMySociety()
 		RunCustomQuery(qtag)
 		os.Exit(0)
@@ -164,8 +158,19 @@ func main() {
 		os.Exit(0)
 	}
 
-	println("No options provided. Exiting.")
+	red.Println("No options provided. Exiting.")
 
+}
+
+func MakeMarkdownLinkToWdtkBodyPage(urlName string, label string) string {
+	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ")"}
+	markup := strings.Join(markupElements, "")
+	return markup
+}
+func MakeMarkdownLinkToWdtkBodyJson(urlName string, label string) string {
+	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ".json)"}
+	markup := strings.Join(markupElements, "")
+	return markup
 }
 
 func BuildWDTKBodyURL(wdtkID string) string {
@@ -176,11 +181,27 @@ func BuildWDTKBodyURL(wdtkID string) string {
 	return sb.String()
 
 }
-
 func BuildWDTKBodyJSONURL(wdtkID string) string {
 
 	var sb strings.Builder
 	sb.WriteString("https://www.whatdotheyknow.com/body/")
+	sb.WriteString(wdtkID)
+	sb.WriteString(".json")
+	return sb.String()
+
+}
+func BuildWDTKAtomFeedURL(wdtkID string) string {
+
+	var sb strings.Builder
+	sb.WriteString("https://www.whatdotheyknow.com/feed/body/")
+	sb.WriteString(wdtkID)
+	return sb.String()
+
+}
+func BuildWDTKJSONFeedURL(wdtkID string) string {
+
+	var sb strings.Builder
+	sb.WriteString("https://www.whatdotheyknow.com/feed/body/")
 	sb.WriteString(wdtkID)
 	sb.WriteString(".json")
 	return sb.String()
@@ -191,56 +212,56 @@ func BuildWDTKBodyJSONURL(wdtkID string) string {
 // Invoke with -describe
 func DescribeAuthority(wdtkID string) {
 	// Attributes obtained from querying the site API:
-	log.Println("Showing information for ", wdtkID)
+	green.Println("Showing information for ", wdtkID)
 
 	req, err := http.NewRequest("GET", BuildWDTKBodyJSONURL(wdtkID), nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		Println("Error fetching WDTK data:", err)
+		red.Println("Error fetching WDTK data:", err)
 	}
 
 	resBody, err := io.ReadAll(resp.Body)
 	if err != nil {
-		Printf("client: could not read response body: %s\n", err)
+		red.Printf("client: could not read response body: %s\n", err)
 	}
 
 	var result JSONResponse
 	err = json.Unmarshal(resBody, &result)
 	if err != nil {
-		println("API JSON unmarshalling failed. Malformed?: ", err)
+		red.Println("API JSON unmarshalling failed. Malformed?: ", err)
 		return
 	}
 
 	emailsData, err := os.ReadFile("data/foi-emails.json")
 	if err != nil {
-		Println("Error reading foi-emails.json file:", err)
+		red.Println("Error reading foi-emails.json file:", err)
 		os.Exit(1)
 	}
 
 	var emails map[string]string
 	err = json.Unmarshal(emailsData, &emails)
 	if err != nil {
-		Println("Error unmarshalling foi-emails.json:", err)
+		red.Println("Error unmarshalling foi-emails.json:", err)
 		os.Exit(1)
 	}
 
 	var p = NewAuthority(wdtkID, emails)
-	p.WDTKOrgPageURL = BuildWDTKBodyURL(wdtkID)
-	p.DisclosureLogURL = result.DisclosureLog
-	p.HomePageURL = result.HomePage
-	p.Name = result.Name
-	p.PublicationSchemeURL = result.PublicationScheme
-	p.WDTKOrgJSONURL = BuildWDTKBodyJSONURL(wdtkID)
 
 	println("Force:               ", p.Name)
+	println("WDTK ID:             ", p.WDTKID)
+	println("Defunct:             ", p.IsDefunct)
 	println("WDTK Page:           ", p.WDTKOrgPageURL)
 	println("Home Page:           ", p.HomePageURL)
 	println("Publication Scheme:  ", p.PublicationSchemeURL)
 	println("Disclosure Log:      ", p.DisclosureLogURL)
 	println("Atom Feed:           ", p.WDTKAtomFeedURL)
+	println("JSON Feed:           ", p.WDTKJSONFeedURL)
 	println("JSON Data:           ", p.WDTKOrgJSONURL)
 	println("Email:               ", p.FOIEmailAddress)
+	println("WikiData Identifier :", p.WikiDataIdentifier)
+	println("LoC Authority ID    :", p.LoCAuthorityID)
+	println("ICO Registration Identifier: ", p.DataProtectionRegistrationIdentifier)
 
 	tmpl := template.Must(template.New("Simple HTML Overview").Parse(simpleBodyOverviewPage))
 
@@ -271,43 +292,36 @@ func GetCSVDatasetFromMySociety() {
 
 // RunCustomQuery creates a markdown table of bodies matching a user-specified tag.
 func RunCustomQuery(tag *string) {
-	Sprintf("Query MySociety dataset for a custom tag: %s", *tag)
+	print(Sprintf("Query MySociety dataset for a custom tag: %s", *tag))
 	var csvFile, _ = os.Open("all-authorities.csv")
 	reader := csv.NewReader(csvFile)
 
-	var bytesWritten int
 	resultsFileNameElements := []string{"output/", "custom-query-", *tag, ".md"}
 	resultsFileName := strings.Join(resultsFileNameElements, "")
 	resultsTable, err := os.Create(resultsFileName)
 	if err != nil {
-		Println("Error creating output file:", err)
+		red.Println("Error creating output file:", err)
 		os.Exit(1)
 	}
 	defer resultsTable.Close()
 
 	rows, _ := reader.ReadAll()
 	var title = Sprintf("# Custom Listing: Authorities with tag \"%s\"", *tag)
-	bytesWritten, err = resultsTable.Write([]byte(title + "\n\n"))
+	_, err = resultsTable.Write([]byte(title + "\n\n"))
 	if err != nil {
-		println("Failed to write title to results file.", err)
+		red.Println("Failed to write title to results file.", err)
 		return
-	} else {
-		log.Println(bytesWritten, " bytes written")
 	}
 
-	bytesWritten, err = resultsTable.Write([]byte("|Name | JSON |\n"))
+	_, err = resultsTable.Write([]byte("|Name | JSON |\n"))
 	if err != nil {
-		println("Failed to write title to results file.", err)
+		red.Println("Failed to write title to results file.", err)
 		return
-	} else {
-		log.Println(bytesWritten, " bytes written")
 	}
-	bytesWritten, err = resultsTable.Write([]byte("|-|-|\n"))
+	_, err = resultsTable.Write([]byte("|-|-|\n"))
 	if err != nil {
-		println("Failed to write table header to results file.", err)
+		red.Println("Failed to write table header to results file.", err)
 		return
-	} else {
-		log.Println(bytesWritten, " bytes written")
 	}
 	/* all-authorities.csv file from MySociety
 	   Columns and indices in this file:
@@ -345,12 +359,10 @@ func RunCustomQuery(tag *string) {
 			markdownRow.WriteString(" | ") // Markdown row column separator
 			markdownRow.WriteString(MakeMarkdownLinkToWdtkBodyJson(urlName, "JSON"))
 			markdownRow.WriteString(" |\n") // Markdown row end delimiter
-			bytesWritten, err = resultsTable.WriteString(markdownRow.String())
+			_, err = resultsTable.WriteString(markdownRow.String())
 			if err != nil {
-				println("Failed to write row results file.", err)
+				red.Println("Failed to write row results file.", err)
 				return
-			} else {
-				log.Println(bytesWritten, " bytes written")
 			}
 			markdownRow.Reset()
 		}
@@ -359,18 +371,18 @@ func RunCustomQuery(tag *string) {
 }
 
 func MakeTableFromGeneratedDataset() {
-	println("Generating table from the generated JSON dataset...")
+	magenta.Println("Generating table from the generated JSON dataset...")
 
 	os.Create("output/overview.md")
 	markdownOutputFile, err := os.OpenFile("output/overview.md", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0660)
 	if err != nil {
-		Println("Error opening output markdown file:", err)
+		red.Println("Error opening output markdown file:", err)
 		os.Exit(1)
 	}
 
 	jsonInputFile, err := os.Open("data/generated-dataset.json")
 	if err != nil {
-		Println("Error opening JSON file:", err)
+		red.Println("Error opening JSON file:", err)
 		os.Exit(1)
 	}
 	defer jsonInputFile.Close()
@@ -378,7 +390,7 @@ func MakeTableFromGeneratedDataset() {
 	var dataset []map[string]interface{}
 	err = json.NewDecoder(jsonInputFile).Decode(&dataset)
 	if err != nil {
-		Println("Error decoding JSON file:", err)
+		red.Println("Error decoding JSON file:", err)
 		os.Exit(1)
 	}
 
@@ -409,11 +421,12 @@ func MakeTableFromGeneratedDataset() {
 
 	// For ease of reading
 	sort.Strings(results)
+
 	// Finally write all the results to the file
 	for _, rowOfMarkup := range results {
 		markdownOutputFile.WriteString(rowOfMarkup)
 	}
-
+	green.Println("Done!")
 	markdownOutputFile.Close()
 	// FormatMarkdownFile("output/overview.md")
 }
@@ -421,32 +434,28 @@ func MakeTableFromGeneratedDataset() {
 func Cleanup(retain bool) {
 
 	if fileInfo, err := os.Stat("output/authorities.csv"); err == nil && fileInfo.Mode().IsRegular() && retain {
-		Println("As requested, not deleting the authorities file.")
+		green.Println("As requested, not deleting the authorities file.")
 	} else if err == nil {
 		println("Removing authorities.csv file.")
 		os.Remove("output/authorities.csv")
 	} else {
-		Println("The WDTK CSV file does not exist, so could not be deleted.")
+		magenta.Println("The WDTK CSV file does not exist, so could not be deleted.")
 	}
 }
 
 // NewAuthority creates a new Authority instance
 func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 	var policeOrg = new(Authority)
-	//green := color.New(color.FgHiGreen)
-	//red := color.New(color.FgHiRed)
-	//magenta := color.New(color.FgHiMagenta)
-	//green.Println("\n\n~~ Constructing a new Authority object: ", wdtkID, " ~~")
 
 	// Defaults
 	policeOrg.IsDefunct = false
 
 	// Attributes derived from the WDTK Url Name:
 	policeOrg.WDTKID = wdtkID
-	policeOrg.WDTKOrgJSONURL = Sprintf("https://www.whatdotheyknow.com/body/%s.json", wdtkID)
-	policeOrg.WDTKAtomFeedURL = Sprintf("https://www.whatdotheyknow.com/feed/body/%s", wdtkID)
-	policeOrg.WDTKOrgPageURL = Sprintf("https://www.whatdotheyknow.com/body/%s", wdtkID)
-	policeOrg.WDTKJSONFeedURL = Sprintf("https://www.whatdotheyknow.com/feed/body/%s.json", wdtkID)
+	policeOrg.WDTKOrgJSONURL = BuildWDTKBodyJSONURL(wdtkID)
+	policeOrg.WDTKAtomFeedURL = BuildWDTKAtomFeedURL(wdtkID)
+	policeOrg.WDTKOrgPageURL = BuildWDTKBodyURL(wdtkID)
+	policeOrg.WDTKJSONFeedURL = BuildWDTKJSONFeedURL(wdtkID)
 
 	policeOrg.FOIEmailAddress = emails[wdtkID]
 
@@ -455,7 +464,7 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.38 Chrome/118.0.0.0 Safari/537.36")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		Println("Error fetching WDTK data:", err)
+		red.Println("Error fetching WDTK data:", err)
 		return nil
 	}
 
@@ -466,7 +475,7 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 
 	err = json.Unmarshal([]byte(responsestr), &wdtkData)
 	if err != nil {
-		Println("Error decoding WDTK data:", err)
+		red.Println("Error decoding WDTK data:", err)
 		return nil
 	}
 	policeOrg.FOIEmailAddress = emails[wdtkID]
@@ -489,8 +498,9 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 			policeOrg.IsDefunct = true
 		}
 	}
+
 	if policeOrg.IsDefunct {
-		//red.Println("*** This organisation is defunct ***")
+		red.Println("*** This organisation is defunct ***")
 	}
 	return policeOrg
 }
@@ -500,8 +510,9 @@ func RebuildDataset() {
 	// the list of FOI email addresses. The rest of the information can be either
 	// derived from the WDTK ID or scraped using the WDTK ID when the object is
 	// created.
-	println("Invoked RebuildDataset")
+
 	// Read emails from JSON file
+	// emailsData, err := ReadCSVFileAndGetRows("data/foi-emails.json")
 	emailsData, err := os.ReadFile("data/foi-emails.json")
 	if err != nil {
 		Println("Error reading FOI emails JSON:", err)
@@ -512,13 +523,15 @@ func RebuildDataset() {
 	var emails map[string]string
 	err = json.Unmarshal(emailsData, &emails)
 	if err != nil {
-		Println("Error decoding FOI emails JSON:", err)
+		red.Println("Error decoding FOI emails JSON:", err)
 		os.Exit(1)
 	}
 
 	var listOfForces []Authority
 	// Important to rate-limit for the sake of MySociety's service.
-	rl := ratelimit.New(5) // per second
+	qps := 5
+	Println(Sprintf("Rate-limiting to %d queries/sec", qps))
+	rl := ratelimit.New(qps) // per second
 	// Iterate through emails
 	for entry := range emails {
 		_ = rl.Take()
@@ -529,20 +542,20 @@ func RebuildDataset() {
 	// Write dataset to JSON file
 	outFile, err := os.Create("data/generated-dataset.json")
 	if err != nil {
-		Println("Error creating output JSON file:", err)
+		red.Println("Error creating output JSON file:", err)
 		os.Exit(1)
 	}
 	defer outFile.Close()
 
 	jsonData, err := json.MarshalIndent(listOfForces, "", "    ")
 	if err != nil {
-		Println("Error encoding JSON data:", err)
+		red.Println("Error encoding JSON data:", err)
 		os.Exit(1)
 	}
 
 	_, err = outFile.Write(jsonData)
 	if err != nil {
-		Println("Error writing to output JSON file:", err)
+		red.Println("Error writing to output JSON file:", err)
 		os.Exit(1)
 	}
 }
