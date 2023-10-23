@@ -41,17 +41,17 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"slices"
 	"sort"
 	"strings"
-	"time"
 
-	"github.com/cavaliergopher/grab/v3"
+	"github.com/fatih/color"
 	formatter "github.com/mdigger/goldmark-formatter"
-	"github.com/olekukonko/tablewriter"
+	"go.uber.org/ratelimit"
 )
 
-// PoliceOrganisation represents a WDTK body
-type PoliceOrganisation struct {
+// Authority is a public body on the WDTK website.
+type Authority struct {
 	IsDefunct                            bool   `json:"Is_Defunct"`
 	WDTKID                               string `json:"WDTK_ID"`
 	WDTKOrgJSONURL                       string `json:"WDTK_Org_JSON_URL"`
@@ -67,6 +67,8 @@ type PoliceOrganisation struct {
 	LoCAuthorityID                       string `json:"LoC_Authority_ID"`
 	FOIEmailAddress                      string `json:"FOI_Email_Address"`
 }
+
+// JSONResponse is a JSON object from the authority page on the WDTK website.
 type JSONResponse struct {
 	Id                int
 	UrlName           string     `json:"wdtk_id"`
@@ -81,52 +83,74 @@ type JSONResponse struct {
 	Tags              [][]string `json:"tags"`
 }
 
+func MakeMarkdownLinkToWdtkBodyPage(urlName string, label string) string {
+	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ")"}
+	markup := strings.Join(markupElements, "")
+	return markup
+}
+func MakeMarkdownLinkToWdtkBodyJson(urlName string, label string) string {
+	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ".json)"}
+	markup := strings.Join(markupElements, "")
+	return markup
+}
+
 func main() {
+
 	// Parse command line arguments
 	reportFlag := flag.Bool(
 		"report",
 		false,
-		"Generate a report of missing Pub Scheme and Disc. Log URLs.")
+		"Generate a report of missing Pub. Scheme and Disc. Log URLs.")
 
-	generateFlag := flag.Bool(
-		"generate",
-		true,
-		"Generate a dataset from the emails file, then build table.")
+	tableFlag := flag.Bool(
+		"table",
+		false,
+		"Generate a table from the existing dataset.")
 
 	refreshFlag := flag.Bool(
 		"refresh",
 		false,
-		"Rebuilds a dataset from the emails file, then build table.")
+		"Rebuilds a dataset from the emails file and API, then build table.")
 
-	retainFlag := flag.Bool("retain", false, "Keep the authorities file from MySociety.")
-	// wikidataFlag := flag.Bool("wikidata", false, "Get a listing of local forces from wikidata.")
-
-	mysocietyFlag := flag.Bool(
-		"mysociety",
+	retainFlag := flag.Bool(
+		"retain",
 		false,
-		"Get all the mysociety data and create a table.")
+		"Keep the authorities file from MySociety.")
 
-	singleFlag := flag.Bool(
-		"single",
-		false,
-		"Run a single function (for testing).")
+	describeFlag := flag.String(
+		"describe",
+		"",
+		"Describe an authority.")
+
+	qtag := flag.String(
+		"query",
+		"",
+		"Tag to use to generate a user-defined report.")
 
 	flag.Parse()
+
+	// Generate a report of bodies that are missing certain metadata.
 	if *reportFlag {
 		GenerateProblemReports()
 		os.Exit(0)
 	}
-	if *singleFlag {
-		TestFunction("the_met")
+
+	// Describe user-supplied organisation.
+	if len(*describeFlag) > 0 {
+		println("Authority to describe: ", *qtag)
+		DescribeAuthority(*describeFlag)
 		os.Exit(0)
 	}
 
-	if *mysocietyFlag {
+	// Perform query by user-supplied tag.
+	if len(*qtag) > 0 {
+		println("Tag provided for custom query: ", *qtag)
 		GetCSVDatasetFromMySociety()
-		ProcessMySocietyDataset()
+		RunCustomQuery(qtag)
 		os.Exit(0)
 	}
 
+	// Regenerate the dataset, includes downloading new information from WDTK.
 	if *refreshFlag {
 		RebuildDataset()
 		MakeTableFromGeneratedDataset()
@@ -134,18 +158,27 @@ func main() {
 		os.Exit(0)
 	}
 
-	if *generateFlag {
+	if *tableFlag {
 		MakeTableFromGeneratedDataset()
 		Cleanup(*retainFlag)
 		os.Exit(0)
 	}
 
+	println("No options provided. Exiting.")
+
 }
 
-func TestFunction(wdtkID string) {
-
+// DescribeAuthority shows information on a user-specified authority.
+func DescribeAuthority(wdtkID string) {
 	// Attributes obtained from querying the site API:
-	req, err := http.NewRequest("GET", "https://www.whatdotheyknow.com/body/the_met.json", nil)
+	log.Println("Showing information for ", wdtkID)
+
+	var sb strings.Builder
+	sb.WriteString("https://www.whatdotheyknow.com/body/")
+	sb.WriteString(wdtkID)
+	sb.WriteString(".json")
+
+	req, err := http.NewRequest("GET", sb.String(), nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -167,10 +200,8 @@ func TestFunction(wdtkID string) {
 		// println(err)
 		return
 	}
-	// str, _ := json.MarshalIndent(result, "", "\t")
-	// fmt.Println(string(str))
 
-	p := new(PoliceOrganisation)
+	p := new(Authority)
 
 	p.DisclosureLogURL = result.DisclosureLog
 	p.HomePageURL = result.HomePage
@@ -182,61 +213,111 @@ func TestFunction(wdtkID string) {
 }
 
 func GetCSVDatasetFromMySociety() {
-
-	// create client
-	client := grab.NewClient()
-	req, _ := grab.NewRequest(".", "https://www.whatdotheyknow.com/body/all-authorities.csv")
-
-	// start download
-	fmt.Printf("Downloading %v...\n", req.URL())
-	resp := client.Do(req)
-	fmt.Printf("  %v\n", resp.HTTPResponse.Status)
+	//
+	//// create client
+	//client := grab.NewClient()
+	//req, _ := grab.NewRequest(".", "https://www.whatdotheyknow.com/body/all-authorities.csv")
+	//
+	//// start download
+	//fmt.Printf("Downloading %v...\n", req.URL())
+	//resp := client.Do(req)
+	//fmt.Printf("  %v\n", resp.HTTPResponse.Status)
 
 }
 
-func ProcessMySocietyDataset() {
-	fmt.Println("Process MySociety dataset")
-	csvFile, _ := os.Open("authorities.csv")
+func RunCustomQuery(tag *string) {
+	fmt.Sprintf("Query MySociety dataset for a custom tag: %s", *tag)
+	var csvFile, _ = os.Open("all-authorities.csv")
 	reader := csv.NewReader(csvFile)
-	rows, err := reader.ReadAll()
-	if err != nil {
-		fmt.Println("Error reading CSV file:", err)
-		os.Exit(1)
-	}
 
-	outputRows := make([][]string, 0)
-	rowHeaders := []string{"Name", "WDTK ID", "Tags"}
-
-	for _, row := range rows {
-		var thisRow []string
-		tagsList := strings.Split(row[2], "|")
-		tagsListFlattened := fmt.Sprint(tagsList)
-		thisRow = append(thisRow, row[0], row[1], tagsListFlattened)
-		outputRows = append(outputRows, thisRow)
-	}
-
-	allOrgsFile, err := os.Create("output/all-mysociety.md")
+	var bytesWritten int
+	resultsFileNameElements := []string{"output/", "custom-query-", *tag, ".md"}
+	resultsFileName := strings.Join(resultsFileNameElements, "")
+	resultsTable, err := os.Create(resultsFileName)
 	if err != nil {
 		fmt.Println("Error creating output file:", err)
 		os.Exit(1)
 	}
-	defer allOrgsFile.Close()
+	defer resultsTable.Close()
 
-	table := tablewriter.NewWriter(allOrgsFile)
-	table.SetHeader(rowHeaders)
-	table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
-	table.SetCenterSeparator("|")
-	table.SetColumnSeparator("|")
-	table.SetRowSeparator("-")
-	table.AppendBulk(outputRows)
-	table.Render()
+	rows, _ := reader.ReadAll()
+	var title = fmt.Sprintf("# Custom Listing: Authorities with tag \"%s\"", *tag)
+	bytesWritten, err = resultsTable.Write([]byte(title + "\n\n"))
+	if err != nil {
+		println("Failed to write title to results file.", err)
+		return
+	} else {
+		log.Println(bytesWritten, " bytes written")
+	}
+
+	bytesWritten, err = resultsTable.Write([]byte("|Name | JSON |\n"))
+	if err != nil {
+		println("Failed to write title to results file.", err)
+		return
+	} else {
+		log.Println(bytesWritten, " bytes written")
+	}
+	bytesWritten, err = resultsTable.Write([]byte("|-|-|\n"))
+	if err != nil {
+		println("Failed to write table header to results file.", err)
+		return
+	} else {
+		log.Println(bytesWritten, " bytes written")
+	}
+	/* all-authorities.csv file from MySociety
+	   Columns and indices in this file:
+	       0:  id								string
+	       1:  name							    string	(Unique)
+	       2:  short-name						string
+	       3:  url-name						    string
+	       4:  tags							    string (Pipe-delimited)
+	       5:  home-page						string (URL)
+	       6:  publication-scheme				string (URL)
+	       7:  disclosure-log					string (URL)
+	       8:  notes							string
+	       9:  created-at						string (Date) e.g. 2013-09-24 12:00:27 +0100
+	       10: updated-at						string (Date) e.g. 2013-09-24 12:00:27 +0100
+	                                                               %Y-%m-%d %H:%M:%S %z
+	                                                               RFC3339
+	       11: version							int
+	       12: defunct							bool
+	       13: categories						string (Pipe-delimited)
+	       14: top-level-categories			    string
+	       15: single-top-level-category		string
+	*/
+
+	// Can use same StringBuilder for all rows to avoid having to re-instantiate it.
+	var markdownRow strings.Builder
+
+	for _, row := range rows {
+		tagsList := strings.Split(row[3], " ")
+		if slices.Contains(tagsList, *tag) && !slices.Contains(tagsList, "defunct") {
+			var name = row[0]
+			var urlName = row[2]
+
+			markdownRow.WriteString("| ") // Markdown row start delimiter
+			markdownRow.WriteString(MakeMarkdownLinkToWdtkBodyPage(urlName, name))
+			markdownRow.WriteString(" | ") // Markdown row column separator
+			markdownRow.WriteString(MakeMarkdownLinkToWdtkBodyJson(urlName, "JSON"))
+			markdownRow.WriteString(" |\n") // Markdown row end delimiter
+			bytesWritten, err = resultsTable.WriteString(markdownRow.String())
+			if err != nil {
+				println("Failed to write row results file.", err)
+				return
+			} else {
+				log.Println(bytesWritten, " bytes written")
+			}
+			markdownRow.Reset()
+		}
+	}
+
 }
 
 func MakeTableFromGeneratedDataset() {
 	println("Generating table from the generated JSON dataset...")
 
-	os.Create("overview2.md")
-	markdownOutputFile, err := os.OpenFile("overview2.md", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0660)
+	os.Create("output/overview.md")
+	markdownOutputFile, err := os.OpenFile("output/overview.md", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0660)
 	if err != nil {
 		fmt.Println("Error opening output markdown file:", err)
 		os.Exit(1)
@@ -260,34 +341,36 @@ func MakeTableFromGeneratedDataset() {
 	results := make([]string, 0)
 	for _, force := range dataset {
 		if force["Is_Defunct"].(bool) {
-			continue
+			continue // Skip defunct organisations. Move to next record.
 		}
 		markup := fmt.Sprintf("|%v | [Website](%v)| [wdtk page](%v)| [wdtk json](%v)| [atom feed](%v)| [json feed](%v)|",
 			force["Name"], force["Home_Page_URL"], force["WDTK_Org_Page_URL"],
 			force["WDTK_Org_JSON_URL"], force["WDTK_Atom_Feed_URL"], force["WDTK_JSON_Feed_URL"])
-		if force["Publication_Scheme_URL"] != nil {
+
+		if strings.Contains("http", force["Publication_Scheme_URL"].(string)) {
 			markup += fmt.Sprintf("| [Link](%v)|", force["Publication_Scheme_URL"])
 		} else {
-			markup += "| Missing|"
+			markup += "| Missing |"
 		}
-		if force["Disclosure_Log_URL"] != nil {
+
+		if strings.Contains("http", force["Disclosure_Log_URL"].(string)) {
 			markup += fmt.Sprintf(" [Link](%v)|", force["Disclosure_Log_URL"])
 		} else {
-			markup += "| Missing|"
+			markup += "| Missing |"
 		}
 		markup += fmt.Sprintf(" [Email](mailto:%v)|\n", force["FOI_Email_Address"])
 		results = append(results, markup)
-
-		// For ease of reading
-		sort.Strings(results)
 	}
+
+	// For ease of reading
+	sort.Strings(results)
 	// Finally write all the results to the file
 	for _, rowOfMarkup := range results {
 		markdownOutputFile.WriteString(rowOfMarkup)
 	}
 
 	markdownOutputFile.Close()
-	FormatMarkdownFile("overview2.md")
+	// FormatMarkdownFile("output/overview.md")
 }
 
 func Cleanup(retain bool) {
@@ -302,23 +385,28 @@ func Cleanup(retain bool) {
 	}
 }
 
-// NewPoliceOrganisation creates a new PoliceOrganisation instance
-func NewPoliceOrganisation(wdtkID string, emails map[string]string) *PoliceOrganisation {
-	var policeOrg = new(PoliceOrganisation)
-	println("Constructing a new PoliceOrganisation object: ", wdtkID)
+// NewAuthority creates a new Authority instance
+func NewAuthority(wdtkID string, emails map[string]string) *Authority {
+	var policeOrg = new(Authority)
+	green := color.New(color.FgHiGreen)
+	red := color.New(color.FgHiRed)
+	magenta := color.New(color.FgHiMagenta)
+	green.Println("\n\n~~ Constructing a new Authority object: ", wdtkID, " ~~")
+
 	// Defaults
 	policeOrg.IsDefunct = false
 	// Attributes derived from the WDTK Url Name:
+	policeOrg.WDTKID = wdtkID
 	policeOrg.WDTKOrgJSONURL = fmt.Sprintf("https://www.whatdotheyknow.com/body/%s.json", wdtkID)
 	policeOrg.WDTKAtomFeedURL = fmt.Sprintf("https://www.whatdotheyknow.com/feed/body/%s", wdtkID)
 	policeOrg.WDTKOrgPageURL = fmt.Sprintf("https://www.whatdotheyknow.com/body/%s", wdtkID)
 	policeOrg.WDTKJSONFeedURL = fmt.Sprintf("https://www.whatdotheyknow.com/feed/body/%s.json", wdtkID)
 
+	policeOrg.FOIEmailAddress = emails[wdtkID]
 	// Attributes obtained from querying the site API:
 	req, err := http.NewRequest("GET", policeOrg.WDTKOrgJSONURL, nil)
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
-
-	resp, err := http.Get(policeOrg.WDTKOrgJSONURL)
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.38 Chrome/118.0.0.0 Safari/537.36")
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		fmt.Println("Error fetching WDTK data:", err)
 		return nil
@@ -326,35 +414,49 @@ func NewPoliceOrganisation(wdtkID string, emails map[string]string) *PoliceOrgan
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	println(policeOrg.WDTKOrgJSONURL)
-	println(string(bodyBytes))
-	//
-	//var wdtkData map[string]interface{}
-	//err = json.NewDecoder(resp.Body).Decode(wdtkData)
-	//if err != nil {
-	//	fmt.Println("Error decoding WDTK data:", err)
-	//	return nil
-	//}
-	//
-	//policeOrg.DisclosureLogURL = wdtkData["disclosure_log"].(string)
-	//policeOrg.HomePageURL = wdtkData["home_page"].(string)
-	//policeOrg.Name = wdtkData["name"].(string)
-	//policeOrg.PublicationSchemeURL = wdtkData["publication_scheme"].(string)
-	//
-	//// Process tags
-	//for _, tag := range wdtkData["tags"].([]interface{}) {
-	//	tagData := tag.([]interface{})
-	//	switch tagData[0] {
-	//	case "dpr":
-	//		policeOrg.DataProtectionRegistrationIdentifier = tagData[1].(string)
-	//	case "wikidata":
-	//		policeOrg.WikiDataIdentifier = tagData[1].(string)
-	//	case "lcnaf":
-	//		policeOrg.LoCAuthorityID = tagData[1].(string)
-	//	case "defunct":
-	//		policeOrg.IsDefunct = true
-	//	}
-	//}
+	responsestr := string(bodyBytes)
+	var wdtkData map[string]interface{}
 
+	err = json.Unmarshal([]byte(responsestr), &wdtkData)
+	if err != nil {
+		fmt.Println("Error decoding WDTK data:", err)
+		return nil
+	}
+	policeOrg.FOIEmailAddress = emails[wdtkID]
+	print("FOI Email Address:       ")
+	magenta.Println(policeOrg.FOIEmailAddress)
+	policeOrg.DisclosureLogURL = wdtkData["disclosure_log"].(string)
+	println("Disc. Log URL:          ", policeOrg.DisclosureLogURL)
+	policeOrg.HomePageURL = wdtkData["home_page"].(string)
+	println("Home Page:              ", policeOrg.HomePageURL)
+	policeOrg.Name = wdtkData["name"].(string)
+	println("Name:                   ", policeOrg.Name)
+	policeOrg.PublicationSchemeURL = wdtkData["publication_scheme"].(string)
+	println("Publication Scheme URL: ", policeOrg.PublicationSchemeURL)
+	//
+	// Process tags
+	for _, tag := range wdtkData["tags"].([]interface{}) {
+		tagData := tag.([]interface{})
+		switch tagData[0] {
+		case "dpr":
+			policeOrg.DataProtectionRegistrationIdentifier = tagData[1].(string)
+			println("Data Prot. Identifier:  ", policeOrg.DataProtectionRegistrationIdentifier)
+			println("ICO Registration URL:   ", "https://ico.org.uk/ESDWebPages/Entry/"+policeOrg.DataProtectionRegistrationIdentifier)
+		case "wikidata":
+			policeOrg.WikiDataIdentifier = tagData[1].(string)
+			println("WikiData Identifier:    ", policeOrg.WikiDataIdentifier)
+			println("WikiData URL:           ", "https://www.wikidata.org/wiki/"+policeOrg.WikiDataIdentifier)
+		case "lcnaf":
+			policeOrg.LoCAuthorityID = tagData[1].(string)
+			println("LoC Authority ID:       ", policeOrg.LoCAuthorityID)
+			println("LoC Authority URL:      ", "https://lccn.loc.gov/"+policeOrg.LoCAuthorityID)
+		case "defunct":
+			policeOrg.IsDefunct = true
+		}
+	}
+	if policeOrg.IsDefunct {
+		red.Println("*** This organisation is defunct ***")
+	}
 	return policeOrg
 }
 
@@ -378,21 +480,19 @@ func RebuildDataset() {
 		fmt.Println("Error decoding FOI emails JSON:", err)
 		os.Exit(1)
 	}
-	//
-	var listOfForces []PoliceOrganisation
-	//
-	//// Iterate through emails
+
+	var listOfForces []Authority
+	// Important to rate-limit for the sake of MySociety's service.
+	rl := ratelimit.New(5) // per second
+	// Iterate through emails
 	for entry := range emails {
-		println("Read ", entry)
-		time.Sleep(2000)
-		var force = NewPoliceOrganisation(entry, emails)
-		//	println(force.PublicationSchemeURL)
-		//	//println(force.Name)
+		_ = rl.Take()
+		var force = NewAuthority(entry, emails)
 		listOfForces = append(listOfForces, *force)
 	}
 
-	//// Write dataset to JSON file
-	outFile, err := os.Create("data/generated-dataset2.json")
+	// Write dataset to JSON file
+	outFile, err := os.Create("data/generated-dataset.json")
 	if err != nil {
 		fmt.Println("Error creating output JSON file:", err)
 		os.Exit(1)
@@ -404,7 +504,7 @@ func RebuildDataset() {
 		fmt.Println("Error encoding JSON data:", err)
 		os.Exit(1)
 	}
-	//
+
 	_, err = outFile.Write(jsonData)
 	if err != nil {
 		fmt.Println("Error writing to output JSON file:", err)
@@ -478,9 +578,6 @@ func GenerateHeader() string {
 	return body
 }
 
-func MakeDataset() {
-	fmt.Println("Function to make dataset not implemented.")
-}
 func GenerateReportHeader(title string) string {
 	// 1: Missing Publication Scheme and Disclosure Log
 	hdr := fmt.Sprintf("## %s\n|Name|Org Page|Email|\n|-|-|-|\n", title)
@@ -496,8 +593,8 @@ func GenerateProblemReports() {
 		os.Exit(1)
 	}
 
-	// and unmarshal that dataset into slice containing PoliceOrganisation objects
-	var listOfForces []PoliceOrganisation
+	// and unmarshal that dataset into slice containing Authority objects
+	var listOfForces []Authority
 	err = json.Unmarshal(datasetFile, &listOfForces)
 
 	// Prepare output files: Markdown page
@@ -536,6 +633,7 @@ func GenerateProblemReports() {
 			_, err = reportMarkdownFile.WriteString(row + "\n")
 		}
 	}
+
 	// Query for Police and Crime Commissioners
 	reportMarkdownFile.WriteString("\n")
 	reportMarkdownFile.WriteString(GenerateReportHeader("Police and Crime Panels"))
@@ -581,6 +679,7 @@ func GenerateProblemReports() {
 			_, err = reportMarkdownFile.WriteString(row + "\n")
 		}
 	}
+
 	// Query for Missing Disclosure Log but Publication Scheme Present
 	reportMarkdownFile.WriteString(GenerateReportHeader("Missing Publication Scheme but Disclosure Log Present"))
 	for _, force := range listOfForces {
@@ -600,104 +699,4 @@ func GenerateProblemReports() {
 	reportMarkdownFile.Close()
 	FormatMarkdownFile(reportMarkdownFile.Name())
 	reportMarkdownFile.Close()
-
-	//	if !force.IsDefunct && len(force.PublicationSchemeURL) < 10 && len(force.DisclosureLogURL) < 10 {
-	//		addressee := force.FOIEmailAddress
-	//		messageBody := fmt.Sprintf(
-	//			"Subject: Publication Scheme and Disclosure Log URLs for %s\n\n"+
-	//				"Dear Data Protection Officer,\n\n"+
-	//				"I have noticed that on the WhatDoTheyKnow website %s "+
-	//				"that your organisation is missing a link to your FOI "+
-	//				"Publication Scheme and Disclosure Log. While I'm "+
-	//				"aware that some information is technically "+
-	//				"exempt from FOI Disclosure on the grounds that "+
-	//				"it is available on the internet, I wonder if "+
-	//				"you'd be kind enough to send me the links to "+
-	//				"both, please?\n\nWith thanks,\nMike Johnson\nmdj@mikejohnson.xyz\n",
-	//			force.Name, force.WDTKOrgPageURL)
-	//
-	//		findingTxt := fmt.Sprintf("1: %s is missing Pub Scheme URLs %s\n", force.Name, force.WDTKOrgPageURL)
-	//		findingMd := fmt.Sprintf("|%s|%s|%s|\n", force.Name, force.WDTKOrgPageURL, force.FOIEmailAddress)
-	//
-	//		fmt.Print(findingTxt)
-	//		reportOutputFile.WriteString(findingTxt)
-	//		reportMarkdownFile.WriteString(findingMd)
-	//
-	//		if confirm == "yes" {
-	//			fmt.Printf("Sending email to %s\n", addressee)
-	//			// sendEmail(addressee, messageBody)  // Uncomment when implementing email sending
-	//		} else {
-	//			fmt.Println("Email sending not confirmed. Written to log anyway.")
-	//		}
-	//		forceIndex++
-	//	}
-	//}
-	//reportMarkdownFile.WriteString("\n\n")
-	//
-	//// 2: Missing Disclosure Log URL but Publication Scheme present
-	//reportMarkdownFile.WriteString("## Missing Disclosure Log only\n\n")
-	//reportMarkdownFile.WriteString("|Name|Org Page|Email|\n")
-	//reportMarkdownFile.WriteString("|-|-|-|\n")
-	//forceIndex = 1
-	//for _, force := range dataset {
-	//	if !force.IsDefunct && len(force.PublicationSchemeURL) > 10 && len(force.DisclosureLogURL) < 10 {
-	//		addressee := force.FOIEmailAddress
-	//		messageBody := fmt.Sprintf(
-	//			"Subject: Disclosure Log URLs for %s\n\n"+
-	//				"Dear Data Protection Officer,\n\n"+
-	//				"I have noticed that on the WhatDoTheyKnow website "+
-	//				"%s that your organisation is missing a link to your "+
-	//				"FOI Disclosure Log. While I'm aware that some "+
-	//				"information is technically exempt from FOI "+
-	//				"Disclosure on the grounds that it is available on "+
-	//				"the internet, I wonder if you'd be kind enough to "+
-	//				"send me the link, please?\n\nWith thanks,\n"+
-	//				"Mike Johnson\nmdj@mikejohnson.xyz\n",
-	//			force.Name, force.WDTKOrgPageURL)
-	//
-	//		findingTxt := fmt.Sprintf("2: %s is missing Disclosure Log %s\n", force.Name, force.WDTKOrgPageURL)
-	//		findingMd := fmt.Sprintf("|%s|%s|%s|\n", force.Name, force.WDTKOrgPageURL, force.FOIEmailAddress)
-	//
-	//		fmt.Print(findingTxt)
-	//		reportOutputFile.WriteString(findingTxt)
-	//		reportMarkdownFile.WriteString(findingMd)
-	//
-	//		if confirm == "yes" {
-	//			fmt.Printf("Sending email to %s\n", addressee)
-	//			// sendEmail(addressee, messageBody)  // Uncomment when implementing email sending
-	//		} else {
-	//			fmt.Println("Email sending not confirmed. Written to log anyway.")
-	//		}
-	//		forceIndex++
-	//	}
-	//}
-	//reportMarkdownFile.WriteString("\n\n")
-	//
-	//// 3: Missing Pubscheme URL but Disclosure Log present
-	//reportMarkdownFile.WriteString("## Missing Pubscheme fields\n\n")
-	//reportMarkdownFile.WriteString("|Name|Org Page|Email|\n")
-	//reportMarkdownFile.WriteString("|-|-|-|\n")
-	//forceIndex = 1
-	//for _, force := range dataset {
-	//	if !force.IsDefunct && len(force.PublicationSchemeURL) < 10 && len(force.DisclosureLogURL) > 10 {
-	//		addressee := force.FOIEmailAddress
-	//		messageBody := fmt.Sprintf(
-	//			"Subject: Publication URL for %s\n\n"+
-	//				"Dear Data Protection Officer,\n"+
-	//				"I have noticed that on the WhatDoTheyKnow "+
-	//				"website %s that your organisation is missing "+
-	//				"a link to your FOI Publication Scheme. While "+
-	//				"I'm conscious that some information is technically "+
-	//				"exempt from FOI Disclosure on the grounds that "+
-	//				"it is available on the internet, I wonder if "+
-	//				"you'd be kind enough to send me the link, please?\n\n"+
-	//				"With thanks,\nMike Johnson\nmdj@mikejohnson.xyz\n",
-	//			force.Name, force.WDTKOrgPageURL)
-	//
-	//		findingTxt := fmt.Sprintf("3: %s is missing Pubscheme but has Disclosure Log %s\n", force.Name, force.WDTKOrgPageURL)
-	//		findingMd := fmt.Sprintf("|%s|%s|%s|\n", force.Name, force.WDTKOrgPageURL, force.FOIEmailAddress)
-	//
-	//		fmt.Print(findingTxt)
-	//	}
-	//}
 }

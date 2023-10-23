@@ -1,6 +1,12 @@
 {
   "head": {
-    "vars": ["item", "itemLabel", "website", "websiteLabel", "wdtkid"]
+    "vars": [
+      "item",
+      "itemLabel",
+      "website",
+      "websiteLabel",
+      "wdtkid"
+    ]
   },
   "results": {
     "bindings": [
