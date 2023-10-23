@@ -176,23 +176,21 @@ func DescribeAuthority(wdtkID string) {
 	var sb strings.Builder
 	sb.WriteString("https://www.whatdotheyknow.com/body/")
 	sb.WriteString(wdtkID)
+	var wdtkPage = sb.String()
 	sb.WriteString(".json")
+	var jsonURL = sb.String()
 
-	req, err := http.NewRequest("GET", sb.String(), nil)
+	req, err := http.NewRequest("GET", jsonURL, nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		fmt.Println("Error fetching WDTK data:", err)
 	}
 
-	fmt.Printf("client: got response!\n")
-	fmt.Printf("client: status code: %d\n", resp.StatusCode)
-
 	resBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		fmt.Printf("client: could not read response body: %s\n", err)
 	}
-	fmt.Printf("client: response body: %s\n", resBody)
 
 	var result JSONResponse
 	err = json.Unmarshal(resBody, &result)
@@ -201,14 +199,34 @@ func DescribeAuthority(wdtkID string) {
 		return
 	}
 
-	p := new(Authority)
+	emailsData, err := os.ReadFile("data/foi-emails.json")
+	if err != nil {
+		fmt.Println("Error reading FOI emails JSON:", err)
+		os.Exit(1)
+	}
+	println(string(emailsData))
 
+	var emails map[string]string
+	err = json.Unmarshal(emailsData, &emails)
+	if err != nil {
+		fmt.Println("Error decoding FOI emails JSON:", err)
+		os.Exit(1)
+	}
+	var p = NewAuthority(wdtkID, emails)
+	p.WDTKOrgPageURL = wdtkPage
 	p.DisclosureLogURL = result.DisclosureLog
 	p.HomePageURL = result.HomePage
 	p.Name = result.Name
 	p.PublicationSchemeURL = result.PublicationScheme
 
-	print("Force: ", p.Name)
+	println("Force:               ", p.Name)
+	println("WDTK Page:           ", p.WDTKOrgPageURL)
+	println("Home Page:           ", p.HomePageURL)
+	println("Publication Scheme:  ", p.PublicationSchemeURL)
+	println("Disclosure Log:      ", p.DisclosureLogURL)
+	println("Atom Feed:           ", p.WDTKAtomFeedURL)
+	println("JSON Feed:           ", p.WDTKJSONFeedURL)
+	println("Email:               ", p.FOIEmailAddress)
 
 }
 
