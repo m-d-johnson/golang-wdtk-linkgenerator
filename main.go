@@ -1,33 +1,35 @@
 /*
- * Copyright (c) Mike Johnson 2023.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
+ *  * Copyright (c) Mike Johnson 2023.
+ *  *
+ *  * Redistribution and use in source and binary forms, with or without
+ *  * modification, are permitted provided that the following conditions
+ *  * are met:
+ *  *
+ *  * 1. Redistributions of source code must retain the above copyright
+ *  *    notice, this list of conditions and the following disclaimer.
+ *  *
+ *  * 2. Redistributions in binary form must reproduce the above copyright
+ *  *    notice, this list of conditions and the following disclaimer in
+ *  *    the documentation and/or other materials provided with the
+ *  *    distribution.
+ *  *
+ *  * 3. Neither the name of the copyright holder nor the names of its
+ *  *    contributors may be used to endorse or promote products derived
+ *  *    from this software without specific prior written permission.
+ *  *
+ *  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ *  * “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ *  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ *  * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ *  * HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ *  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ *  * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ *  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ *  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ *  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution.
- *
- * 3. Neither the name of the copyright holder nor the names of its
- *    contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
- * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
- * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 package main
@@ -45,7 +47,9 @@ import (
 	"sort"
 	"strings"
 	"text/template"
+	"time"
 
+	"github.com/cavaliergopher/grab/v3"
 	"github.com/fatih/color"
 	formatter "github.com/mdigger/goldmark-formatter"
 	"go.uber.org/ratelimit"
@@ -91,6 +95,11 @@ var magenta = color.New(color.FgHiMagenta)
 func main() {
 
 	// Parse command line arguments
+	downloadFlag := flag.Bool(
+		"download",
+		false,
+		"Downloads the dataset from MySociety.")
+
 	reportFlag := flag.Bool(
 		"report",
 		false,
@@ -122,6 +131,11 @@ func main() {
 		"Tag to use to generate a user-defined report.")
 
 	flag.Parse()
+	// Generate a report of bodies that are missing certain metadata.
+	if *downloadFlag {
+		GetCSVDatasetFromMySociety()
+		os.Exit(0)
+	}
 
 	// Generate a report of bodies that are missing certain metadata.
 	if *reportFlag {
@@ -172,40 +186,31 @@ func MakeMarkdownLinkToWdtkBodyJson(urlName string, label string) string {
 	markup := strings.Join(markupElements, "")
 	return markup
 }
-
 func BuildWDTKBodyURL(wdtkID string) string {
-
 	var sb strings.Builder
 	sb.WriteString("https://www.whatdotheyknow.com/body/")
 	sb.WriteString(wdtkID)
 	return sb.String()
-
 }
 func BuildWDTKBodyJSONURL(wdtkID string) string {
-
 	var sb strings.Builder
 	sb.WriteString("https://www.whatdotheyknow.com/body/")
 	sb.WriteString(wdtkID)
 	sb.WriteString(".json")
 	return sb.String()
-
 }
 func BuildWDTKAtomFeedURL(wdtkID string) string {
-
 	var sb strings.Builder
 	sb.WriteString("https://www.whatdotheyknow.com/feed/body/")
 	sb.WriteString(wdtkID)
 	return sb.String()
-
 }
 func BuildWDTKJSONFeedURL(wdtkID string) string {
-
 	var sb strings.Builder
 	sb.WriteString("https://www.whatdotheyknow.com/feed/body/")
 	sb.WriteString(wdtkID)
 	sb.WriteString(".json")
 	return sb.String()
-
 }
 
 // DescribeAuthority shows information on a user-specified authority and creates a simple HTML page.
@@ -277,23 +282,39 @@ func DescribeAuthority(wdtkID string) {
 	err = tmpl.Execute(outputHTMLFile, p)
 }
 
+// GetCSVDatasetFromMySociety downloads a CSV dataset of all bodies that WhatDoTheyKnow tracks.
+// Invoke with -download
 func GetCSVDatasetFromMySociety() {
-	//
-	//// create client
-	//client := grab.NewClient()
-	//req, _ := grab.NewRequest(".", "https://www.whatdotheyknow.com/body/all-authorities.csv")
-	//
-	//// start download
-	//fmt.Printf("Downloading %v...\n", req.URL())
-	//resp := client.Do(req)
-	//fmt.Printf("  %v\n", resp.HTTPResponse.Status)
+	Cleanup(false)
+	// create client
+	client := grab.NewClient()
+	req, _ := grab.NewRequest(".", "https://www.whatdotheyknow.com/body/all-authorities.csv")
+
+	// start download
+	green.Printf("Downloading %v...\n", req.URL())
+	resp := client.Do(req)
+	green.Printf("  %v\n", resp.HTTPResponse.Status)
+
+	// start UI loop
+	t := time.NewTicker(500 * time.Millisecond)
+	defer t.Stop()
+
+	// check for errors
+	if err := resp.Err(); err != nil {
+		Fprintf(os.Stderr, "Download failed: %v\n", err)
+		os.Exit(1)
+	}
+
+	green.Printf("Download saved to ./%v \n", resp.Filename)
 
 }
 
-// RunCustomQuery creates a markdown table of bodies matching a user-specified tag.
+// RunCustomQuery creates a markdown table of bodies matching a user-specified tag. It uses the
+// downloaded CSV file in order to have access to all the bodies they know about (and it saves a
+// load of API calls.
 func RunCustomQuery(tag *string) {
 	print(Sprintf("Query MySociety dataset for a custom tag: %s", *tag))
-	var csvFile, _ = os.Open("all-authorities.csv")
+	var csvFile, _ = os.Open("output/all-authorities.csv")
 	reader := csv.NewReader(csvFile)
 
 	resultsFileNameElements := []string{"output/", "custom-query-", *tag, ".md"}
@@ -323,7 +344,7 @@ func RunCustomQuery(tag *string) {
 		red.Println("Failed to write table header to results file.", err)
 		return
 	}
-	/* all-authorities.csv file from MySociety
+	/* output/all-authorities.csv file from MySociety
 	   Columns and indices in this file:
 	       0:  id								string
 	       1:  name							    string	(Unique)
@@ -370,6 +391,8 @@ func RunCustomQuery(tag *string) {
 
 }
 
+// MakeTableFromGeneratedDataset creates a table of UK police forces from the generated JSON dataset
+// and the foi-emails.txt files. The table it creates is rendered in markdown and stored in output/.
 func MakeTableFromGeneratedDataset() {
 	magenta.Println("Generating table from the generated JSON dataset...")
 
@@ -431,19 +454,21 @@ func MakeTableFromGeneratedDataset() {
 	// FormatMarkdownFile("output/overview.md")
 }
 
+// Cleanup deletes the existing output/all-authorities.csv file (if retain==true). If retain==false,
+// then it does nothing and returns.
 func Cleanup(retain bool) {
-
-	if fileInfo, err := os.Stat("output/authorities.csv"); err == nil && fileInfo.Mode().IsRegular() && retain {
+	if fileInfo, err := os.Stat("output/all-authorities.csv"); err == nil && fileInfo.Mode().IsRegular() && retain {
 		green.Println("As requested, not deleting the authorities file.")
 	} else if err == nil {
 		println("Removing authorities.csv file.")
-		os.Remove("output/authorities.csv")
+		os.Remove("output/all-authorities.csv")
 	} else {
 		magenta.Println("The WDTK CSV file does not exist, so could not be deleted.")
 	}
 }
 
-// NewAuthority creates a new Authority instance
+// NewAuthority creates a new Authority instance. It uses data from the
+// foi-emails.json file and some API calls.
 func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 	var policeOrg = new(Authority)
 
@@ -505,6 +530,8 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 	return policeOrg
 }
 
+// RebuildDataset recreates the generated-dataset.json file, which is a subset of the bodies that
+// MySociety knows about -- it exists to have a source of information which includes FOI emails.
 func RebuildDataset() {
 	// Generates a JSON dataset from two pieces of information - the WDTK ID and
 	// the list of FOI email addresses. The rest of the information can be either
@@ -628,7 +655,7 @@ func GenerateHeader() string {
 
 func GenerateReportHeader(title string) string {
 	// 1: Missing Publication Scheme and Disclosure Log
-	hdr := Sprintf("## %s\n|Name|Org Page|Email|\n|-|-|-|\n", title)
+	hdr := Sprintf("## %s\n\n|Name|Org Page|Email|\n|-|-|-|\n", title)
 	return hdr
 }
 
@@ -646,7 +673,7 @@ func GenerateProblemReports() {
 	err = json.Unmarshal(datasetFile, &listOfForces)
 
 	// Prepare output files: Markdown page
-	reportMarkdownFile, err := os.Create("missing-data.md")
+	reportMarkdownFile, err := os.Create("output/missing-data.md")
 	if err != nil {
 		Println("Error creating report markdown file:", err)
 		os.Exit(1)
@@ -669,6 +696,7 @@ func GenerateProblemReports() {
 
 	// Query for Police and Crime Commissioners
 	reportMarkdownFile.WriteString(GenerateReportHeader("Police and Crime Commissioners"))
+	reportMarkdownFile.WriteString("")
 	for _, force := range listOfForces {
 		if strings.Contains(force.Name, "Commissioner") {
 			row := "| "

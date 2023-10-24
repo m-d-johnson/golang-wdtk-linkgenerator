@@ -1,2 +1,0 @@
-[?25l[2J[m[91m[HNo options provided. Exiting.
-]0;C:\Users\micha\GolandProjects\wdtk-linkgenerator\builds\wdtk.exe[?25h[m
