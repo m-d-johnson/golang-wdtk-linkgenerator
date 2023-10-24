@@ -397,7 +397,8 @@ func MakeTableFromGeneratedDataset() {
 	magenta.Println("Generating table from the generated JSON dataset...")
 
 	os.Create("output/overview.md")
-	markdownOutputFile, err := os.OpenFile("output/overview.md", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0660)
+	markdownOutputFile, err := os.OpenFile(
+		"output/overview.md", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0660)
 	if err != nil {
 		red.Println("Error opening output markdown file:", err)
 		os.Exit(1)
@@ -450,8 +451,13 @@ func MakeTableFromGeneratedDataset() {
 		markdownOutputFile.WriteString(rowOfMarkup)
 	}
 	green.Println("Done!")
-	markdownOutputFile.Close()
-	// FormatMarkdownFile("output/overview.md")
+
+	// Housekeeping
+	err = markdownOutputFile.Close()
+	if err != nil {
+		red.Println("Failed to close output file: ", err)
+		return
+	}
 }
 
 // Cleanup deletes the existing output/all-authorities.csv file (if retain==true). If retain==false,
@@ -587,28 +593,28 @@ func RebuildDataset() {
 	}
 }
 
-func FormatMarkdownFile(filePath string) {
-	tmpfilename := "tmp-" + filePath
+func FormatMarkdownFile(fp string) {
 
-	err := os.Rename(filePath, tmpfilename)
+	tmpfp := fp + "-tmp"
+
+	err := os.Rename(fp, tmpfp)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	inFile, err := os.ReadFile(tmpfilename)
+	inFile, err := os.ReadFile(tmpfp)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	outFile, _ := os.Create(filePath)
+	outFile, _ := os.Create(fp)
 	_ = formatter.Format(inFile, outFile)
 	err = outFile.Close()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	os.Remove(tmpfilename)
-
+	os.Remove(tmpfp)
 }
 
 func ReadCSVFileAndGetRows(filePath string) ([]map[string]string, error) {
@@ -654,9 +660,8 @@ func GenerateHeader() string {
 }
 
 func GenerateReportHeader(title string) string {
-	// 1: Missing Publication Scheme and Disclosure Log
-	hdr := Sprintf("## %s\n\n|Name|Org Page|Email|\n|-|-|-|\n", title)
-	return hdr
+	header := Sprintf("## %s\n\n|Name|Org Page|Email|\n|-|-|-|\n", title)
+	return header
 }
 
 // GenerateProblemReports generates problem reports based on the provided dataset
