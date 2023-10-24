@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="41506cf7-2785-4ae6-bc0d-73b97592253b" name="local" url="http://localhost">
-        <fileTransfer mountedRoot="C:\Users\micha\GolandProjects\wdtk-linkgenerator\deploy" accessType="MOUNT" port="0" />
+      <webServer id="13e0292d-a8e4-4282-bbe0-70526d7203a2" name="local" url="http://localhost">
+        <fileTransfer mountedRoot="D:\deployed" accessType="MOUNT" port="0" />
       </webServer>
     </option>
   </component>

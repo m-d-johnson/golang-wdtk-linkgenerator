@@ -1,7 +1,7 @@
 <component name="CopyrightManager">
-  <settings>
+  <settings default="Personal Projects - BSD 3-clause">
     <module2copyright>
-      <element module="Open Files" copyright="Personal Projects" />
+      <element module="Open Files" copyright="Personal Projects - BSD 3-clause" />
     </module2copyright>
   </settings>
 </component>

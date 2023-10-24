@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="All offline actions" type="CompoundRunConfigurationType">
+    <toRun name="custom_query q=metropolitan_district" type="GoApplicationRunConfiguration" />
+    <toRun name="describe q=the_met" type="GoApplicationRunConfiguration" />
+    <toRun name="report" type="GoApplicationRunConfiguration" />
+    <toRun name="table" type="GoApplicationRunConfiguration" />
+    <method v="2" />
+  </configuration>
+</component>
