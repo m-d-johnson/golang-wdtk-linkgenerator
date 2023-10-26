@@ -2,7 +2,7 @@
   <configuration default="false" name="query q=metropolitan_district" type="GoApplicationRunConfiguration" factoryName="Go Application">
     <module name="wdtk-linkgenerator" />
     <working_directory value="$PROJECT_DIR$" />
-    <parameters value="-query metropolitan_district" />
+    <parameters value="--query metropolitan_district" />
     <kind value="PACKAGE" />
     <package value="wdtk-linkgenerator" />
     <directory value="$PROJECT_DIR$" />

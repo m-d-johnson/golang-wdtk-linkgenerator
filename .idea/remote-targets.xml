@@ -40,6 +40,19 @@
           </config>
         </ContributedStateBase>
       </target>
+      <target name="WSL - Debian" type="wsl" uuid="d49eadc2-4a81-4dcf-bff7-24a127ea2d88">
+        <config>
+          <option name="distributionMsId" value="Debian" />
+          <option name="projectRootOnTarget" value="{exitCode=0, timeout=false, cancelled=false, stdout=/mnt/c/Users/micha/AppData/Local/Programs/GoLand/jbr/bin&#10;, stderr=}/wdtk-linkgenerator" />
+        </config>
+        <ContributedStateBase type="GoLanguageRuntime">
+          <config>
+            <option name="goPath" value="/home/mdj/go" />
+            <option name="goRoot" value="/usr/bin/go" />
+            <option name="goVersion" value="go1.15.15 linux/amd64" />
+          </config>
+        </ContributedStateBase>
+      </target>
     </targets>
   </component>
 </project>

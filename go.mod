@@ -5,9 +5,10 @@ go 1.21.3
 require (
 	github.com/cavaliergopher/grab/v3 v3.0.1
 	github.com/fatih/color v1.15.0
+	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/mdigger/goldmark-formatter v0.0.0-20220404131722-23e60f5056af
+	github.com/spf13/pflag v1.0.5
 	go.uber.org/ratelimit v0.3.0
-	golang.org/x/time v0.3.0
 )
 
 require (

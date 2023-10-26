@@ -37,7 +37,6 @@ package main
 import (
 	"encoding/csv"
 	"encoding/json"
-	"flag"
 	. "fmt"
 	"io"
 	"log"
@@ -52,6 +51,7 @@ import (
 	"github.com/cavaliergopher/grab/v3"
 	"github.com/fatih/color"
 	formatter "github.com/mdigger/goldmark-formatter"
+	flag "github.com/spf13/pflag"
 	"go.uber.org/ratelimit"
 )
 
@@ -91,14 +91,25 @@ type JSONResponse struct {
 var green = color.New(color.FgHiGreen)
 var red = color.New(color.FgHiRed)
 var magenta = color.New(color.FgHiMagenta)
+var yellow = color.New(color.FgHiYellow)
 
 func main() {
 
-	// Parse command line arguments
+	// Run test function ReadCSVFileAndConvertToJson (Builds JSON dataset from downloaded CSV)
+	testFlag := flag.Bool(
+		"test",
+		false,
+		"Runs ReadCSVFileAndConvertToJson.")
+
+	createDbFlag := flag.Bool(
+		"createdb",
+		false,
+		"Creates a SQLite Database.")
+
 	downloadFlag := flag.Bool(
 		"download",
 		false,
-		"Downloads the dataset from MySociety.")
+		"Downloads the (reduced) dataset from MySociety.")
 
 	reportFlag := flag.Bool(
 		"report",
@@ -108,12 +119,12 @@ func main() {
 	tableFlag := flag.Bool(
 		"table",
 		false,
-		"Generate a table from the existing dataset.")
+		"Generate a table from the existing dataset (police only).")
 
 	refreshFlag := flag.Bool(
 		"refresh",
 		false,
-		"Rebuilds a dataset from the emails file and API, then build table.")
+		"Rebuilds a (police only) dataset from the emails file and API, then build table.")
 
 	retainFlag := flag.Bool(
 		"retain",
@@ -131,6 +142,19 @@ func main() {
 		"Tag to use to generate a user-defined report.")
 
 	flag.Parse()
+
+	if *testFlag {
+		GetCSVDatasetFromMySociety()
+		ReadCSVFileAndConvertToJson("data/whatdotheyknow_authorities_dataset.csv")
+		os.Exit(0)
+	}
+
+	// Create and populate a SQLite database of the Authorities data.
+	if *createDbFlag {
+		CreateAndPopulateSQLiteDatabaseAll()
+		os.Exit(0)
+	}
+
 	// Generate a report of bodies that are missing certain metadata.
 	if *downloadFlag {
 		GetCSVDatasetFromMySociety()
@@ -223,12 +247,12 @@ func DescribeAuthority(wdtkID string) {
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		red.Println("Error fetching WDTK data:", err)
+		red.Println("Error fetching WDTK data from JSON API:", err)
 	}
 
 	resBody, err := io.ReadAll(resp.Body)
 	if err != nil {
-		red.Printf("client: could not read response body: %s\n", err)
+		red.Printf("Client: could not read response body: %s\n", err)
 	}
 
 	var result JSONResponse
@@ -240,14 +264,14 @@ func DescribeAuthority(wdtkID string) {
 
 	emailsData, err := os.ReadFile("data/foi-emails.json")
 	if err != nil {
-		red.Println("Error reading foi-emails.json file:", err)
+		red.Println("Error reading data/foi-emails.json file:", err)
 		os.Exit(1)
 	}
 
 	var emails map[string]string
 	err = json.Unmarshal(emailsData, &emails)
 	if err != nil {
-		red.Println("Error unmarshalling foi-emails.json:", err)
+		red.Println("Error unmarshalling data/foi-emails.json:", err)
 		os.Exit(1)
 	}
 
@@ -264,9 +288,9 @@ func DescribeAuthority(wdtkID string) {
 	println("JSON Feed:           ", p.WDTKJSONFeedURL)
 	println("JSON Data:           ", p.WDTKOrgJSONURL)
 	println("Email:               ", p.FOIEmailAddress)
-	println("WikiData Identifier :", p.WikiDataIdentifier)
-	println("LoC Authority ID    :", p.LoCAuthorityID)
-	println("ICO Registration Identifier: ", p.DataProtectionRegistrationIdentifier)
+	println("WikiData Identifier: ", p.WikiDataIdentifier)
+	println("LoC Authority ID:    ", p.LoCAuthorityID)
+	println("ICO Reg. Identifier: ", p.DataProtectionRegistrationIdentifier)
 
 	tmpl := template.Must(template.New("Simple HTML Overview").Parse(simpleBodyOverviewPage))
 
@@ -309,9 +333,9 @@ func GetCSVDatasetFromMySociety() {
 
 }
 
-// RunCustomQuery creates a markdown table of bodies matching a user-specified tag. It uses the
+// RunCustomQuery creates a Markdown table of bodies matching a user-specified tag. It uses the
 // downloaded CSV file in order to have access to all the bodies they know about (and it saves a
-// load of API calls.
+// load of API calls).
 func RunCustomQuery(tag *string) {
 	print(Sprintf("Query MySociety dataset for a custom tag: %s", *tag))
 	var csvFile, _ = os.Open("output/all-authorities.csv")
@@ -336,34 +360,29 @@ func RunCustomQuery(tag *string) {
 
 	_, err = resultsTable.Write([]byte("|Name | JSON |\n"))
 	if err != nil {
-		red.Println("Failed to write title to results file.", err)
+		red.Println("Failed to write table header to results file.", err)
 		return
 	}
 	_, err = resultsTable.Write([]byte("|-|-|\n"))
 	if err != nil {
-		red.Println("Failed to write table header to results file.", err)
+		red.Println("Failed to write table header separator to results file.", err)
 		return
 	}
 	/* output/all-authorities.csv file from MySociety
 	   Columns and indices in this file:
-	       0:  id								string
-	       1:  name							    string	(Unique)
-	       2:  short-name						string
-	       3:  url-name						    string
-	       4:  tags							    string (Pipe-delimited)
-	       5:  home-page						string (URL)
-	       6:  publication-scheme				string (URL)
-	       7:  disclosure-log					string (URL)
-	       8:  notes							string
-	       9:  created-at						string (Date) e.g. 2013-09-24 12:00:27 +0100
-	       10: updated-at						string (Date) e.g. 2013-09-24 12:00:27 +0100
+	       0:  name							    string	(Unique)
+	       1:  short-name						string
+	       2:  url-name						    string
+	       3:  tags							    string (Pipe-delimited)
+	       4:  home-page						string (URL)
+	       5:  publication-scheme				string (URL)
+	       6:  disclosure-log					string (URL)
+	       7:  notes							string
+	       8:  created-at						string (Date) e.g. 2013-09-24 12:00:27 +0100
+	       9: updated-at						string (Date) e.g. 2013-09-24 12:00:27 +0100
 	                                                               %Y-%m-%d %H:%M:%S %z
 	                                                               RFC3339
-	       11: version							int
-	       12: defunct							bool
-	       13: categories						string (Pipe-delimited)
-	       14: top-level-categories			    string
-	       15: single-top-level-category		string
+	       10: version							int
 	*/
 
 	// Can use same StringBuilder for all rows to avoid having to re-instantiate it.
@@ -374,7 +393,7 @@ func RunCustomQuery(tag *string) {
 		if slices.Contains(tagsList, *tag) && !slices.Contains(tagsList, "defunct") {
 			var name = row[0]
 			var urlName = row[2]
-
+			// todo: Replace with string builder
 			markdownRow.WriteString("| ") // Markdown row start delimiter
 			markdownRow.WriteString(MakeMarkdownLinkToWdtkBodyPage(urlName, name))
 			markdownRow.WriteString(" | ") // Markdown row column separator
@@ -392,7 +411,7 @@ func RunCustomQuery(tag *string) {
 }
 
 // MakeTableFromGeneratedDataset creates a table of UK police forces from the generated JSON dataset
-// and the foi-emails.txt files. The table it creates is rendered in markdown and stored in output/.
+// and the foi-emails.txt files. The table it creates is rendered in Markdown and stored in output/.
 func MakeTableFromGeneratedDataset() {
 	magenta.Println("Generating table from the generated JSON dataset...")
 
@@ -418,7 +437,12 @@ func MakeTableFromGeneratedDataset() {
 		os.Exit(1)
 	}
 
-	markdownOutputFile.WriteString(GenerateHeader())
+	_, err = markdownOutputFile.WriteString(GenerateHeader())
+	if err != nil {
+		red.Println("Couldn't write header to output file:", err)
+		os.Exit(1)
+	}
+
 	results := make([]string, 0)
 	for _, force := range dataset {
 		if force["Is_Defunct"].(bool) {
@@ -464,34 +488,34 @@ func MakeTableFromGeneratedDataset() {
 // then it does nothing and returns.
 func Cleanup(retain bool) {
 	if fileInfo, err := os.Stat("output/all-authorities.csv"); err == nil && fileInfo.Mode().IsRegular() && retain {
-		green.Println("As requested, not deleting the authorities file.")
+		yellow.Println("As requested, not deleting the output/all-authorities.csv file.")
 	} else if err == nil {
-		println("Removing authorities.csv file.")
+		println("Removing output/all-authorities.csv file.")
 		os.Remove("output/all-authorities.csv")
 	} else {
-		magenta.Println("The WDTK CSV file does not exist, so could not be deleted.")
+		magenta.Println("output/all-authorities.csv does not exist, so could not be deleted.")
 	}
 }
 
-// NewAuthority creates a new Authority instance. It uses data from the
-// foi-emails.json file and some API calls.
+// NewAuthority creates a new Authority instance. It uses data from the foi-emails.json file
+// and some API calls.
 func NewAuthority(wdtkID string, emails map[string]string) *Authority {
-	var policeOrg = new(Authority)
+	var org = new(Authority)
 
 	// Defaults
-	policeOrg.IsDefunct = false
+	org.IsDefunct = false
 
 	// Attributes derived from the WDTK Url Name:
-	policeOrg.WDTKID = wdtkID
-	policeOrg.WDTKOrgJSONURL = BuildWDTKBodyJSONURL(wdtkID)
-	policeOrg.WDTKAtomFeedURL = BuildWDTKAtomFeedURL(wdtkID)
-	policeOrg.WDTKOrgPageURL = BuildWDTKBodyURL(wdtkID)
-	policeOrg.WDTKJSONFeedURL = BuildWDTKJSONFeedURL(wdtkID)
+	org.WDTKID = wdtkID
+	org.WDTKOrgJSONURL = BuildWDTKBodyJSONURL(wdtkID)
+	org.WDTKAtomFeedURL = BuildWDTKAtomFeedURL(wdtkID)
+	org.WDTKOrgPageURL = BuildWDTKBodyURL(wdtkID)
+	org.WDTKJSONFeedURL = BuildWDTKJSONFeedURL(wdtkID)
 
-	policeOrg.FOIEmailAddress = emails[wdtkID]
+	org.FOIEmailAddress = emails[wdtkID]
 
 	// Attributes obtained from querying the site API:
-	req, err := http.NewRequest("GET", policeOrg.WDTKOrgJSONURL, nil)
+	req, err := http.NewRequest("GET", org.WDTKOrgJSONURL, nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.38 Chrome/118.0.0.0 Safari/537.36")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -500,7 +524,7 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 	}
 
 	bodyBytes, err := io.ReadAll(resp.Body)
-	println(policeOrg.WDTKOrgJSONURL)
+	println(org.WDTKOrgJSONURL)
 	responsestr := string(bodyBytes)
 	var wdtkData map[string]interface{}
 
@@ -509,49 +533,133 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 		red.Println("Error decoding WDTK data:", err)
 		return nil
 	}
-	policeOrg.FOIEmailAddress = emails[wdtkID]
-	policeOrg.DisclosureLogURL = wdtkData["disclosure_log"].(string)
-	policeOrg.HomePageURL = wdtkData["home_page"].(string)
-	policeOrg.Name = wdtkData["name"].(string)
-	policeOrg.PublicationSchemeURL = wdtkData["publication_scheme"].(string)
+	org.FOIEmailAddress = emails[wdtkID]
+	org.DisclosureLogURL = wdtkData["disclosure_log"].(string)
+	org.HomePageURL = wdtkData["home_page"].(string)
+	org.Name = wdtkData["name"].(string)
+	org.PublicationSchemeURL = wdtkData["publication_scheme"].(string)
 
 	// Process tags
 	for _, tag := range wdtkData["tags"].([]interface{}) {
 		tagData := tag.([]interface{})
 		switch tagData[0] {
 		case "dpr":
-			policeOrg.DataProtectionRegistrationIdentifier = tagData[1].(string)
+			org.DataProtectionRegistrationIdentifier = tagData[1].(string)
 		case "wikidata":
-			policeOrg.WikiDataIdentifier = tagData[1].(string)
+			org.WikiDataIdentifier = tagData[1].(string)
 		case "lcnaf":
-			policeOrg.LoCAuthorityID = tagData[1].(string)
+			org.LoCAuthorityID = tagData[1].(string)
 		case "defunct":
-			policeOrg.IsDefunct = true
+			org.IsDefunct = true
 		}
 	}
 
-	if policeOrg.IsDefunct {
+	if org.IsDefunct {
 		red.Println("*** This organisation is defunct ***")
 	}
-	return policeOrg
+	return org
 }
+func NewAuthorityFromCSV(record []string, emails map[string]string) *Authority {
+	var org = new(Authority)
 
-// RebuildDataset recreates the generated-dataset.json file, which is a subset of the bodies that
-// MySociety knows about -- it exists to have a source of information which includes FOI emails.
-func RebuildDataset() {
-	// Generates a JSON dataset from two pieces of information - the WDTK ID and
-	// the list of FOI email addresses. The rest of the information can be either
-	// derived from the WDTK ID or scraped using the WDTK ID when the object is
-	// created.
+	/* Converted from Excel Spreadsheet
+	   Columns and indices in this file:
+	       0:  id								string
+	       1:  name							    string	(Unique)
+	       2:  short-name						string
+	       3:  url-name						    string
+	       4:  tags							    string (Pipe-delimited)
+	       5:  home-page						string (URL)
+	       6:  publication-scheme				string (URL)
+	       7:  disclosure-log					string (URL)
+	       8:  notes							string
+	       9:  created-at						string (Date) e.g. 2013-09-24 12:00:27 +0100
+	       10: updated-at						string (Date) e.g. 2013-09-24 12:00:27 +0100
+	                                                               %Y-%m-%d %H:%M:%S %z
+	                                                               RFC3339
+	       11: version							int
+	       12: defunct							bool
+	       13: categories						string (Pipe-delimited)
+	       14: top-level-categories			    string
+	       15: single-top-level-category		string
+	*/
+
+	// Defaults
+	if record[12] == "TRUE" {
+		org.IsDefunct = true
+	} else {
+		org.IsDefunct = false
+	}
+
+	org.WDTKID = record[3]
+
+	// Attributes derived from the WDTK Url Name:
+	org.DisclosureLogURL = record[7]
+	org.FOIEmailAddress = emails[org.WDTKID]
+	org.HomePageURL = record[5]
+	org.Name = record[1]
+	org.PublicationSchemeURL = record[6]
+	org.WDTKAtomFeedURL = BuildWDTKAtomFeedURL(org.WDTKID)
+	org.WDTKJSONFeedURL = BuildWDTKJSONFeedURL(org.WDTKID)
+	org.WDTKOrgJSONURL = BuildWDTKBodyJSONURL(org.WDTKID)
+	org.WDTKOrgPageURL = BuildWDTKBodyURL(org.WDTKID)
+
+	// Process tags
+	tagsList := strings.Split(record[4], "|")
+
+	for _, tag := range tagsList {
+		tagData := tag
+
+		if strings.Contains(tagData, ":") {
+			tagPair := strings.Split(tagData, ":")
+
+			switch tagPair[0] {
+			case "dpr":
+				org.DataProtectionRegistrationIdentifier = tagPair[1]
+			case "wikidata":
+				org.WikiDataIdentifier = tagPair[1]
+			case "lcnaf":
+				org.LoCAuthorityID = tagPair[1]
+			case "defunct":
+				org.IsDefunct = true
+			}
+		}
+	}
+	return org
+}
+func GetEmailsFromJson() map[string]string {
 
 	// Read emails from JSON file
-	// emailsData, err := ReadCSVFileAndGetRows("data/foi-emails.json")
 	emailsData, err := os.ReadFile("data/foi-emails.json")
 	if err != nil {
 		Println("Error reading FOI emails JSON:", err)
 		os.Exit(1)
 	}
-	println(string(emailsData))
+
+	var emails map[string]string
+	err = json.Unmarshal(emailsData, &emails)
+	if err != nil {
+		red.Println("Error decoding FOI emails JSON:", err)
+		os.Exit(1)
+	}
+	return emails
+}
+
+// RebuildDataset recreates the generated-dataset.json file, which is a subset of the bodies that
+// MySociety knows about -- it exists to have a source of information which includes FOI emails.
+func RebuildDataset() {
+	// Generates a JSON dataset from two pieces of information - the WDTK url_name and the list
+	// of FOI email addresses. The rest of the information can be either be derived from the
+	// WDTK ID (url_name) or scraped using the WDTK ID when the object is created. This is done
+	// by the Authority object constructor. This function only creates records for authorities
+	// listed in the foi-emails.json file.
+
+	// Read emails from JSON file
+	emailsData, err := os.ReadFile("data/foi-emails.json")
+	if err != nil {
+		Println("Error reading FOI emails JSON:", err)
+		os.Exit(1)
+	}
 
 	var emails map[string]string
 	err = json.Unmarshal(emailsData, &emails)
@@ -562,12 +670,16 @@ func RebuildDataset() {
 
 	var listOfForces []Authority
 	// Important to rate-limit for the sake of MySociety's service.
-	qps := 5
+	var qps = 4
 	Println(Sprintf("Rate-limiting to %d queries/sec", qps))
-	rl := ratelimit.New(qps) // per second
-	// Iterate through emails
+	var rl = ratelimit.New(qps) // per second
+
+	// Iterate through emails. This function only creates records for authorities listed in the
+	// foi-emails.json file.
 	for entry := range emails {
 		_ = rl.Take()
+		// todo: The Authority constructors could probably better read in the emails data rather
+		//       having to open and parse it to pass it in every time.
 		var force = NewAuthority(entry, emails)
 		listOfForces = append(listOfForces, *force)
 	}
@@ -590,37 +702,43 @@ func RebuildDataset() {
 	if err != nil {
 		red.Println("Error writing to output JSON file:", err)
 		os.Exit(1)
+	} else {
+		green.Println("Dataset generated and saved to", outFile.Name())
 	}
+
 }
 
-func FormatMarkdownFile(fp string) {
+func FormatMarkdownFile(filePath string) {
 
-	tmpfp := fp + "-tmp"
+	tmpFilePath := filePath + "-tmp"
 
-	err := os.Rename(fp, tmpfp)
+	err := os.Rename(filePath, tmpFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	inFile, err := os.ReadFile(tmpfp)
+	inFile, err := os.ReadFile(tmpFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	outFile, _ := os.Create(fp)
+	outFile, _ := os.Create(filePath)
 	_ = formatter.Format(inFile, outFile)
 	err = outFile.Close()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	os.Remove(tmpfp)
+	os.Remove(tmpFilePath)
 }
 
-func ReadCSVFileAndGetRows(filePath string) ([]map[string]string, error) {
+// ReadCSVFileAndConvertToJson is used to convert CSV data exported from the spreadsheet MySociety
+// publishes. It provides more information than the CSV file they make available to download
+// programmatically.
+func ReadCSVFileAndConvertToJson(filePath string) {
 	file, err := os.Open(filePath)
 	if err != nil {
-		return nil, err
+		return
 	}
 	defer file.Close()
 
@@ -629,25 +747,41 @@ func ReadCSVFileAndGetRows(filePath string) ([]map[string]string, error) {
 
 	records, err := csvReader.ReadAll()
 	if err != nil {
-		return nil, err
+		os.Exit(1)
 	}
-
-	headers := records[0]
-	rows := make([]map[string]string, 0)
+	var orgs []Authority
+	emails := GetEmailsFromJson()
 
 	for _, record := range records[1:] {
-		row := make(map[string]string)
-		for i, value := range record {
-			if i < len(headers) {
-				row[headers[i]] = value
-			}
-		}
-		rows = append(rows, row)
+		org := NewAuthorityFromCSV(record, emails)
+		orgs = append(orgs, *org)
+	}
+	// Write dataset to JSON file
+	outFile, err := os.Create("data/generated-dataset-offline.json")
+	if err != nil {
+		red.Println("Error creating output JSON file:", err)
+		os.Exit(1)
+	}
+	defer outFile.Close()
+
+	jsonData, err := json.MarshalIndent(orgs, "", "    ")
+	if err != nil {
+		red.Println("Error encoding JSON data:", err)
+		os.Exit(1)
 	}
 
-	return rows, nil
+	_, err = outFile.Write(jsonData)
+	if err != nil {
+		red.Println("Error writing to output JSON file:", err)
+		os.Exit(1)
+	} else {
+		green.Println("Dataset generated and saved to", outFile.Name())
+	}
+
 }
 
+// GenerateHeader is used by the code that makes the table of police forces but could be used for
+// producing more general overviews for other sets of authorities.
 func GenerateHeader() string {
 	body := "# Generated List of Police Forces (WhatDoTheyKnow)\n\n\n"
 	body += "**Generated from data provided by WhatDoTheyKnow. please contact\n"
@@ -659,14 +793,16 @@ func GenerateHeader() string {
 	return body
 }
 
+// GenerateReportHeader produces a very brief header of only a name, link to the page, and email.
 func GenerateReportHeader(title string) string {
 	header := Sprintf("## %s\n\n|Name|Org Page|Email|\n|-|-|-|\n", title)
 	return header
 }
 
-// GenerateProblemReports generates problem reports based on the provided dataset
+// GenerateProblemReports generates reports based on data/generated-dataset.json - it's used for
+// finding authorities that are missing disclosure log and publication scheme links.
 func GenerateProblemReports() {
-	// Opening the Dataset of Police Forces.
+	// Open the dataset of police forces.
 	datasetFile, err := os.ReadFile("data/generated-dataset.json")
 	if err != nil {
 		Println("Error reading FOI emails JSON:", err)
@@ -691,7 +827,7 @@ func GenerateProblemReports() {
 		Println("Error reading FOI emails JSON:", err)
 		os.Exit(1)
 	}
-	// and unmarshal Forces/Emails into a slice.
+	// and unmarshal authority/email data into a slice of maps.
 	var emails map[string]string
 	err = json.Unmarshal(emailsData, &emails)
 	if err != nil {
@@ -703,6 +839,7 @@ func GenerateProblemReports() {
 	reportMarkdownFile.WriteString(GenerateReportHeader("Police and Crime Commissioners"))
 	reportMarkdownFile.WriteString("")
 	for _, force := range listOfForces {
+		// todo: Replace with string builder
 		if strings.Contains(force.Name, "Commissioner") {
 			row := "| "
 			row += force.Name
@@ -719,6 +856,7 @@ func GenerateProblemReports() {
 	reportMarkdownFile.WriteString("\n")
 	reportMarkdownFile.WriteString(GenerateReportHeader("Police and Crime Panels"))
 	for _, force := range listOfForces {
+		// todo: Replace with string builder
 		if strings.Contains(force.Name, "Panel") {
 			row := "| "
 			row += force.Name
@@ -734,6 +872,7 @@ func GenerateProblemReports() {
 	// Query for Missing Publication Scheme and Disclosure Logs
 	reportMarkdownFile.WriteString(GenerateReportHeader("Disclosure Log and Publication Scheme Missing"))
 	for _, force := range listOfForces {
+		// todo: Replace with string builder
 		if force.IsDefunct == false && force.DisclosureLogURL == "" && force.PublicationSchemeURL == "" {
 			row := "| "
 			row += force.Name
@@ -749,6 +888,7 @@ func GenerateProblemReports() {
 	// Query for Missing Publication Scheme but Disclosure Log Present
 	reportMarkdownFile.WriteString(GenerateReportHeader("Missing Publication Scheme but Disclosure Log Present"))
 	for _, force := range listOfForces {
+		// todo: Replace with string builder
 		if force.IsDefunct == false && strings.Contains(force.DisclosureLogURL, "http") && force.PublicationSchemeURL == "" {
 			row := "| "
 			row += force.Name
@@ -764,6 +904,7 @@ func GenerateProblemReports() {
 	// Query for Missing Disclosure Log but Publication Scheme Present
 	reportMarkdownFile.WriteString(GenerateReportHeader("Missing Publication Scheme but Disclosure Log Present"))
 	for _, force := range listOfForces {
+		// todo: Replace with string builder
 		if force.IsDefunct == false && strings.Contains(force.PublicationSchemeURL, "http") && force.DisclosureLogURL == "" {
 			row := "| "
 			row += force.Name

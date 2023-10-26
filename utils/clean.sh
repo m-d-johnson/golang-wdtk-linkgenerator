@@ -36,3 +36,4 @@ rm -fr output/*.md
 rm -fr output/*.txt
 rm -fr output/*.html
 rm -fr output/*.htm
+rm -f all-authorities.csv
