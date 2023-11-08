@@ -26,8 +26,8 @@ This tool was written for a specific project and will likely not be maintained. 
   required to regenerate the `generated-dataset.json` file.
 - data/police.json: Data from WikiData on UK Police Forces in JSON format.
 - data/wdtk-police.csv: Mapping of full names of police forces to the `URL Name` (Unmaintained).
-- data/wikidata-police-forces.json: Simple JSON mapping WikiData IDs to WDTK `URL Name`s (unmaintained).
-- output/wikidata-localpolice.csv: From WikiData - Mapping homepages to WDTK `URL Name`s.
+- data/wikidata-police-forces.json: Simple JSON mapping WikiData IDs to WDTK `URL Name`s (Unmaintained).
+- output/wikidata-localpolice.csv: From WikiData - Mapping homepages to WDTK `URL Name`s (Unmaintained).
 - data/whatdotheyknow_authorities_dataset.csv - created by exporting from the Excel sheet MySociety makes available.
 
 ## Information derived from the WDTK 'URL Name'
