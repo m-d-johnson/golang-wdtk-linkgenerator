@@ -685,6 +685,7 @@ func RebuildDataset() {
 		var force = NewAuthority(entry, emails)
 		listOfForces = append(listOfForces, *force)
 	}
+	sort.Slice(listOfForces, func(i, j int) bool { return listOfForces[i].Name < listOfForces[j].Name })
 
 	// Write dataset to JSON file
 	outFile, err := os.Create("data/generated-dataset.json")
