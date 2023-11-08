@@ -452,18 +452,20 @@ func MakeTableFromGeneratedDataset() {
 			force["Name"], force["Home_Page_URL"], force["WDTK_Org_Page_URL"],
 			force["WDTK_Org_JSON_URL"], force["WDTK_Atom_Feed_URL"], force["WDTK_JSON_Feed_URL"])
 
-		if strings.Contains("http", force["Publication_Scheme_URL"].(string)) {
-			markup += Sprintf("| [Link](%v)|", force["Publication_Scheme_URL"])
+		if len(force["Publication_Scheme_URL"].(string)) > 0 {
+			print(force["Publication_Scheme_URL"].(string))
+			markup += Sprintf(" [PS Link](%v)|", force["Publication_Scheme_URL"])
 		} else {
-			markup += "| Missing |"
+			markup += " Missing |"
 		}
 
-		if strings.Contains("http", force["Disclosure_Log_URL"].(string)) {
-			markup += Sprintf(" [Link](%v)|", force["Disclosure_Log_URL"])
+		if len(force["Disclosure_Log_URL"].(string)) > 0 {
+			markup += Sprintf(" [DL Link](%v)|", force["Disclosure_Log_URL"])
 		} else {
-			markup += "| Missing |"
+			markup += " Missing |"
 		}
-		markup += Sprintf(" [Email](mailto:%v)|\n", force["FOI_Email_Address"])
+		markup += Sprintf(" [Email](mailto:%v)|", force["FOI_Email_Address"])
+		markup += "\n"
 		results = append(results, markup)
 	}
 

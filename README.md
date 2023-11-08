@@ -12,7 +12,7 @@ This tool was written for a specific project and will likely not be maintained. 
 
 ## Usage
 
-- go build .
+- `go build .`
 
 ## Output Files
 
