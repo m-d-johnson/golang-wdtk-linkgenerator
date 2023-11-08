@@ -853,11 +853,11 @@ func GenerateProblemReports() {
 		if strings.Contains(force.Name, "Commissioner") {
 			row := "| "
 			row += force.Name
-			row += " | "
+			row += " | [WDTK Link]("
 			row += force.WDTKOrgPageURL
-			row += " | "
+			row += ") | [Email]("
 			row += force.FOIEmailAddress
-			row += " |"
+			row += ") |"
 			_, err = reportMarkdownFile.WriteString(row + "\n")
 		}
 	}
@@ -870,11 +870,11 @@ func GenerateProblemReports() {
 		if strings.Contains(force.Name, "Panel") {
 			row := "| "
 			row += force.Name
-			row += " | "
+			row += " | [WDTK Link]("
 			row += force.WDTKOrgPageURL
-			row += " | "
+			row += ") | [Email]("
 			row += force.FOIEmailAddress
-			row += " |\n"
+			row += ") |\n"
 			_, err = reportMarkdownFile.WriteString(row)
 		}
 	}
@@ -886,11 +886,11 @@ func GenerateProblemReports() {
 		if force.IsDefunct == false && force.DisclosureLogURL == "" && force.PublicationSchemeURL == "" {
 			row := "| "
 			row += force.Name
-			row += " | "
+			row += " | [WDTK Link]("
 			row += force.WDTKOrgPageURL
-			row += " | "
+			row += ") | [Email]("
 			row += force.FOIEmailAddress
-			row += " |"
+			row += ") |"
 			_, err = reportMarkdownFile.WriteString(row + "\n")
 		}
 	}
@@ -902,11 +902,11 @@ func GenerateProblemReports() {
 		if force.IsDefunct == false && strings.Contains(force.DisclosureLogURL, "http") && force.PublicationSchemeURL == "" {
 			row := "| "
 			row += force.Name
-			row += " | "
+			row += " | [WDTK Link]("
 			row += force.WDTKOrgPageURL
-			row += " | "
+			row += ") | [Email]("
 			row += force.FOIEmailAddress
-			row += " |"
+			row += ") |"
 			_, err = reportMarkdownFile.WriteString(row + "\n")
 		}
 	}
@@ -918,11 +918,11 @@ func GenerateProblemReports() {
 		if force.IsDefunct == false && strings.Contains(force.PublicationSchemeURL, "http") && force.DisclosureLogURL == "" {
 			row := "| "
 			row += force.Name
-			row += " | "
+			row += " | [WDTK Link]("
 			row += force.WDTKOrgPageURL
-			row += " | "
+			row += ") | [Email]("
 			row += force.FOIEmailAddress
-			row += " |"
+			row += ") |"
 			_, err = reportMarkdownFile.WriteString(row + "\n")
 		}
 	}
