@@ -4,6 +4,7 @@ go 1.21.3
 
 require (
 	github.com/cavaliergopher/grab/v3 v3.0.1
+	github.com/davecgh/go-spew v1.1.1
 	github.com/fatih/color v1.16.0
 	github.com/mattn/go-sqlite3 v1.14.18
 	github.com/mdigger/goldmark-formatter v0.0.0-20220404131722-23e60f5056af

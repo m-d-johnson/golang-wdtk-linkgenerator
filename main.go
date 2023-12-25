@@ -55,6 +55,16 @@ import (
 	"go.uber.org/ratelimit"
 )
 
+// Record is a an entry in the manually curated file which provides data that WDTK does not.
+type Record struct {
+	WDTKID           string `json:"wdtk_id"`
+	TelephoneGeneral string `json:"telephone_general"`
+	TelephoneFOI     string `json:"telephone_foi"`
+	EmailGeneral     string `json:"email_general"`
+	EmailFOI         string `json:"email_foi"`
+	PostalAddress    string `json:"postal_address"`
+}
+
 // Authority is a public body on the WDTK website.
 type Authority struct {
 	IsDefunct                            bool   `json:"Is_Defunct"`
@@ -71,6 +81,10 @@ type Authority struct {
 	WikiDataIdentifier                   string `json:"WikiData_Identifier"`
 	LoCAuthorityID                       string `json:"LoC_Authority_ID"`
 	FOIEmailAddress                      string `json:"FOI_Email_Address"`
+	TelephoneGeneral                     string `json:"TelephoneGeneral"`
+	TelephoneFOI                         string `json:"TelephoneFOI"`
+	EmailGeneral                         string `json:"EmailGeneral"`
+	PostalAddress                        string `json:"PostalAddress"`
 }
 
 // JSONResponse is a JSON object from the authority page on the WDTK website.
@@ -555,6 +569,37 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 		}
 	}
 
+	r := GetExtraDetailsFromJson()
+	for _, i := range r {
+		if i.WDTKID == org.WDTKID {
+			if i.EmailGeneral != "" {
+				org.EmailGeneral = i.EmailGeneral
+			} else {
+				yellow.Println("Additional data file: General Email address not present.")
+			}
+			if i.EmailFOI != "" {
+				org.FOIEmailAddress = i.EmailFOI
+			} else {
+				yellow.Println("Additional data file: FOI Email address not present.")
+			}
+			if i.TelephoneGeneral != "" {
+				org.TelephoneGeneral = i.TelephoneGeneral
+			} else {
+				yellow.Println("Additional data file: General Telephone number not present.")
+			}
+			if i.TelephoneFOI != "" {
+				org.TelephoneFOI = i.TelephoneFOI
+			} else {
+				yellow.Println("Additional data file: FOI Telephone number not present.")
+			}
+			if i.PostalAddress != "" {
+				org.PostalAddress = i.PostalAddress
+			} else {
+				yellow.Println("Additional data file: Postal Address not present.")
+			}
+		}
+	}
+
 	if org.IsDefunct {
 		red.Println("*** This organisation is defunct ***")
 	}
@@ -650,6 +695,26 @@ func GetEmailsFromJson() map[string]string {
 		os.Exit(1)
 	}
 	return emails
+}
+
+// GetExtraDetailsFromJson opens the manually curated file and returns unmarshalled JSON,
+// providing information not provided by WDTK.
+func GetExtraDetailsFromJson() []Record {
+
+	// Read emails from JSON file
+	extraData, err := os.ReadFile("data/manual.json")
+	if err != nil {
+		Println("Error reading manual.json JSON:", err)
+		os.Exit(1)
+	}
+
+	var records []Record
+	err = json.Unmarshal(extraData, &records)
+	if err != nil {
+		red.Println("Error decoding FOI emails JSON:", err)
+		os.Exit(1)
+	}
+	return records
 }
 
 // RebuildDataset recreates the generated-dataset.json file, which is a subset of the bodies that
