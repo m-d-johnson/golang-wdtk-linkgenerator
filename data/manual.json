@@ -1,0 +1,1152 @@
+[
+  {
+    "wdtk_id": "apcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "enquiries@apccs.police.uk",
+    "email_foi": "enquiries@apccs.police.uk",
+    "postal_address": "The Association of Police and Crime Commissioners, Lower Ground, 5-8 The Sanctuary, Westminster, London SW1P 3JS"
+  },
+  {
+    "wdtk_id": "avon_and_somerset_police",
+    "telephone_general": "0117 998 9112 or 01275 818181",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOIREQUESTS@avonandsomerset.police.uk",
+    "postal_address": "Avon and Somerset Police, Police and Fire Headquarters, PO Box 37, Valley Road, Portishead, Bristol BS20 8QJ"
+  },
+  {
+    "wdtk_id": "avon_and_somerset_pcc",
+    "telephone_general": "01278 646188",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pcc@avonandsomerset.pnn.police.uk",
+    "postal_address": "Avon and Somerset Police and Crime Commissioner, Avon and Somerset Police Headquarters, Valley Road, Portishead ,Bristol BS20 8JJ"
+  },
+  {
+    "wdtk_id": "avon_and_somerset_police_and_crime_panel",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pcpanel@bristol.gov.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "bedfordshire_police",
+    "telephone_general": "0800 555 111 or 01234 841212",
+    "telephone_foi": "",
+    "email_general": "customersupport@beds.police.uk",
+    "email_foi": "foi@bedfordshire.pnn.police.uk",
+    "postal_address": "Police Headquarters, Woburn Rd, Kempston, Bedford MK43 9AX"
+  },
+  {
+    "wdtk_id": "bedfordshire_pcc",
+    "telephone_general": "01234 842064",
+    "telephone_foi": "",
+    "email_general": "PCC@beds.police.uk",
+    "email_foi": "pcc@bedfordshire.pnn.police.uk",
+    "postal_address": "Bedfordshire Police HQ\nBridgebury House\nWoburn Road\nKempston\nBedfordshire\nMK43 9AX"
+  },
+  {
+    "wdtk_id": "bedfordshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "bedspcp@bedford.gov.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "bhp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info@belfast-harbour.co.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "belfast_international_airport_constabulary",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info.desk@bfs.aero",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "btp",
+    "telephone_general": "0800 405040",
+    "telephone_foi": "02920 525338",
+    "email_general": "",
+    "email_foi": "foi@btp.pnn.police.uk",
+    "postal_address": "25 Camden Rd, London NW1 9LN"
+  },
+  {
+    "wdtk_id": "british_transport_police_authority",
+    "telephone_general": "020 7383 0259",
+    "telephone_foi": "",
+    "email_general": "btpa-enquiries@btp.police.uk",
+    "email_foi": "btpa-enquiries@btp.police.uk",
+    "postal_address": "British Transport Police Authority, British Transport Police FHQ, 25 Camden Road, London NW1 9LN"
+  },
+  {
+    "wdtk_id": "cambridgeshire_police",
+    "telephone_general": "01480 456111",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@cambs.pnn.police.uk",
+    "postal_address": "Hinchingbrooke Business Park, Brampton Rd, Huntingdon PE29 6NP"
+  },
+  {
+    "wdtk_id": "cambridgeshire_pcc",
+    "telephone_general": "0300 333 3456",
+    "telephone_foi": "",
+    "email_general": "cambs-pcc@cambs.police.uk",
+    "email_foi": "cambs-pcc@cambs.pnn.police.uk",
+    "postal_address": "Cambridgeshire Police and Crime Commissioner, PO Box 688, Huntingdon, PE29 9LA"
+  },
+  {
+    "wdtk_id": "cambridgeshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "paulina.ford@peterborough.gov.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "cheshire_police",
+    "telephone_general": "01244 350000",
+    "telephone_foi": "",
+    "email_general": "publiccontact@cheshire.pnn.police.uk",
+    "email_foi": "foi@cheshire.pnn.police.uk",
+    "postal_address": "Clemonds Hey, Oakmere Rd, Winsford CW7 2UA"
+  },
+  {
+    "wdtk_id": "cheshire_pcc",
+    "telephone_general": "01606 364000",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "police.crime.commissioner@cheshire.pnn.police.uk",
+    "postal_address": "Office of the Police & Crime Commissioner for Cheshire, Cheshire Constabulary Headquarters, Clemonds Hey, Oakmere Road, Winsford CW7 2UA"
+  },
+  {
+    "wdtk_id": "cheshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "martin.r.smith@cheshireeast.gov.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "city_of_london_police",
+    "telephone_general": "020 7601 2222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@city-of-london.pnn.police.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "city_of_london_police_authority",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information.officer@cityoflondon.gov.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "cnc",
+    "telephone_general": "03303 135400",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@cnc.pnn.police.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "cnpa",
+    "telephone_general": "01925 833300",
+    "telephone_foi": "",
+    "email_general": "info@cnpa.pnn.police.uk",
+    "email_foi": "foi@cnc.pnn.police.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "cleveland_police",
+    "telephone_general": "01642 326 326",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Freedomof.Information@cleveland.pnn.police.uk",
+    "postal_address": "Bridge St W, Middlesbrough TS2 1AB"
+  },
+  {
+    "wdtk_id": "cleveland_pcc",
+    "telephone_general": "01642 301861",
+    "telephone_foi": "",
+    "email_general": "pcc.office@cleveland.police.uk",
+    "email_foi": "pcc@cleveland.pnn.police.uk",
+    "postal_address": "Shared Services\nc/o St Marks House\nSt Marks Court\nThornaby\nStockton-on-Tees\nTS17 6QW"
+  },
+  {
+    "wdtk_id": "cleveland_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "InformationGovernance@redcar-cleveland.gov.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "college_of_policing",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@college.pnn.police.uk",
+    "postal_address": ""
+  },
+  {
+    "wdtk_id": "cumbria_police",
+    "telephone_general": "0300 124 0111",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@cumbria.police.uk",
+    "postal_address": "Cumbria Police HQ, Carleton Hall, Penrith CA"
+  },
+  {
+    "wdtk_id": "cumbria_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information.governance@cumbria.gov.uk"
+  },
+  {
+    "wdtk_id": "cumbria_pfcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "commissioner@cumbria-pcc.gov.uk"
+  },
+  {
+    "wdtk_id": "derbyshire_police",
+    "telephone_general": "01773 730215",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@derbyshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "derbyshire_pcc",
+    "telephone_general": "0300 122 6000",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pccoffice@derbyshire.pnn.police.uk",
+    "postal_address": "The Office of the Police and Crime Commissioner for Derbyshire\nButterley Hall\nRipley\nDerbyshire\nDE5 3RS"
+  },
+  {
+    "wdtk_id": "derbyshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pccoffice@derbyshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "devon_and_cornwall_police",
+    "telephone_general": "01392 420320",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@devonandcornwall.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "devon_and_cornwall_pcc",
+    "telephone_general": "01392 225555",
+    "telephone_foi": "",
+    "email_general": "opcc@dc-pcc.gov.uk",
+    "email_foi": "opcc@devonandcornwall.pnn.police.uk",
+    "postal_address": "The Office of the Police and Crime Commissioner\nAndy Hocking House\nAlderson Drive\nExeter\nEX2 7RP"
+  },
+  {
+    "wdtk_id": "devon_and_cornwall_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "democratic.support@plymouth.gov.uk"
+  },
+  {
+    "wdtk_id": "dorset_police",
+    "telephone_general": "01202 222 222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@dorset.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "dorset_pcc",
+    "telephone_general": "01202 229084",
+    "telephone_foi": "",
+    "email_general": "pcc@dorset.pnn.police.uk",
+    "email_foi": "pcc@dorset.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "dorset_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@dorsetcouncil.gov.uk"
+  },
+  {
+    "wdtk_id": "durham_police",
+    "telephone_general": "0345 606 0365",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@durham.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "durham_pcc",
+    "telephone_general": "0191 375 2001",
+    "telephone_foi": "",
+    "email_general": "General.EnquiriesPCC@durham-pcc.gov.uk",
+    "email_foi": "general.enquiries@durham.pcc.pnn.gov.uk",
+    "postal_address": "Durham Police and Crime Commissioner's Office\n\nDurham Police Headquarters\n\nAykley Heads\n\nDurham\n\nDH1 5TT"
+  },
+  {
+    "wdtk_id": "durham_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "inforights@durham.gov.uk"
+  },
+  {
+    "wdtk_id": "dyfed_powys_police",
+    "telephone_general": "01267 222020",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@dyfed-powys.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "dyfed_powys_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "opcc@dyfed-powys.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "dyfed_powys_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "alun.lloydjones@ceredigion.gov.uk"
+  },
+  {
+    "wdtk_id": "essex_police",
+    "telephone_general": "01245 491491",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info.rights.freedom@essex.police.uk"
+  },
+  {
+    "wdtk_id": "essex_pfcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "PFCC@essex.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "essex_police_fire_and_crime_panel",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Essex.PFCP@essex.gov.uk"
+  },
+  {
+    "wdtk_id": "falmouth_docks_police",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Falmouth@ap-group.co.uk"
+  },
+  {
+    "wdtk_id": "gloucestershire_police",
+    "telephone_general": "01452 907330",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "gloucestershire_police"
+  },
+  {
+    "wdtk_id": "gloucestershire_pcc",
+    "telephone_general": "01452 754348",
+    "telephone_foi": "",
+    "email_general": "pcc@gloucestershire.police.uk",
+    "email_foi": "pcc@gloucestershire.pnn.police.uk",
+    "postal_address": "No. 1 Waterwells, Waterwells Drive, Quedgeley, Gloucester GL2 2AN"
+  },
+  {
+    "wdtk_id": "gloucestershire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "customerservices@gloucestershire.gov.uk"
+  },
+  {
+    "wdtk_id": "gmp",
+    "telephone_general": "0161 872 5050",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@gmp.police.uk"
+  },
+  {
+    "wdtk_id": "gwent_police",
+    "telephone_general": "01633 838111",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@gwent.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "gwent_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "commissioner@gwent.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "gwent_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "gwentpcp@caerphilly.gov.uk"
+  },
+  {
+    "wdtk_id": "hm_inspector_of_constabulary_for_scotland",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "hmic@gov.scot"
+  },
+  {
+    "wdtk_id": "hmicfrs",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "HMICFRSFoI@hmicfrs.gov.uk"
+  },
+  {
+    "wdtk_id": "hampshire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "opcc@hampshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "hampshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "members.services@hants.gov.uk"
+  },
+  {
+    "wdtk_id": "hampshire_police",
+    "telephone_general": "01962 841534",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information@hampshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "hertfordshire_police",
+    "telephone_general": "01707 354000",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@herts.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "hertfordshire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "commissioner@herts.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "hertfordshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pcp@broxbourne.gov.uk"
+  },
+  {
+    "wdtk_id": "humberside_police",
+    "telephone_general": "01482 220393",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "informationcomplianceunit@humberside.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "humberside_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "policeandcrimepanel@northlincs.gov.uk"
+  },
+  {
+    "wdtk_id": "ipab",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "acpo.request@foi.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "kent_police",
+    "telephone_general": "01622 690 690",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@kent.police.uk"
+  },
+  {
+    "wdtk_id": "kent_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "contactyourpcc@kent.police.uk"
+  },
+  {
+    "wdtk_id": "kent_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@kent.gov.uk"
+  },
+  {
+    "wdtk_id": "lancashire_police",
+    "telephone_general": "01772 614444",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@Lancashire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "lancashire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "commissioner@lancashire-pcc.gov.uk"
+  },
+  {
+    "wdtk_id": "lancashire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Democraticservices@blackburn.gov.uk"
+  },
+  {
+    "wdtk_id": "leicestershire_police",
+    "telephone_general": "0116 222 2222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@leicestershire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "leicestershire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "police.commissioner@leicestershire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "leicestershire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info.requests@leicester.gov.uk"
+  },
+  {
+    "wdtk_id": "lincolnshire_police",
+    "telephone_general": "0300 111 0300",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@lincs.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "lincolnshire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "lincolnshire-pcc@lincs.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "lincolnshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "lincolnshirepcp@e-lindsey.gov.uk"
+  },
+  {
+    "wdtk_id": "mopac",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@mopac.london.gov.uk"
+  },
+  {
+    "wdtk_id": "merseyside_police",
+    "telephone_general": "0151 709 6010",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@merseyside.police.uk"
+  },
+  {
+    "wdtk_id": "merseyside_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info@merseysidepcc.info"
+  },
+  {
+    "wdtk_id": "merseyside_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "merseysidepcp@knowsley.gov.uk"
+  },
+  {
+    "wdtk_id": "the_met",
+    "telephone_general": "020 7230 1212",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@met.police.uk"
+  },
+  {
+    "wdtk_id": "mdp",
+    "telephone_general": "01371 854444",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "MDP-FOI-DP@mod.gov.uk"
+  },
+  {
+    "wdtk_id": "nca",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "StatutoryDisclosureTeam@nca.gov.uk"
+  },
+  {
+    "wdtk_id": "npas",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "npas@npas.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "npcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "npcc.foi.request@cru.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "norfolk_police",
+    "telephone_general": "01953 424455",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedom@Norfolk.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "norfolk_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "opccn-foi@norfolk.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "norfolk_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information.management@norfolk.gov.uk"
+  },
+  {
+    "wdtk_id": "north_wales_police",
+    "telephone_general": "0300 330 0101",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FreedomofInformationTeam@nthwales.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "north_wales_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "OPCC@nthwales.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "north_wales_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "policepanel@conwy.gov.uk"
+  },
+  {
+    "wdtk_id": "nyp",
+    "telephone_general": "01904 618691",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "CivilDisclosure@northyorkshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "north_yorkshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "infogov@northyorks.gov.uk"
+  },
+  {
+    "wdtk_id": "north_yorkshire_pfcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info@northyorkshire-pfcc.gov.uk"
+  },
+  {
+    "wdtk_id": "northamptonshire_police",
+    "telephone_general": "0300 011 1222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@northants.police.uk"
+  },
+  {
+    "wdtk_id": "northamptonshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "jedmunds@northamptonshire.gov.uk"
+  },
+  {
+    "wdtk_id": "northamptonshire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "commissioner@northantspfcc.pnn.gov.uk"
+  },
+  {
+    "wdtk_id": "northern_ireland_police_fund",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "admin@nipolicefund.org"
+  },
+  {
+    "wdtk_id": "northern_ireland_policing_board",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@nipolicingboard.org.uk"
+  },
+  {
+    "wdtk_id": "northumbria_police",
+    "telephone_general": "0191 214 6555",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedom.info@northumbria.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "northumbria_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "enquiries@northumbria-pcc.gov.uk"
+  },
+  {
+    "wdtk_id": "northumbria_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "emmareynard@gateshead.gov.uk"
+  },
+  {
+    "wdtk_id": "nottinghamshire_police",
+    "telephone_general": "0115 967 0999",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@nottinghamshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "nottinghamshire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "nopcc@nottinghamshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "nottinghamshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "enquiries@nottscc.gov.uk"
+  },
+  {
+    "wdtk_id": "police_advisory_board_for_england_and_wales",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pabewsecretariat@homeoffice.gov.uk"
+  },
+  {
+    "wdtk_id": "pirc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "informationrequests@pirc.gov.scot"
+  },
+  {
+    "wdtk_id": "police_scotland",
+    "telephone_general": "01786 289070",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@scotland.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "psni",
+    "telephone_general": "028 9065 0222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@psni.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "port_of_bristol_police",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "port.police@bristolport.co.uk"
+  },
+  {
+    "wdtk_id": "port_of_dover_police",
+    "telephone_general": "01304 240400",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI.portofdoverpolice@doverport.co.uk"
+  },
+  {
+    "wdtk_id": "port_of_felixstowe_police",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "enquiries@fdrc.co.uk"
+  },
+  {
+    "wdtk_id": "port_of_liverpool_police",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "GroupDataProtectionOfficer@peelports.com"
+  },
+  {
+    "wdtk_id": "port_of_portland_police",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "police@portland-port.co.uk"
+  },
+  {
+    "wdtk_id": "port_of_tilbury_london_police",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "police.control@potll.com"
+  },
+  {
+    "wdtk_id": "rucgcf",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "rucgcfoundation@nics.gov.uk"
+  },
+  {
+    "wdtk_id": "scottish_police_authority",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@spa.police.uk"
+  },
+  {
+    "wdtk_id": "south_wales_police",
+    "telephone_general": "029 2022 2111",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@south-wales.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "south_wales_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "commissioner@south-wales.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "south_wales_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@merthyr.gov.uk"
+  },
+  {
+    "wdtk_id": "syp",
+    "telephone_general": "0114 219 6905",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@southyorks.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "south_yorkshire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info@southyorkshire-pcc.gov.uk"
+  },
+  {
+    "wdtk_id": "south_yorkshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Debbie.Bacon@rotherham.gov.uk"
+  },
+  {
+    "wdtk_id": "staffordshire_police",
+    "telephone_general": "0300 123 4455",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@staffordshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "staffordshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "mandy.pattinson@staffordshire.gov.uk"
+  },
+  {
+    "wdtk_id": "staffordshire_pfcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI.PFCC@staffordshire-pfcc.gov.uk"
+  },
+  {
+    "wdtk_id": "suffolk_police",
+    "telephone_general": "01473 613500",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information@suffolk.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "suffolk_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "spcc@suffolk.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "suffolk_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "committee.services@suffolk.gov.uk"
+  },
+  {
+    "wdtk_id": "surrey_police",
+    "telephone_general": "01483 571212",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@surrey.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "surrey_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "SurreyPCC@surrey.police.uk"
+  },
+  {
+    "wdtk_id": "surrey_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@surreycc.gov.uk"
+  },
+  {
+    "wdtk_id": "sussex_police",
+    "telephone_general": "01273 475432",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@sussex.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "sussex_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "spcc@sussex-pcc.gov.uk"
+  },
+  {
+    "wdtk_id": "sussex_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "ninesh.edwards@westsussex.gov.uk"
+  },
+  {
+    "wdtk_id": "tees_and_hartlepool_harbour_police",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "dpo@pdports.co.uk"
+  },
+  {
+    "wdtk_id": "thames_valley_police",
+    "telephone_general": "01865 841148",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information@thamesvalley.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "thames_valley_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pcc@thamesvalley.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "thames_valley_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "khalid.ahmed@oxfordshire.gov.uk"
+  },
+  {
+    "wdtk_id": "police_federation",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@polfed.org"
+  },
+  {
+    "wdtk_id": "the_police_ict_company_limited",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOIRequests@homeoffice.gov.uk"
+  },
+  {
+    "wdtk_id": "ukfpu",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "footballdesk@fpu.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "nwcu",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "acpo.request@foi.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "university_of_cambridge_constabulary",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@admin.cam.ac.uk"
+  },
+  {
+    "wdtk_id": "warwickshire_police",
+    "telephone_general": "024 7664 1111",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Freedom.Information@warwickshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "warwickshire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "opcc@warwickshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "warwickshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "janepollard@warwickshire.gov.uk"
+  },
+  {
+    "wdtk_id": "west_mercia_police",
+    "telephone_general": "01600 460080",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information@westmercia.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "west_mercia_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "opcc@westmercia.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "west_mercia_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "KGriffiths@worcestershire.gov.uk"
+  },
+  {
+    "wdtk_id": "wmp",
+    "telephone_general": "0345 113 5000",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@westmidlands.police.uk"
+  },
+  {
+    "wdtk_id": "west_midlands_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "wmpcc@west-midlands.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "west_midlands_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "wmpcp@birmingham.gov.uk"
+  },
+  {
+    "wdtk_id": "west_yorkshire_police",
+    "telephone_general": "01924 375222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@westyorkshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "west_yorkshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pcpofficer@wakefield.gov.uk"
+  },
+  {
+    "wdtk_id": "wiltshire_police",
+    "telephone_general": "01380 826614 or 01666 822222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "disclosure@wiltshire.pnn.police.uk"
+  },
+  {
+    "wdtk_id": "wiltshire_pcc",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pcc@wiltshire.police.uk"
+  },
+  {
+    "wdtk_id": "wiltshire_pcp",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "committee@wiltshire.gov.uk"
+  },
+  {
+    "wdtk_id": "york_minster_police",
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info@yorkminster.org"
+  }
+]
