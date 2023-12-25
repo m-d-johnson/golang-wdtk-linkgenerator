@@ -16,3 +16,154 @@ Thames Valley Police,publicaccess@thamesvalley.pnn.police.uk
 Guernsey Police	01481 725 111
 Isle of Man Constabulary 01624 631 212
 States of Jersey Police	01534 612 612
+
+
+New Scotland Yard, Victoria Embankment, Westminster, London, SW1A 2JL
+020 7230 1212.
+
+City of London Police HQ, PO Box 36451, 37 Wood Street, London, EC2P 2NHQ
+020 7601 2222.
+
+Sutton Road, Maidstone, Kent, ME15 9BZ
+01622 690 690
+
+Sussex Police HQ, Church Lane, Lewes, East Sussex, BN7 2DZ
+01273 470 101
+
+Surrey Police HQ, Mt Browne, Sandy Lane, Guildford, Surrey, GU3 1HG
+01483 571 212
+
+Essex Police HQ, Sandford Road, Chelmsford, Essex, CM1 6DN
+01245 491 491
+
+Stanborough Road, Welwyn Garden City, Hertfordshire, AL8 6XF
+01707 354 000
+
+Thames Valley Police Headquarters
+169 Oxford Road, Kidlington, OX5 2NX
+
+Bedfordshire Police Headquarters, Woburn Road, Kempston, Bedford, MK43 9AX
+01234 841 212
+
+Hampshire Police Headquarters, Leigh Road, Eastleigh, SO50 9SJ
+01962 841 534
+
+Devon and Cornwall Police HQ, Sidmouth Road, Middlemoor, Exeter, EX2  7HQ
+01392 420 320
+
+Avon and Somerset Police Headquarters, Valley Road, Portishead, Bristol, BS20 8QJ
+01275 818 340
+
+Dorset Police Headquarters, Winfrith, Dorchester, DT2 8DZ
+01202 222 222 or 01305 222 222
+
+Wiltshire Police HQ, London Road, Devizes, SN10 2DN
+01380 826 614
+
+Gloucestershire Police Headquarters, 1 Waterwells Drive, Quedgeley, Gloucester, GL2 2AN
+01452 726 920
+
+Gwent Police Headquarters, Turnpike Road, Cwmbran, NP44 2AG
+01633 838 111
+
+South Wales Police HQ, Cowbridge Road, Bridgend, CF31 3SU
+01656 655 555
+
+Dyfed-Powys Police Headquarters, PO Box 99, Carmarthen, SA31 2PF
+01267 222 020
+
+West Mercia Police Headquarters, Hindlip, Worcester, WR3 8SP
+0300 333 3000
+
+North Wales Police Headquarters, Glan Y Don, Abergele Road, Colwyn Bay, LL29 8AW
+0300 330 0101
+
+Warwickshire Police HQ, Leek Wootton, Warwick, CV35 7QA
+01926 375 222
+
+West Midlands Police HQ, Lloyd House, Colmore Circus, Queensway, Birmingham, B4 6NQ
+0121 626 5000
+
+Staffordshire Police Headquarters, Weston Road, Stafford, ST18 0YY
+01785 236 211
+
+Derbyshire Police HQ, Butterley Hall, Ripley, DE5 3RS
+01773 730 215
+
+Cheshire Police Headquarters, Clemonds Hey, Oakmere Road, Winsford, CW7 2UA
+01244 350 000
+
+Merseyside Police HQ, 15 Cazneau St, Liverpool, L3 3AN
+0151 709 6010
+
+Greater Manchester Police HQ, Northampton Road, Manchester, M40 5BP
+0161 872 5050
+
+Lancashire Police HQ, Saunders Lane, Hutton, Preston, PR4 5SD
+01772 614 444
+
+Northamptonshire Police HQ, Wootton Hall Park, Northampton, NN4 0JQ
+0300 011 1222
+
+Cambridgeshire Police HQ, Hinchingbrooke Business Park, Brampton Road, Huntingdon, PE29 6NP
+01480 456 111
+
+Suffolk Police HQ, Portal Avenue, Martlesham Heath, Ipswich, IP5 3QS
+01473 613 500
+
+Contact Suffolk Police on the force website.
+
+Norfolk Police HQ, Jubilee House, Falconers Chase, Wymondham, NR18 0WW
+01953 424 242
+
+Leicestershire Police HQ, St Johns, Enderby, LE19 6BX
+0116 222 2222
+
+
+Lincolnshire Police HQ, Deepdale Lane, Nettleham, LN2 2LT
+01522 532 222
+
+
+Nottinghamshire Police HQ, Sherwood Lodge Drive, Arnold, Nottingham, NG5 8PP
+0115 967 0999
+
+
+Humberside Police HQ, Priory Road, Hull, HU5 5SF
+01482 220 393
+
+
+South Yorkshire Police Headquarters, Carbrook House, Carbrook Hall Road, Shefffield, S9 2EG
+0114 219 6905
+
+
+
+West Yorkshire Police HQ, Laburnam Road, Wakefield, WF1 3QP
+01924 375 222
+
+North Yorkshire Police HQ, 45 Crosby Road, Northallerton, DL6 1AA
+01904 618 691
+
+Cleveland Police HQ, Ladgate Lane, Middlesbrough, TS8 9EH
+01642 326 326
+
+Durham Police HQ, Aykley Heads, Durham, DH1 5TT
+0345 606 0365
+
+
+
+Cumbria Police Headquarters, Carleton Hall, 1-2 Carleton Avenue, Penrith, CA10 2AU
+0300 124 0111
+
+Northumbria Police HQ, MIddle Engine Lane, Wallsend, Tyne & Wear, NE28 9NT
+01661 872 555
+
+
+British Transport Police HQ, 25 Camden Road, London, NW1 9LN
+0800 40 50 40
+
+Civil Nuclear Constabulary
+Civil Nuclear Constabulary HQ, Culham Science Centre, Abingdon, OX14 3DB
+012345 466 606
+
+Ministry of Defence HQ, Wethersfield, Braintree, Essex, CM7 4AZ
+01371 854 444
