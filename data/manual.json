@@ -10,7 +10,7 @@
     {
       "wdtk_id": "avon_and_somerset_police",
       "telephone_general": "0117 998 9112 or 01275 818181",
-      "telephone_foi": "",
+      "telephone_foi": "0117 998 9112 or 01275 81818",
       "email_general": "",
       "email_foi": "FOIREQUESTS@avonandsomerset.police.uk",
       "postal_address": "Avon and Somerset Police, Police and Fire Headquarters, PO Box 37, Valley Road, Portishead, Bristol BS20 8QJ"
@@ -18,50 +18,50 @@
     {
       "wdtk_id": "avon_and_somerset_pcc",
       "telephone_general": "01278 646188",
-      "telephone_foi": "",
-      "email_general": "",
+      "telephone_foi": "01278 646188",
+      "email_general": "pcc@avonandsomerset.pnn.police.uk",
       "email_foi": "pcc@avonandsomerset.pnn.police.uk",
       "postal_address": "Avon and Somerset Police and Crime Commissioner, Avon and Somerset Police Headquarters, Valley Road, Portishead ,Bristol BS20 8JJ"
     },
     {
       "wdtk_id": "avon_and_somerset_police_and_crime_panel",
-      "telephone_general": "",
-      "telephone_foi": "",
+      "telephone_general": "07855 284506",
+      "telephone_foi": "0300 123 2224",
       "email_general": "",
       "email_foi": "pcpanel@bristol.gov.uk",
-      "postal_address": ""
+      "postal_address": "Patricia Jones, Governance Specialist, County Hall, Taunton TA1 4DY"
     },
     {
       "wdtk_id": "bedfordshire_police",
-      "telephone_general": "0800 555 111 or 01234 841212",
-      "telephone_foi": "",
+      "telephone_general": "01234 841212",
+      "telephone_foi": "01234 841212",
       "email_general": "customersupport@beds.police.uk",
-      "email_foi": "foi@bedfordshire.pnn.police.uk",
+      "email_foi": "dataprotection@beds.police.uk",
       "postal_address": "Police Headquarters, Woburn Rd, Kempston, Bedford MK43 9AX"
     },
     {
       "wdtk_id": "bedfordshire_pcc",
       "telephone_general": "01234 842064",
-      "telephone_foi": "",
+      "telephone_foi": "01234 842064",
       "email_general": "PCC@beds.police.uk",
       "email_foi": "pcc@bedfordshire.pnn.police.uk",
       "postal_address": "Bedfordshire Police HQ, Bridgebury House, Woburn Road, Kempston MK43 9AX"
     },
     {
       "wdtk_id": "bedfordshire_pcp",
-      "telephone_general": "",
-      "telephone_foi": "",
-      "email_general": "",
-      "email_foi": "bedspcp@bedford.gov.uk",
-      "postal_address": ""
+      "telephone_general": "01234 228903",
+      "telephone_foi": "01234 228903",
+      "email_general": "bedspcp@bedford.gov.uk",
+      "email_foi": "jeremy.welch@bedford.gov.uk",
+      "postal_address": "c/o Rm 326, Bedford Borough Council, Borough Hall, Cauldwell St, Bedford MK42 9AP"
     },
     {
       "wdtk_id": "bhp",
-      "telephone_general": "",
-      "telephone_foi": "",
-      "email_general": "",
+      "telephone_general": "028 9055 3000",
+      "telephone_foi": "028 9055 4422",
+      "email_general": "port.police@belfast-harbour.co.uk",
       "email_foi": "info@belfast-harbour.co.uk",
-      "postal_address": ""
+      "postal_address": "Belfast Harbour Police, Port Operations Centre, Milewater Basin, Dufferin Road, Belfast Harbour, Belfast BT3 9AF"
     },
     {
       "wdtk_id": "belfast_international_airport_constabulary",
@@ -69,20 +69,20 @@
       "telephone_foi": "",
       "email_general": "",
       "email_foi": "info.desk@bfs.aero",
-      "postal_address": ""
+      "postal_address": "Airport Police Station, Airport Road, Aldergrove, BT29 4AB"
     },
     {
       "wdtk_id": "btp",
       "telephone_general": "0800 405040",
       "telephone_foi": "02920 525338",
-      "email_general": "",
+      "email_general": "first_contact@btp.police.uk",
       "email_foi": "foi@btp.pnn.police.uk",
       "postal_address": "25 Camden Rd, London NW1 9LN"
     },
     {
       "wdtk_id": "british_transport_police_authority",
       "telephone_general": "020 7383 0259",
-      "telephone_foi": "",
+      "telephone_foi": "020 7383 0259",
       "email_general": "btpa-enquiries@btp.police.uk",
       "email_foi": "btpa-enquiries@btp.police.uk",
       "postal_address": "British Transport Police Authority, British Transport Police FHQ, 25 Camden Road, London NW1 9LN"
@@ -90,7 +90,7 @@
     {
       "wdtk_id": "cambridgeshire_police",
       "telephone_general": "01480 456111",
-      "telephone_foi": "",
+      "telephone_foi": "01480 456111",
       "email_general": "",
       "email_foi": "foi@cambs.pnn.police.uk",
       "postal_address": "Hinchingbrooke Business Park, Brampton Rd, Huntingdon PE29 6NP"
@@ -98,18 +98,18 @@
     {
       "wdtk_id": "cambridgeshire_pcc",
       "telephone_general": "0300 333 3456",
-      "telephone_foi": "",
+      "telephone_foi": "0300 333 3456",
       "email_general": "cambs-pcc@cambs.police.uk",
       "email_foi": "cambs-pcc@cambs.pnn.police.uk",
       "postal_address": "Cambridgeshire Police and Crime Commissioner, PO Box 688, Huntingdon, PE29 9LA"
     },
     {
       "wdtk_id": "cambridgeshire_pcp",
-      "telephone_general": "",
-      "telephone_foi": "",
-      "email_general": "",
-      "email_foi": "paulina.ford@peterborough.gov.uk",
-      "postal_address": ""
+      "telephone_general": "01733 384629",
+      "telephone_foi": "01733 452533",
+      "email_general": "jane.webb@peterborough.gov.ukk",
+      "email_foi": "foi@peterborough.gov.uk",
+      "postal_address": "Cambridgeshire Police and Crime Panel, Cambridge City Council, The Guildhall, Cambridge CB2 3QJ"
     },
     {
       "wdtk_id": "cheshire_police",
