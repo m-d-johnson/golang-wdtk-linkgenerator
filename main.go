@@ -55,7 +55,7 @@ import (
 	"go.uber.org/ratelimit"
 )
 
-// Record is a an entry in the manually curated file which provides data that WDTK does not.
+// Record is an entry in the manually curated file which provides data that WDTK does not.
 type Record struct {
 	WDTKID           string `json:"wdtk_id"`
 	TelephoneGeneral string `json:"telephone_general"`
@@ -65,7 +65,8 @@ type Record struct {
 	PostalAddress    string `json:"postal_address"`
 }
 
-// Authority is a public body on the WDTK website.
+// Authority is a public body on the WDTK website. Here, it contains additional fields which are not
+// provided by WhatDoTheyKnow. These fields are added from a manually maintained list.
 type Authority struct {
 	IsDefunct                            bool   `json:"Is_Defunct"`
 	WDTKID                               string `json:"WDTK_ID"`
@@ -81,10 +82,10 @@ type Authority struct {
 	WikiDataIdentifier                   string `json:"WikiData_Identifier"`
 	LoCAuthorityID                       string `json:"LoC_Authority_ID"`
 	FOIEmailAddress                      string `json:"FOI_Email_Address"`
-	TelephoneGeneral                     string `json:"TelephoneGeneral"`
-	TelephoneFOI                         string `json:"TelephoneFOI"`
-	EmailGeneral                         string `json:"EmailGeneral"`
-	PostalAddress                        string `json:"PostalAddress"`
+	TelephoneGeneral                     string `json:"Telephone_General"`
+	TelephoneFOI                         string `json:"Telephone_FOI"`
+	EmailGeneral                         string `json:"Email_General"`
+	PostalAddress                        string `json:"Postal_Address"`
 }
 
 // JSONResponse is a JSON object from the authority page on the WDTK website.
@@ -301,10 +302,14 @@ func DescribeAuthority(wdtkID string) {
 	println("Atom Feed:           ", p.WDTKAtomFeedURL)
 	println("JSON Feed:           ", p.WDTKJSONFeedURL)
 	println("JSON Data:           ", p.WDTKOrgJSONURL)
-	println("Email:               ", p.FOIEmailAddress)
+	println("FOI Email:           ", p.FOIEmailAddress)
 	println("WikiData Identifier: ", p.WikiDataIdentifier)
 	println("LoC Authority ID:    ", p.LoCAuthorityID)
 	println("ICO Reg. Identifier: ", p.DataProtectionRegistrationIdentifier)
+	println("General Email:       ", p.EmailGeneral)
+	println("Telephone - General: ", p.TelephoneGeneral)
+	println("Telephone - FOI:     ", p.TelephoneFOI)
+	println("Postal Address:      ", p.PostalAddress)
 
 	tmpl := template.Must(template.New("Simple HTML Overview").Parse(simpleBodyOverviewPage))
 

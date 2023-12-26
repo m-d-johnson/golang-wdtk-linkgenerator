@@ -29,7 +29,7 @@ Police and Crime Commissioners
 | Norfolk Police and Crime Commissioner                | [WDTK Link](https://www.whatdotheyknow.com/body/norfolk_pcc)                                 | [Email](opccn-foi@norfolk.pnn.police.uk)                  |
 | North Wales Police and Crime Commissioner            | [WDTK Link](https://www.whatdotheyknow.com/body/north_wales_pcc)                             | [Email](OPCC@nthwales.pnn.police.uk)                      |
 | North Yorkshire Police, Fire and Crime Commissioner  | [WDTK Link](https://www.whatdotheyknow.com/body/north_yorkshire_pfcc)                        | [Email](info@northyorkshire-pfcc.gov.uk)                  |
-| Northamptonshire Police, Fire and Crime Commissioner | [WDTK Link](https://www.whatdotheyknow.com/body/northamptonshire_pcc)                        | [Email](commissioner@northantspfcc.pnn.gov.uk)            |
+| Northamptonshire Police, Fire and Crime Commissioner | [WDTK Link](https://www.whatdotheyknow.com/body/northamptonshire_pcc)                        | [Email](customerservice@northantspfcc.pnn.police.uk)      |
 | Northumbria Police and Crime Commissioner            | [WDTK Link](https://www.whatdotheyknow.com/body/northumbria_pcc)                             | [Email](enquiries@northumbria-pcc.gov.uk)                 |
 | Nottinghamshire Police and Crime Commissioner        | [WDTK Link](https://www.whatdotheyknow.com/body/nottinghamshire_pcc)                         | [Email](nopcc@nottinghamshire.pnn.police.uk)              |
 | Police Complaints Commissioner for Scotland          | [WDTK Link](https://www.whatdotheyknow.com/body/police_complaints_commissioner_for_scotland) | [Email](enquiries@pirc.gsi.gov.uk)                        |
@@ -41,9 +41,9 @@ Police and Crime Commissioners
 | Surrey Police and Crime Commissioner                 | [WDTK Link](https://www.whatdotheyknow.com/body/surrey_pcc)                                  | [Email](SurreyPCC@surrey.police.uk)                       |
 | Sussex Police and Crime Commissioner                 | [WDTK Link](https://www.whatdotheyknow.com/body/sussex_pcc)                                  | [Email](spcc@sussex-pcc.gov.uk)                           |
 | Thames Valley Police and Crime Commissioner          | [WDTK Link](https://www.whatdotheyknow.com/body/thames_valley_pcc)                           | [Email](pcc@thamesvalley.pnn.police.uk)                   |
-| Warwickshire Police and Crime Commissioner           | [WDTK Link](https://www.whatdotheyknow.com/body/warwickshire_pcc)                            | [Email](opcc@warwickshire.pnn.police.uk)                  |
+| Warwickshire Police and Crime Commissioner           | [WDTK Link](https://www.whatdotheyknow.com/body/warwickshire_pcc)                            | [Email](opcc@warwickshire.police.uk)                      |
 | West Mercia Police and Crime Commissioner            | [WDTK Link](https://www.whatdotheyknow.com/body/west_mercia_pcc)                             | [Email](opcc@westmercia.pnn.police.uk)                    |
-| West Midlands Police and Crime Commissioner          | [WDTK Link](https://www.whatdotheyknow.com/body/west_midlands_pcc)                           | [Email](wmpcc@west-midlands.pnn.police.uk)                |
+| West Midlands Police and Crime Commissioner          | [WDTK Link](https://www.whatdotheyknow.com/body/west_midlands_pcc)                           | [Email](wmpcc@west-midlands.police.uk)                    |
 | West Yorkshire Police and Crime Commissioner         | [WDTK Link](https://www.whatdotheyknow.com/body/west_yorkshire_pcc)                          | [Email](contact@westyorkshire.pcc.pnn.gov.uk)             |
 | Wiltshire Police and Crime Commissioner              | [WDTK Link](https://www.whatdotheyknow.com/body/wiltshire_pcc)                               | [Email](pcc@wiltshire.police.uk)                          |
 
@@ -53,8 +53,8 @@ Police and Crime Panels
 | Name                                      | Org Page                                                                                  | Email                                                  |
 |-------------------------------------------|-------------------------------------------------------------------------------------------|--------------------------------------------------------|
 | Avon and Somerset Police and Crime Panel  | [WDTK Link](https://www.whatdotheyknow.com/body/avon_and_somerset_police_and_crime_panel) | [Email](pcpanel@bristol.gov.uk)                        |
-| Bedfordshire Police and Crime Panel       | [WDTK Link](https://www.whatdotheyknow.com/body/bedfordshire_pcp)                         | [Email](bedspcp@bedford.gov.uk)                        |
-| Cambridgeshire Police and Crime Panel     | [WDTK Link](https://www.whatdotheyknow.com/body/cambridgeshire_pcp)                       | [Email](paulina.ford@peterborough.gov.uk)              |
+| Bedfordshire Police and Crime Panel       | [WDTK Link](https://www.whatdotheyknow.com/body/bedfordshire_pcp)                         | [Email](jeremy.welch@bedford.gov.uk)                   |
+| Cambridgeshire Police and Crime Panel     | [WDTK Link](https://www.whatdotheyknow.com/body/cambridgeshire_pcp)                       | [Email](foi@peterborough.gov.uk)                       |
 | Cheshire Police and Crime Panel           | [WDTK Link](https://www.whatdotheyknow.com/body/cheshire_pcp)                             | [Email](martin.r.smith@cheshireeast.gov.uk)            |
 | Cleveland Police and Crime Panel          | [WDTK Link](https://www.whatdotheyknow.com/body/cleveland_pcp)                            | [Email](InformationGovernance@redcar-cleveland.gov.uk) |
 | Cumbria Police and Crime Panel            | [WDTK Link](https://www.whatdotheyknow.com/body/cumbria_pcp)                              | [Email](information.governance@cumbria.gov.uk)         |
@@ -101,14 +101,14 @@ Disclosure Log and Publication Scheme Missing
 |------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 | Association of Police and Crime Commissioners              | [WDTK Link](https://www.whatdotheyknow.com/body/apcc)                                        | [Email](enquiries@apccs.police.uk)                        |
 | Avon and Somerset Police and Crime Panel                   | [WDTK Link](https://www.whatdotheyknow.com/body/avon_and_somerset_police_and_crime_panel)    | [Email](pcpanel@bristol.gov.uk)                           |
-| Bedfordshire Police                                        | [WDTK Link](https://www.whatdotheyknow.com/body/bedfordshire_police)                         | [Email](foi@bedfordshire.pnn.police.uk)                   |
-| Bedfordshire Police and Crime Panel                        | [WDTK Link](https://www.whatdotheyknow.com/body/bedfordshire_pcp)                            | [Email](bedspcp@bedford.gov.uk)                           |
+| Bedfordshire Police                                        | [WDTK Link](https://www.whatdotheyknow.com/body/bedfordshire_police)                         | [Email](dataprotection@beds.police.uk)                    |
+| Bedfordshire Police and Crime Panel                        | [WDTK Link](https://www.whatdotheyknow.com/body/bedfordshire_pcp)                            | [Email](jeremy.welch@bedford.gov.uk)                      |
 | Belfast Harbour Police                                     | [WDTK Link](https://www.whatdotheyknow.com/body/bhp)                                         | [Email](info@belfast-harbour.co.uk)                       |
 | Belfast International Airport Constabulary                 | [WDTK Link](https://www.whatdotheyknow.com/body/belfast_international_airport_constabulary)  | [Email](info.desk@bfs.aero)                               |
 | British Transport Police                                   | [WDTK Link](https://www.whatdotheyknow.com/body/btp)                                         | [Email](foi@btp.pnn.police.uk)                            |
 | British Transport Police Authority                         | [WDTK Link](https://www.whatdotheyknow.com/body/british_transport_police_authority)          | [Email](btpa-enquiries@btp.police.uk)                     |
 | Cambridgeshire Constabulary                                | [WDTK Link](https://www.whatdotheyknow.com/body/cambridgeshire_police)                       | [Email](foi@cambs.pnn.police.uk)                          |
-| Cambridgeshire Police and Crime Panel                      | [WDTK Link](https://www.whatdotheyknow.com/body/cambridgeshire_pcp)                          | [Email](paulina.ford@peterborough.gov.uk)                 |
+| Cambridgeshire Police and Crime Panel                      | [WDTK Link](https://www.whatdotheyknow.com/body/cambridgeshire_pcp)                          | [Email](foi@peterborough.gov.uk)                          |
 | Cheshire Police and Crime Commissioner                     | [WDTK Link](https://www.whatdotheyknow.com/body/cheshire_pcc)                                | [Email](police.crime.commissioner@cheshire.pnn.police.uk) |
 | City of London Police Authority                            | [WDTK Link](https://www.whatdotheyknow.com/body/city_of_london_police_authority)             | [Email](information.officer@cityoflondon.gov.uk)          |
 | Cleveland Police and Crime Panel                           | [WDTK Link](https://www.whatdotheyknow.com/body/cleveland_pcp)                               | [Email](InformationGovernance@redcar-cleveland.gov.uk)    |
@@ -143,7 +143,7 @@ Disclosure Log and Publication Scheme Missing
 | North Wales Police and Crime Panel                         | [WDTK Link](https://www.whatdotheyknow.com/body/north_wales_pcp)                             | [Email](policepanel@conwy.gov.uk)                         |
 | North Yorkshire Police and Crime Panel                     | [WDTK Link](https://www.whatdotheyknow.com/body/north_yorkshire_pcp)                         | [Email](infogov@northyorks.gov.uk)                        |
 | Northamptonshire Police and Crime Panel                    | [WDTK Link](https://www.whatdotheyknow.com/body/northamptonshire_pcp)                        | [Email](jedmunds@northamptonshire.gov.uk)                 |
-| Northamptonshire Police, Fire and Crime Commissioner       | [WDTK Link](https://www.whatdotheyknow.com/body/northamptonshire_pcc)                        | [Email](commissioner@northantspfcc.pnn.gov.uk)            |
+| Northamptonshire Police, Fire and Crime Commissioner       | [WDTK Link](https://www.whatdotheyknow.com/body/northamptonshire_pcc)                        | [Email](customerservice@northantspfcc.pnn.police.uk)      |
 | Northern Ireland Police Fund                               | [WDTK Link](https://www.whatdotheyknow.com/body/northern_ireland_police_fund)                | [Email](admin@nipolicefund.org)                           |
 | Northumbria Police and Crime Commissioner                  | [WDTK Link](https://www.whatdotheyknow.com/body/northumbria_pcc)                             | [Email](enquiries@northumbria-pcc.gov.uk)                 |
 | Northumbria Police and Crime Panel                         | [WDTK Link](https://www.whatdotheyknow.com/body/northumbria_pcp)                             | [Email](emmareynard@gateshead.gov.uk)                     |
@@ -167,7 +167,7 @@ Disclosure Log and Publication Scheme Missing
 | Thames Valley Police and Crime Panel                       | [WDTK Link](https://www.whatdotheyknow.com/body/thames_valley_pcp)                           | [Email](khalid.ahmed@oxfordshire.gov.uk)                  |
 | The Police ICT Company Limited                             | [WDTK Link](https://www.whatdotheyknow.com/body/the_police_ict_company_limited)              | [Email](FOIRequests@homeoffice.gov.uk)                    |
 | University of Cambridge Constabulary                       | [WDTK Link](https://www.whatdotheyknow.com/body/university_of_cambridge_constabulary)        | [Email](FOI@admin.cam.ac.uk)                              |
-| Warwickshire Police and Crime Commissioner                 | [WDTK Link](https://www.whatdotheyknow.com/body/warwickshire_pcc)                            | [Email](opcc@warwickshire.pnn.police.uk)                  |
+| Warwickshire Police and Crime Commissioner                 | [WDTK Link](https://www.whatdotheyknow.com/body/warwickshire_pcc)                            | [Email](opcc@warwickshire.police.uk)                      |
 | Warwickshire Police and Crime Panel                        | [WDTK Link](https://www.whatdotheyknow.com/body/warwickshire_pcp)                            | [Email](janepollard@warwickshire.gov.uk)                  |
 | West Mercia Police and Crime Commissioner                  | [WDTK Link](https://www.whatdotheyknow.com/body/west_mercia_pcc)                             | [Email](opcc@westmercia.pnn.police.uk)                    |
 | West Mercia Police and Crime Panel                         | [WDTK Link](https://www.whatdotheyknow.com/body/west_mercia_pcp)                             | [Email](KGriffiths@worcestershire.gov.uk)                 |
@@ -211,5 +211,5 @@ Missing Publication Scheme but Disclosure Log Present
 | Surrey Police and Crime Commissioner              | [WDTK Link](https://www.whatdotheyknow.com/body/surrey_pcc)             | [Email](SurreyPCC@surrey.police.uk)             |
 | Sussex Police and Crime Commissioner              | [WDTK Link](https://www.whatdotheyknow.com/body/sussex_pcc)             | [Email](spcc@sussex-pcc.gov.uk)                 |
 | Thames Valley Police and Crime Commissioner       | [WDTK Link](https://www.whatdotheyknow.com/body/thames_valley_pcc)      | [Email](pcc@thamesvalley.pnn.police.uk)         |
-| West Midlands Police and Crime Commissioner       | [WDTK Link](https://www.whatdotheyknow.com/body/west_midlands_pcc)      | [Email](wmpcc@west-midlands.pnn.police.uk)      |
+| West Midlands Police and Crime Commissioner       | [WDTK Link](https://www.whatdotheyknow.com/body/west_midlands_pcc)      | [Email](wmpcc@west-midlands.police.uk)          |
 
