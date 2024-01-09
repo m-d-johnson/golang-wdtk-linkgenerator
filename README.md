@@ -42,3 +42,31 @@ Much of the information listed in the tables is simply derived from the unique I
 
 - Tags are available from the JSON data available per-body and also in the CSV that's downloaded from MySociety.
 - FOI Emails are not programmatically available and are kept in a file.
+- Some data is kept in a manually-curated file, contributions to which are gratefully received.
+  - Email address for general enquiries
+  - Telephone number for general enquiries
+  - Email address for FOI-specific enquiries
+  - Telephone number for FOI-specific enquiries
+  - Postal address for correspondence
+
+## Contact Details
+
+- There's a best-effort attempt to compile email addresses and geographic (numbers starting with your local STD code rather than something like 0300 or 0800) because people are still unsure what their mobile service providers are going to charge them for calls.
+- There's also a similarly best-effort attempt to get email addresses for people who prefer them over web forms. Large organisations like police forces love web forms because they mean they can create tickets in whatever workload management they use. It looks great on paper, and people get nice contracts and congratulate themselves on then, but it too often means whatever you've contacted them with has just disappeared into the void, never to be read unless you chase and are told nothing was ever received and it's the computer's fault.  At least with an email, you have a record of what they're ignoring.
+- All the contact details here have been found by searching the public internet.
+- Some data has been included thanks to:
+  - [policecontacts.co.uk by Dorian Ellis](https://policecontacts.co.uk)
+  - [foi.directory by Matt Burgess](https://www.foi.directory)
+  - [data.police.uk](https://data.police.uk)
+  - [planet-numbers.co.uk](https://planet-numbers.co.uk)
+  - [WikiData](https://www.wikidata.org/wiki/Q5298864)
+  - [Wikipedia](https://en.wikipedia.org/wiki/Category:Police_forces_of_the_United_Kingdom)
+  - [Donoghue Solicitors](https://www.donoghue-solicitors.co.uk/actions-against-the-police/police-forces-in-england-and-wales) 
+
+
+Non-emergency police - 101
+Power outages - 105
+Non-emergency health issues - 111
+COVID-19 testing helpline - 119
+Gas leaks - 0800 111 999
+911 redirects to 999 on mobile phones/public phonebooths and on telephones used in USAFE bases.

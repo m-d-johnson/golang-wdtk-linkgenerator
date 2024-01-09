@@ -1,0 +1,1172 @@
+{
+  "apcc": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "enquiries@apccs.police.uk",
+    "email_foi": "enquiries@apccs.police.uk",
+    "postal_address": "The Association of Police and Crime Commissioners, Lower Ground, 5-8 The Sanctuary, Westminster, London SW1P 3JS"
+  },
+  "avon_and_somerset_police": {
+    "email_foi": "FOIREQUESTS@avonandsomerset.police.uk",
+    "email_general": "",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/avon-and-somerset",
+    "postal_address": "Avon and Somerset Police, Police and Fire Headquarters, PO Box 37, Valley Road, Portishead, Bristol BS20 8QJ",
+    "telephone_foi": "0117 998 9112 or 01275 81818",
+    "telephone_general": "0117 998 9112 or 01275 818181 or 01275 818 340"
+  },
+  "avon_and_somerset_police_and_crime_panel": {
+    "telephone_general": "07855 284506",
+    "telephone_foi": "0300 123 2224",
+    "email_general": "",
+    "email_foi": "pcpanel@bristol.gov.uk",
+    "postal_address": "Patricia Jones, Governance Specialist, County Hall, Taunton TA1 4DY"
+  },
+  "bedfordshire_police": {
+    "telephone_general": "01234 841212",
+    "telephone_foi": "01234 841212",
+    "email_general": "customersupport@beds.police.uk",
+    "email_foi": "dataprotection@beds.police.uk",
+    "postal_address": "Bedfordshire Police Headquarters, Woburn Rd, Kempston, Bedford MK43 9AX",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/bedfordshire"
+  },
+  "bedfordshire_pcc": {
+    "telephone_general": "01234 842064",
+    "telephone_foi": "01234 842064",
+    "email_general": "PCC@beds.police.uk",
+    "email_foi": "pcc@bedfordshire.pnn.police.uk",
+    "postal_address": "Bedfordshire Police HQ, Bridgebury House, Woburn Road, Kempston MK43 9AX"
+  },
+  "bedfordshire_pcp": {
+    "telephone_general": "01234 228903",
+    "telephone_foi": "01234 228903",
+    "email_general": "bedspcp@bedford.gov.uk",
+    "email_foi": "jeremy.welch@bedford.gov.uk",
+    "postal_address": "c/o Rm 326, Bedford Borough Council, Borough Hall, Cauldwell St, Bedford MK42 9AP"
+  },
+  "bhp": {
+    "telephone_general": "028 9055 3000",
+    "telephone_foi": "028 9055 4422",
+    "email_general": "port.police@belfast-harbour.co.uk",
+    "email_foi": "info@belfast-harbour.co.uk",
+    "postal_address": "Belfast Harbour Police, Port Operations Centre, Milewater Basin, Dufferin Road, Belfast Harbour, Belfast BT3 9AF"
+  },
+  "belfast_international_airport_constabulary": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info.desk@bfs.aero",
+    "postal_address": "Airport Police Station, Airport Road, Aldergrove, BT29 4AB"
+  },
+  "btp": {
+    "telephone_general": "0800 405040",
+    "telephone_foi": "02920 525338",
+    "email_general": "first_contact@btp.police.uk",
+    "email_foi": "foi@btp.pnn.police.uk",
+    "postal_address": "British Transport Police HQ, 25 Camden Rd, London NW1 9LN",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/forces-organisations/british-transport-police/"
+  },
+  "british_transport_police_authority": {
+    "telephone_general": "020 7383 0259",
+    "telephone_foi": "020 7383 0259",
+    "email_general": "btpa-enquiries@btp.police.uk",
+    "email_foi": "btpa-enquiries@btp.police.uk",
+    "postal_address": "British Transport Police Authority, British Transport Police FHQ, 25 Camden Road, London NW1 9LN"
+  },
+  "cambridgeshire_police": {
+    "telephone_general": "01480 456111",
+    "telephone_foi": "01480 456111",
+    "email_general": "",
+    "email_foi": "foi@cambs.pnn.police.uk",
+    "postal_address": "Cambridgeshire Police HQ, Hinchingbrooke Business Park, Brampton Rd, Huntingdon PE29 6NP",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/cambridgeshire"
+  },
+  "cambridgeshire_pcc": {
+    "telephone_general": "0300 333 3456",
+    "telephone_foi": "0300 333 3456",
+    "email_general": "cambs-pcc@cambs.police.uk",
+    "email_foi": "cambs-pcc@cambs.pnn.police.uk",
+    "postal_address": "Cambridgeshire Police and Crime Commissioner, PO Box 688, Huntingdon, PE29 9LA"
+  },
+  "cambridgeshire_pcp": {
+    "telephone_general": "01733 384629",
+    "telephone_foi": "01733 452533",
+    "email_general": "jane.webb@peterborough.gov.ukk",
+    "email_foi": "foi@peterborough.gov.uk",
+    "postal_address": "Cambridgeshire Police and Crime Panel, Cambridge City Council, The Guildhall, Cambridge CB2 3QJ"
+  },
+  "cheshire_police": {
+    "telephone_general": "01244 350000",
+    "telephone_foi": "01244 350000",
+    "email_general": "publiccontact@cheshire.pnn.police.uk",
+    "email_foi": "foi@cheshire.pnn.police.uk",
+    "postal_address": "Cheshire Police Headquarters, Clemonds Hey, Oakmere Rd, Winsford CW7 2UA",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/cheshire"
+  },
+  "cheshire_pcc": {
+    "telephone_general": "01606 364000",
+    "telephone_foi": "01606 364000",
+    "email_general": "police.crime.commissioner@cheshire.pnn.police.uk",
+    "email_foi": "police.crime.commissioner@cheshire.pnn.police.uk",
+    "postal_address": "Office of the Police & Crime Commissioner for Cheshire, Cheshire Constabulary Headquarters, Clemonds Hey, Oakmere Road, Winsford CW7 2UA"
+  },
+  "cheshire_pcp": {
+    "telephone_general": "01270 686012",
+    "telephone_foi": "01270 686012",
+    "email_general": "martin.r.smith@cheshireeast.gov.uk",
+    "email_foi": "martin.r.smith@cheshireeast.gov.uk",
+    "postal_address": "c/o Democratic Services, Cheshire East Council, Westfeilds, Middlewich Road, Sandbach CW11 1HZ"
+  },
+  "city_of_london_police": {
+    "telephone_general": "020 7601 2222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@city-of-london.pnn.police.uk",
+    "postal_address": "City of London Police HQ, PO Box 36451, 37 Wood Street, London, EC2P 2NHQ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/city-of-london"
+  },
+  "city_of_london_police_authority": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information.officer@cityoflondon.gov.uk",
+    "postal_address": ""
+  },
+  "cnc": {
+    "telephone_general": "03303 135400 or 012345 466 606",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@cnc.pnn.police.uk",
+    "postal_address": "Civil Nuclear Constabulary HQ, Culham Science Centre, Abingdon, OX14 3DB",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/hmicfrs/police-forces/civil-nuclear-constabulary"
+  },
+  "cnpa": {
+    "telephone_general": "01925 833300",
+    "telephone_foi": "",
+    "email_general": "info@cnpa.pnn.police.uk",
+    "email_foi": "foi@cnc.pnn.police.uk",
+    "postal_address": ""
+  },
+  "cleveland_police": {
+    "telephone_general": "01642 326 326",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Freedomof.Information@cleveland.pnn.police.uk",
+    "postal_address": "Cleveland Police HQ, P.O Box 70 Ladgate Lane, Middlesbrough TS8 9EH",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/cleveland"
+  },
+  "cleveland_pcc": {
+    "telephone_general": "01642 301861",
+    "telephone_foi": "",
+    "email_general": "pcc.office@cleveland.police.uk",
+    "email_foi": "pcc@cleveland.pnn.police.uk",
+    "postal_address": "Shared Services, c/o St Marks House, St Marks Court, Thornaby, Stockton-on-Tees TS17 6QW"
+  },
+  "cleveland_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "InformationGovernance@redcar-cleveland.gov.uk",
+    "postal_address": ""
+  },
+  "college_of_policing": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@college.pnn.police.uk",
+    "postal_address": ""
+  },
+  "cumbria_police": {
+    "telephone_general": "0300 124 0111",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@cumbria.police.uk",
+    "postal_address": "Cumbria Police HQ, Carleton Hall, 1-2 Carleton Avenue, Penrith CA10 2AU",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/cumbria"
+  },
+  "cumbria_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information.governance@cumbria.gov.uk",
+    "postal_address": ""
+  },
+  "cumbria_pfcc": {
+    "telephone_general": "01768 217734",
+    "telephone_foi": "",
+    "email_general": "commissioner@cumbria-pcc.gov.uk",
+    "email_foi": "commissioner@cumbria-pcc.gov.uk",
+    "postal_address": "Office of the Police and Crime Commissioner, 1-2 Carleton Hall, Penrith CA10 2AU"
+  },
+  "derbyshire_police": {
+    "telephone_general": "01773 730215",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@derbyshire.pnn.police.uk",
+    "postal_address": "Derbyshire Constabulary, Butterley Hall, Ripley, Derby DE5 3RS",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/derbyshire"
+  },
+  "derbyshire_pcc": {
+    "telephone_general": "0300 122 6000",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pccoffice@derbyshire.pnn.police.uk",
+    "postal_address": "The Office of the Police and Crime Commissioner for Derbyshire\nButterley Hall\nRipley\nDerbyshire\nDE5 3RS"
+  },
+  "derbyshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pccoffice@derbyshire.pnn.police.uk",
+    "postal_address": ""
+  },
+  "devon_and_cornwall_police": {
+    "telephone_general": "01392 420320",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@devonandcornwall.pnn.police.uk",
+    "postal_address": "Devon and Cornwall Police HQ, Sidmouth Road, Middlemoor, Exeter, EX2  7HQ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/devon-and-cornwall"
+  },
+  "devon_and_cornwall_pcc": {
+    "telephone_general": "01392 225555",
+    "telephone_foi": "",
+    "email_general": "opcc@dc-pcc.gov.uk",
+    "email_foi": "opcc@devonandcornwall.pnn.police.uk",
+    "postal_address": "The Office of the Police and Crime Commissioner\nAndy Hocking House\nAlderson Drive\nExeter\nEX2 7RP"
+  },
+  "devon_and_cornwall_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "democratic.support@plymouth.gov.uk",
+    "postal_address": ""
+  },
+  "dorset_police": {
+    "telephone_general": "01202 222 222 or 01305 222 222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@dorset.pnn.police.uk",
+    "postal_address": "Dorset Police Headquarters, Winfrith, Dorchester DT2 8DZ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/dorset"
+  },
+  "dorset_pcc": {
+    "telephone_general": "01202 229084",
+    "telephone_foi": "",
+    "email_general": "pcc@dorset.pnn.police.uk",
+    "email_foi": "pcc@dorset.pnn.police.uk",
+    "postal_address": ""
+  },
+  "dorset_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@dorsetcouncil.gov.uk",
+    "postal_address": ""
+  },
+  "durham_police": {
+    "telephone_general": "0345 606 0365",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@durham.pnn.police.uk",
+    "postal_address": "Durham Police HQ, Aykley Heads, Durham, DH1 5TT",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/durham"
+  },
+  "durham_pcc": {
+    "telephone_general": "0191 375 2001",
+    "telephone_foi": "",
+    "email_general": "General.EnquiriesPCC@durham-pcc.gov.uk",
+    "email_foi": "general.enquiries@durham.pcc.pnn.gov.uk",
+    "postal_address": "Durham Police and Crime Commissioner's Office, Durham Police Headquarters, Aykley Heads, Durham DH1 5TT"
+  },
+  "durham_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "inforights@durham.gov.uk",
+    "postal_address": ""
+  },
+  "dyfed_powys_police": {
+    "telephone_general": "01267 222020",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@dyfed-powys.pnn.police.uk",
+    "postal_address": "Dyfed-Powys Police Headquarters, PO Box 99, Carmarthen, SA31 2PF",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/dyfed-powys"
+  },
+  "dyfed_powys_pcc": {
+    "telephone_general": "01267 226440",
+    "telephone_foi": "",
+    "email_general": "opcc@dyfed-powys.police.uk",
+    "email_foi": "opcc@dyfed-powys.pnn.police.uk",
+    "postal_address": "Dyfed-Powys Police and Crime Commissioner, OPCC, PO Box 99, Llangunnor, Carmarthen SA31 2PF"
+  },
+  "dyfed_powys_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "alun.lloydjones@ceredigion.gov.uk",
+    "postal_address": ""
+  },
+  "essex_police": {
+    "telephone_general": "01245 491491",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info.rights.freedom@essex.police.uk",
+    "postal_address": "Essex Police HQ, Sandford Road, Chelmsford, Essex, CM1 6DN",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/essex"
+  },
+  "essex_pfcc": {
+    "telephone_general": "01245 291600",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "PFCC@essex.pnn.police.uk",
+    "postal_address": "Police, Fire and Crime Commissioner for Essex, Kelvedon Park, London Road, Rivenhall, Witham CM8 3HB"
+  },
+  "essex_police_fire_and_crime_panel": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Essex.PFCP@essex.gov.uk",
+    "postal_address": ""
+  },
+  "falmouth_docks_police": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Falmouth@ap-group.co.uk",
+    "postal_address": ""
+  },
+  "gloucestershire_police": {
+    "telephone_general": "01452 907330 or 01452 726 920",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "gloucestershire_police",
+    "postal_address": "Gloucestershire Police Headquarters, 1 Waterwells Drive, Quedgeley, Gloucester, GL2 2AN",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/gloucestershire"
+  },
+  "gloucestershire_pcc": {
+    "telephone_general": "01452 754348",
+    "telephone_foi": "",
+    "email_general": "pcc@gloucestershire.police.uk",
+    "email_foi": "pcc@gloucestershire.pnn.police.uk",
+    "postal_address": "No. 1 Waterwells, Waterwells Drive, Quedgeley, Gloucester GL2 2AN"
+  },
+  "gloucestershire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "customerservices@gloucestershire.gov.uk",
+    "postal_address": ""
+  },
+  "gmp": {
+    "telephone_general": "0161 872 5050",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@gmp.police.uk",
+    "postal_address": "Greater Manchester Police HQ, Northampton Road, Manchester, M40 5BP",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/greater-manchester"
+  },
+  "gwent_police": {
+    "telephone_general": "01633 838111",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@gwent.pnn.police.uk",
+    "postal_address": "Gwent Police Headquarters, Turnpike Road, Cwmbran, NP44 2AG",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/gwent"
+  },
+  "gwent_pcc": {
+    "telephone_general": "01633 642200",
+    "telephone_foi": "",
+    "email_general": "commissioner@gwent.pnn.police.uk",
+    "email_foi": "commissioner@gwent.pnn.police.uk",
+    "postal_address": "Chief Executive, Office of the Police and Crime Commissioner, Police Headquarters, Llantarnam Park Way, Llantarnam, Cwmbran, Torfaen NP44 3FW"
+  },
+  "gwent_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "gwentpcp@caerphilly.gov.uk",
+    "postal_address": ""
+  },
+  "hm_inspector_of_constabulary_for_scotland": {
+    "telephone_general": "0131 244 5614",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "hmic@gov.scot",
+    "postal_address": "HM Inspectorate of Constabulary for Scotland (HMICS), 1st Floor West, St Andrew's House, Regent Road, Edinburgh EH1 3DG"
+  },
+  "hmicfrs": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "HMICFRSFoI@hmicfrs.gov.uk",
+    "postal_address": ""
+  },
+  "hampshire_pcc": {
+    "telephone_general": "01962 871595",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "opcc@hampshire.pnn.police.uk",
+    "postal_address": "Office of the Police Crime Commissioner for Hampshire and the Isle of Wight, The Long Barn, Dean Estate, Wickham Road, Fareham PO17 5BN"
+  },
+  "hampshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "members.services@hants.gov.uk",
+    "postal_address": ""
+  },
+  "hampshire_police": {
+    "telephone_general": "01962 841534",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information@hampshire.pnn.police.uk",
+    "postal_address": "Hampshire Police Headquarters, Leigh Road, Eastleigh, SO50 9SJ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/hampshire"
+  },
+  "hertfordshire_police": {
+    "telephone_general": "01707 354000",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@herts.pnn.police.uk",
+    "postal_address": "Stanborough Road, Welwyn Garden City, Hertfordshire, AL8 6XF",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/hertfordshire"
+  },
+  "hertfordshire_pcc": {
+    "telephone_general": "01707 806100",
+    "telephone_foi": "",
+    "email_general": "commissioner@herts-pcc.gov.uk",
+    "email_foi": "commissioner@herts.pnn.police.uk",
+    "postal_address": "Police and Crime Commissioner for Hertfordshire, Harpenden Police Station, 13 Vaughan Road, Harpenden AL5 4GZ"
+  },
+  "hertfordshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pcp@broxbourne.gov.uk",
+    "postal_address": ""
+  },
+  "humberside_police": {
+    "telephone_general": "01482 220393",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "informationcomplianceunit@humberside.pnn.police.uk",
+    "postal_address": "Humberside Police HQ, Priory Road, Hull, HU5 5SF",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/humberside"
+  },
+  "humberside_pcc": {
+    "telephone_general": "01482 220787",
+    "telephone_foi": "01482 220787",
+    "email_general": "pcc@humberside.pnn.police.uk",
+    "email_foi": "policeandcrimepanel@northlincs.gov.uk",
+    "postal_address": "The Police and Crime Commissioner for Humberside, The Lawns, Harland Way, Cottingham HU16 5SN"
+  },
+  "humberside_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "policeandcrimepanel@northlincs.gov.uk",
+    "postal_address": ""
+  },
+  "ipab": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "acpo.request@foi.pnn.police.uk",
+    "postal_address": ""
+  },
+  "kent_police": {
+    "telephone_general": "01622 690 690",
+    "telephone_foi": "01622 690 690",
+    "email_general": "",
+    "email_foi": "freedomofinformation@kent.police.uk",
+    "postal_address": "Sutton Road, Maidstone, Kent, ME15 9BZ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/kent"
+  },
+  "kent_pcc": {
+    "telephone_general": "01622 677055",
+    "telephone_foi": "",
+    "email_general": "contactyourpcc@kent.police.uk",
+    "email_foi": "contactyourpcc@kent.police.uk",
+    "postal_address": "Office of the Kent Police and Crime Commissioner, Kent Police HQ, Sutton Road, Maidstone ME15 9BZ"
+  },
+  "kent_pcp": {
+    "telephone_general": "03000 416478",
+    "telephone_foi": "",
+    "email_general": "anna.taylor@kent.gov.uk",
+    "email_foi": "freedomofinformation@kent.gov.uk",
+    "postal_address": "Room 2.65, Sessions House, County Hall, Maidstone ME14 1XQ"
+  },
+  "lancashire_police": {
+    "telephone_general": "01772 614444",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@Lancashire.pnn.police.uk",
+    "postal_address": "Lancashire Police HQ, Saunders Lane, Hutton, Preston PR4 5SD",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/lancashire"
+  },
+  "lancashire_pcc": {
+    "telephone_general": "01772 533 587",
+    "telephone_foi": "",
+    "email_general": "commissioner@lancashire-pcc.gov.uk",
+    "email_foi": "commissioner@lancashire-pcc.gov.uk",
+    "postal_address": "The Office of the PCC for Lancashire, County Hall, Preston PR1 0LD"
+  },
+  "lancashire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Democraticservices@blackburn.gov.uk",
+    "postal_address": ""
+  },
+  "leicestershire_police": {
+    "telephone_general": "0116 222 2222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@leicestershire.pnn.police.uk",
+    "postal_address": "Leicestershire Police HQ, St Johns, Enderby, LE19 6BX",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/leicestershire"
+  },
+  "leicestershire_pcc": {
+    "telephone_general": "0116 229 8980",
+    "telephone_foi": "",
+    "email_general": "OPCC@leics.police.uk",
+    "email_foi": "police.commissioner@leicestershire.pnn.police.uk",
+    "postal_address": "Office of the Police and Crime Commissioner for Leicestershire, Police Headquarters, St Johns, Enderby, Leicester LE19 2BX"
+  },
+  "leicestershire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "info.requests@leicester.gov.uk",
+    "postal_address": ""
+  },
+  "lincolnshire_police": {
+    "telephone_general": "0300 111 0300 or 01522 532 222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@lincs.pnn.police.uk",
+    "postal_address": "Lincolnshire Police HQ, Deepdale Lane, Nettleham, LN2 2LT",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/lincolnshire"
+  },
+  "lincolnshire_pcc": {
+    "telephone_general": "01522 947192",
+    "telephone_foi": "",
+    "email_general": "lincolnshire-pcc@lincs.pnn.police.uk",
+    "email_foi": "lincolnshire-pcc@lincs.pnn.police.uk",
+    "postal_address": "Office of the Police and Crime Commissioner for Lincolnshire, Lincolnshire Police Headquarters, Deepdale Lane, Nettleham LN2 2LT"
+  },
+  "lincolnshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "lincolnshirepcp@e-lindsey.gov.uk",
+    "postal_address": ""
+  },
+  "mopac": {
+    "telephone_general": "020 7983 6532",
+    "telephone_foi": "",
+    "email_general": "enquiries@mopac.london.gov.uk",
+    "email_foi": "FOI@mopac.london.gov.uk",
+    "postal_address": ""
+  },
+  "merseyside_police": {
+    "telephone_general": "0151 709 6010",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@merseyside.police.uk",
+    "postal_address": "Merseyside Police HQ, 15 Cazneau St, Liverpool, L3 3AN",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/merseyside"
+  },
+  "merseyside_pcc": {
+    "telephone_general": "0151 777 5155",
+    "telephone_foi": "",
+    "email_general": "info@merseysidepcc.info",
+    "email_foi": "info@merseysidepcc.info",
+    "postal_address": "Office of the Police and Crime Commissioner for Merseyside, Mather Avenue Training Centre, Mather Avenue, Allerton L18 9TG"
+  },
+  "merseyside_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "merseysidepcp@knowsley.gov.uk",
+    "postal_address": ""
+  },
+  "the_met": {
+    "telephone_general": "020 7230 1212",
+    "telephone_foi": "",
+    "email_general": "new.scotland.yard@met.police.uk",
+    "email_foi": "foi@met.police.uk",
+    "postal_address": "Metropolitan Police HQ, New Scotland Yard, Victoria Embankment, London SW1A 2JL",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/metropolitan"
+  },
+  "mdp": {
+    "telephone_general": "01371 854444",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "MDP-FOI-DP@mod.gov.uk",
+    "postal_address": "Ministry of Defence HQ, Wethersfield, Braintree, Essex, CM7 4AZ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/hmicfrs/police-forces/ministry-of-defence-police"
+  },
+  "nca": {
+    "telephone_general": "0370 496 7622",
+    "telephone_foi": "",
+    "email_general": "communication@nca.gov.uk",
+    "email_foi": "StatutoryDisclosureTeam@nca.gov.uk",
+    "postal_address": "Units 1 - 6 Citadel Place, Tinworth Street, London SE11 5EF",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/hmicfrs/police-forces/national-crime-agency"
+  },
+  "npas": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "npas@npas.pnn.police.uk",
+    "postal_address": ""
+  },
+  "npcc": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "info@npcc.police.uk",
+    "email_foi": "npcc.foi.request@npfdu.police.uk",
+    "postal_address": "50 Broadway, London SW1H 0BL"
+  },
+  "norfolk_police": {
+    "telephone_general": "01953 424 242",
+    "telephone_foi": "",
+    "email_general": "enquiries@norfolk.pnn.police.uk",
+    "email_foi": "freedom@Norfolk.pnn.police.uk",
+    "postal_address": "Norfolk Police HQ, Jubilee House, Falconers Chase, Wymondham, NR18 0WW",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/norfolk"
+  },
+  "norfolk_pcc": {
+    "telephone_general": "01953 424455",
+    "telephone_foi": "",
+    "email_general": "opccn@norfolk.pnn.police.uk",
+    "email_foi": "opccn-foi@norfolk.pnn.police.uk",
+    "postal_address": "Office of the Police and Crime Commissioner, for Norfolk, Jubilee House, Falconers Chase, Wymondham NR18 0WW"
+  },
+  "norfolk_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information.management@norfolk.gov.uk",
+    "postal_address": ""
+  },
+  "north_wales_police": {
+    "telephone_general": "0300 330 0101",
+    "telephone_foi": "0300 330 0101",
+    "email_general": "northwalespolice@northwales.police.u",
+    "email_foi": "FreedomofInformationTeam@nthwales.pnn.police.uk",
+    "postal_address": "North Wales Police Headquarters, Glan Y Don, Abergele Road, Colwyn Bay LL29 8AW",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/north-wales"
+  },
+  "north_wales_pcc": {
+    "telephone_general": "01492 805486",
+    "telephone_foi": "01492 805486",
+    "email_general": "OPCC@nthwales.pnn.police.uk",
+    "email_foi": "OPCC@nthwales.pnn.police.uk",
+    "postal_address": "Office of the Police and Crime Commissioner North Wales, Police Headquarters, Glan y Don, Colwyn Bay, Conwy LL29 8AW"
+  },
+  "north_wales_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "policepanel@conwy.gov.uk",
+    "postal_address": ""
+  },
+  "nyp": {
+    "telephone_general": "01904 618691",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "CivilDisclosure@northyorkshire.pnn.police.uk",
+    "postal_address": "North Yorkshire Police HQ, 45 Crosby Road, Northallerton, DL6 1AA",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/north-yorkshire"
+  },
+  "north_yorkshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "infogov@northyorks.gov.uk",
+    "postal_address": ""
+  },
+  "north_yorkshire_pfcc": {
+    "telephone_general": "01423 569 562",
+    "telephone_foi": "",
+    "email_general": "info@northyorkshire-pfcc.gov.uk",
+    "email_foi": "info@northyorkshire-pfcc.gov.uk",
+    "postal_address": "Office of the Police, Fire and Crime Commissioner, Harrogate Police Station, Beckwith Head Rd, Harrogate HG3 1FR"
+  },
+  "northamptonshire_police": {
+    "telephone_general": "0300 011 1222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@northants.police.uk",
+    "postal_address": "Northamptonshire Police HQ, Wootton Hall Park, Northampton, NN4 0JQ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/northamptonshire"
+  },
+  "northamptonshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "jedmunds@northamptonshire.gov.uk",
+    "postal_address": ""
+  },
+  "northamptonshire_pcc": {
+    "telephone_general": "01604 888113",
+    "telephone_foi": "01604 888881",
+    "email_general": "commissioner@northantspfcc.pnn.police.uk",
+    "email_foi": "customerservice@northantspfcc.pnn.police.uk",
+    "postal_address": "Darby House, Darby Close, Park Farm Industrial Estate, Wellingborough NN8 6GS"
+  },
+  "northern_ireland_police_fund": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "admin@nipolicefund.org",
+    "postal_address": ""
+  },
+  "northern_ireland_policing_board": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@nipolicingboard.org.uk",
+    "postal_address": ""
+  },
+  "northumbria_police": {
+    "telephone_general": "01661 872 555",
+    "telephone_foi": "01661 872 555",
+    "email_general": "",
+    "email_foi": "freedom.info@northumbria.pnn.police.uk",
+    "postal_address": "Northumbria Police HQ, Middle Engine Lane, Wallsend, Tyne & Wear, NE28 9NT",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/northumbria"
+  },
+  "northumbria_pcc": {
+    "telephone_general": "07761764406",
+    "telephone_foi": "",
+    "email_general": "enquiries@northumbria-pcc.gov.uk",
+    "email_foi": "enquiries@northumbria-pcc.gov.uk",
+    "postal_address": "Northumbria Police & Crime Commissioner, 1st Floor Victory House, Balliol Business Park, Benton Lane, Newcastle upon Tyne NE12 8EW"
+  },
+  "northumbria_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "emmareynard@gateshead.gov.uk",
+    "postal_address": ""
+  },
+  "nottinghamshire_police": {
+    "telephone_general": "0115 967 0999",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "freedomofinformation@nottinghamshire.pnn.police.uk",
+    "postal_address": "Nottinghamshire Police HQ, Sherwood Lodge Drive, Arnold, Nottingham, NG5 8PP",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/nottinghamshire"
+  },
+  "nottinghamshire_pcc": {
+    "telephone_general": "0115 844 5998",
+    "telephone_foi": "",
+    "email_general": "Officepcc@notts.police.uk",
+    "email_foi": "nopcc@nottinghamshire.pnn.police.uk",
+    "postal_address": "The Office of the Police and Crime Commissioner for Nottinghamshire, Joint Headquarters, Sherwood Lodge, Arnold, Nottingham NG5 8PP"
+  },
+  "nottinghamshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "enquiries@nottscc.gov.uk",
+    "postal_address": ""
+  },
+  "police_advisory_board_for_england_and_wales": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pabewsecretariat@homeoffice.gov.uk",
+    "postal_address": ""
+  },
+  "pirc": {
+    "telephone_general": "0808 178 5577 or 01698 542 900",
+    "telephone_foi": "01698 542 900",
+    "email_general": "enquiries@pirc.gov.scot",
+    "email_foi": "informationrequests@pirc.gov.scot",
+    "postal_address": "Police Investigations & Review Commissioner (PIRC), Hamilton House, Hamilton Business Park, Caird Park, Hamilton ML3 0QA"
+  },
+  "police_scotland": {
+    "telephone_general": "01786 289070",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@scotland.pnn.police.uk",
+    "postal_address": "PO BOX 2460, Dalmarnock, Glasgow, G40 9BA",
+    "inspectorate_profile": "https://www.hmics.scot/"
+  },
+  "psni": {
+    "telephone_general": "028 9065 0222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@psni.pnn.police.uk",
+    "postal_address": "",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/hmicfrs/police-forces/police-service-northern-ireland"
+  },
+  "port_of_bristol_police": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "port.police@bristolport.co.uk",
+    "postal_address": ""
+  },
+  "port_of_dover_police": {
+    "telephone_general": "01304 240400",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI.portofdoverpolice@doverport.co.uk",
+    "postal_address": ""
+  },
+  "port_of_felixstowe_police": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "enquiries@fdrc.co.uk",
+    "postal_address": ""
+  },
+  "port_of_liverpool_police": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "GroupDataProtectionOfficer@peelports.com",
+    "postal_address": ""
+  },
+  "port_of_portland_police": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "police@portland-port.co.uk",
+    "postal_address": ""
+  },
+  "port_of_tilbury_london_police": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "police.control@potll.com",
+    "postal_address": ""
+  },
+  "rucgcf": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "rucgcfoundation@nics.gov.uk",
+    "postal_address": ""
+  },
+  "scottish_police_authority": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "enquiries@spa.police.uk",
+    "email_foi": "foi@spa.police.uk",
+    "postal_address": "Scottish Police Authority, 1 Pacific Quay, Glasgow G51 1DZ",
+    "inspectorate_profile": "https://www.hmics.scot/"
+  },
+  "south_wales_police": {
+    "telephone_general": "029 2022 2111",
+    "telephone_foi": "01656 655555",
+    "email_general": "publicservicecentre@south-wales.pnn.police.uk",
+    "email_foi": "foi@south-wales.pnn.police.uk",
+    "postal_address": "South Wales Police Headquarters, Cowbridge Road, Bridgend CF31 3SU",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/south-wales"
+  },
+  "south_wales_pcc": {
+    "telephone_general": "01656 869366",
+    "telephone_foi": "01656 869366",
+    "email_general": "commissioner@south-wales.police.uk",
+    "email_foi": "commissioner@south-wales.pnn.police.uk",
+    "postal_address": "Office of the Police and Crime Commissioner, Police Headquarters, Bridgend CF31 3SU"
+  },
+  "south_wales_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@merthyr.gov.uk",
+    "postal_address": ""
+  },
+  "syp": {
+    "telephone_general": "0114 219 6905",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@southyorks.pnn.police.uk",
+    "postal_address": "South Yorkshire Police Headquarters, Carbrook House, Carbrook Hall Road, Sheffield S9 2EG",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/south-yorkshire"
+  },
+  "south_yorkshire_pcc": {
+    "telephone_general": "0114 296 4150",
+    "telephone_foi": "",
+    "email_general": "info@southyorkshire-pcc.gov.uk",
+    "email_foi": "info@southyorkshire-pcc.gov.uk",
+    "postal_address": "South Yorkshire Police and Crime Commissioner, South Yorkshire Police HQ, Ground Floor, Carbrook House, Carbrook Hall Road, Sheffield S9 2EH"
+  },
+  "south_yorkshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Debbie.Bacon@rotherham.gov.uk",
+    "postal_address": ""
+  },
+  "staffordshire_police": {
+    "telephone_general": "0300 123 4455 or 01785 236 211",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@staffordshire.pnn.police.uk",
+    "postal_address": "Staffordshire Police Headquarters, Weston Road, Stafford, ST18 0YY",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/staffordshire"
+  },
+  "staffordshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "mandy.pattinson@staffordshire.gov.uk",
+    "postal_address": ""
+  },
+  "staffordshire_pfcc": {
+    "telephone_general": "01785232385",
+    "telephone_foi": "",
+    "email_general": "PFCC@staffordshire-pfcc.gov.uk",
+    "email_foi": "FOI.PFCC@staffordshire-pfcc.gov.uk",
+    "postal_address": "Commissioner's Office, Block 9, Weston Road, Stafford, ST18 0YY"
+  },
+  "suffolk_police": {
+    "telephone_general": "01473 613 500",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information@suffolk.pnn.police.uk",
+    "postal_address": "Suffolk Police HQ, Portal Avenue, Martlesham Heath, Ipswich IP5 3QS",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/suffolk"
+  },
+  "suffolk_pcc": {
+    "telephone_general": "01473 782773",
+    "telephone_foi": "01473 782773",
+    "email_general": "spcc@suffolk.police.uk",
+    "email_foi": "spcc@suffolk.pnn.police.uk",
+    "postal_address": "The Office of the Police and Crime Commissioner, Police Headquarters, Portal Avenue, Martlesham Heath, Ipswich IP5 3QS"
+  },
+  "suffolk_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "committee.services@suffolk.gov.uk",
+    "postal_address": ""
+  },
+  "surrey_police": {
+    "telephone_general": "01483 571212",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@surrey.pnn.police.uk",
+    "postal_address": "Surrey Police HQ, Mt Browne, Sandy Lane, Guildford, Surrey, GU3 1HG",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/surrey"
+  },
+  "surrey_pcc": {
+    "telephone_general": "01483 630200",
+    "telephone_foi": "",
+    "email_general": "surreypcc@surrey.police.uk",
+    "email_foi": "SurreyPCC@surrey.police.uk",
+    "postal_address": "Office of the Police and Crime Commissioner, PO Box 412, Guildford GU3 lYJ"
+  },
+  "surrey_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@surreycc.gov.uk",
+    "postal_address": ""
+  },
+  "sussex_police": {
+    "telephone_general": "01273 475432",
+    "telephone_foi": "01273 470 101",
+    "email_general": "",
+    "email_foi": "foi@sussex.pnn.police.uk",
+    "postal_address": "Sussex Police HQ, Church Lane, Lewes, East Sussex, BN7 2DZ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/sussex"
+  },
+  "sussex_pcc": {
+    "telephone_general": "01273 481561",
+    "telephone_foi": "",
+    "email_general": "pcc@sussex-pcc.gov.uk",
+    "email_foi": "spcc@sussex-pcc.gov.uk",
+    "postal_address": "Office of the Sussex Police & Crime Commissioner, Sackville House, Brooks Close, Lewes, East Sussex BN7 2FZ"
+  },
+  "sussex_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "ninesh.edwards@westsussex.gov.uk",
+    "postal_address": ""
+  },
+  "tees_and_hartlepool_harbour_police": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "dpo@pdports.co.uk",
+    "postal_address": ""
+  },
+  "thames_valley_police": {
+    "telephone_general": "01865 841148",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information@thamesvalley.pnn.police.uk",
+    "postal_address": "Thames Valley Police Headquarters, 169 Oxford Road, Kidlington OX5 2NX",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/thames-valley"
+  },
+  "thames_valley_pcc": {
+    "telephone_general": "01865 541957",
+    "telephone_foi": "",
+    "email_general": "pcc@thamesvalley.police.uk",
+    "email_foi": "pcc@thamesvalley.pnn.police.uk",
+    "postal_address": "OPCC, Thames Valley Police HQ, Oxford Road, Kidlington OX5 2NX"
+  },
+  "thames_valley_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "khalid.ahmed@oxfordshire.gov.uk",
+    "postal_address": ""
+  },
+  "police_federation": {
+    "telephone_general": "01372 352000",
+    "telephone_foi": "01372 352000",
+    "email_general": "communications@polfed.org",
+    "email_foi": "FOI@polfed.org",
+    "postal_address": "Police Federation of England and Wales, Federation House, Highbury Drive, Leatherhead, Surrey KT22 7UY"
+  },
+  "the_police_ict_company_limited": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOIRequests@homeoffice.gov.uk",
+    "postal_address": "33 Queen St Pl, London EC4R 1AP"
+  },
+  "ukfpu": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "partnership@fpu.pnn.police.uk",
+    "email_foi": "npcc.foi.request@npfdu.police.uk",
+    "postal_address": "UKFPU/FBOA, PO Box 2100, Crony CR90 9PW"
+  },
+  "nwcu": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "npcc.foi.request@npfdu.police.uk",
+    "postal_address": ""
+  },
+  "university_of_cambridge_constabulary": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "FOI@admin.cam.ac.uk",
+    "postal_address": "c/o The Proctors' Office, The Old Schools, Cambridge CB2 1TN"
+  },
+  "warwickshire_police": {
+    "telephone_general": "024 7664 1111 or 01926 375 222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "Freedom.Information@warwickshire.pnn.police.uk",
+    "postal_address": "Warwickshire Police HQ, Leek Wootton, Warwick, CV35 7QA",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/warwickshire"
+  },
+  "warwickshire_pcc": {
+    "telephone_general": "01926 733523",
+    "telephone_foi": "",
+    "email_general": "opcc@warwickshire.police.uk",
+    "email_foi": "opcc@warwickshire.police.uk",
+    "postal_address": "Office of the Police and Crime Commissioner, Warwickshire Police Headquarters, PO Box 4, Leek Wootton CV35 7QB"
+  },
+  "warwickshire_pcp": {
+    "telephone_general": "07392 278006",
+    "telephone_foi": "",
+    "email_general": "chris.kettle@stratford-dc.gov.uk",
+    "email_foi": "janepollard@warwickshire.gov.uk",
+    "postal_address": "Warwickshire Police and Crime Panel Chair, Shire Hall, Warwick CV34 4RL"
+  },
+  "west_mercia_police": {
+    "telephone_general": "01600 460080 or 0300 333 3000",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "information@westmercia.pnn.police.uk",
+    "postal_address": "West Mercia Police Headquarters, Hindlip, Worcester, WR3 8SP",
+    "inspectorate_profile": ""
+  },
+  "west_mercia_pcc": {
+    "telephone_general": "01905 331 656",
+    "telephone_foi": "01905 331 656",
+    "email_general": "opcc@westmercia.police.uk",
+    "email_foi": "opcc@westmercia.pnn.police.uk",
+    "postal_address": "Police and Crime Commissioner, West Mercia Police, Hindlip Hall, Worcester WR3 8SP"
+  },
+  "west_mercia_pcp": {
+    "telephone_general": "01905 763763",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "KGriffiths@worcestershire.gov.uk",
+    "postal_address": "Worcestershire County Council, County Hall, Spetchley Road, Worcester WR5 2NP"
+  },
+  "wmp": {
+    "telephone_general": "0345 113 5000 or 0121 626 5000",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@westmidlands.police.uk",
+    "postal_address": "West Midlands Police HQ, Lloyd House, Colmore Circus, Queensway, Birmingham, B4 6NQ",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/west-midlands"
+  },
+  "west_midlands_pcc": {
+    "telephone_general": "0121 626 6060",
+    "telephone_foi": "0121 626 6060",
+    "email_general": "wmpcc@westmidlands.police.uk",
+    "email_foi": "wmpcc@west-midlands.police.uk",
+    "postal_address": "West Midlands Police and Crime Commissioner, Lloyd House, Colmore Circus Queensway, Birmingham B4 6NQ"
+  },
+  "west_midlands_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "wmpcp@birmingham.gov.uk",
+    "email_foi": "wmpcp@birmingham.gov.uk",
+    "postal_address": "WMPCP Office, Overview and Scrutiny Team, Birmingham City Council, Council House, Victoria Square, Birmingham B1 1BB"
+  },
+  "west_yorkshire_police": {
+    "telephone_general": "01924 375222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "foi@westyorkshire.pnn.police.uk",
+    "postal_address": "West Yorkshire Police HQ, Laburnum Road, Wakefield, WF1 3QP",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/west-yorkshire"
+  },
+  "west_yorkshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "pcpofficer@wakefield.gov.uk",
+    "postal_address": ""
+  },
+  "wiltshire_police": {
+    "telephone_general": "01380 826614 or 01666 822222",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "disclosure@wiltshire.pnn.police.uk",
+    "postal_address": "Wiltshire Police HQ, London Road, Devizes, SN10 2DN",
+    "inspectorate_profile": "https://hmicfrs.justiceinspectorates.gov.uk/police-forces/wiltshire"
+  },
+  "wiltshire_pcc": {
+    "telephone_general": "01225 256926",
+    "telephone_foi": "",
+    "email_general": "pcc@wiltshire.police.uk",
+    "email_foi": "pcc@wiltshire.police.uk",
+    "postal_address": "London Road, Devizes SN10 2DN"
+  },
+  "wiltshire_pcp": {
+    "telephone_general": "",
+    "telephone_foi": "",
+    "email_general": "",
+    "email_foi": "committee@wiltshire.gov.uk",
+    "postal_address": ""
+  },
+  "york_minster_police": {
+    "telephone_general": "01904 557200",
+    "telephone_foi": "01904 557200",
+    "email_general": "police@yorkminster.org",
+    "email_foi": "police@yorkminster.org",
+    "postal_address": "York Minster, Deangate, York YO1 7HH"
+  }
+}

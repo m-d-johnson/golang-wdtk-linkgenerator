@@ -50,67 +50,70 @@ import (
 
 	"github.com/cavaliergopher/grab/v3"
 	"github.com/fatih/color"
+	"github.com/kr/pretty"
 	formatter "github.com/mdigger/goldmark-formatter"
 	flag "github.com/spf13/pflag"
 	"go.uber.org/ratelimit"
 )
-
-// Record is an entry in the manually curated file which provides data that WDTK does not.
-type Record struct {
-	WDTKID           string `json:"wdtk_id"`
-	TelephoneGeneral string `json:"telephone_general"`
-	TelephoneFOI     string `json:"telephone_foi"`
-	EmailGeneral     string `json:"email_general"`
-	EmailFOI         string `json:"email_foi"`
-	PostalAddress    string `json:"postal_address"`
-}
-
-// Authority is a public body on the WDTK website. Here, it contains additional fields which are not
-// provided by WhatDoTheyKnow. These fields are added from a manually maintained list.
-type Authority struct {
-	IsDefunct                            bool   `json:"Is_Defunct"`
-	WDTKID                               string `json:"WDTK_ID"`
-	WDTKOrgJSONURL                       string `json:"WDTK_Org_JSON_URL"`
-	WDTKAtomFeedURL                      string `json:"WDTK_Atom_Feed_URL"`
-	WDTKOrgPageURL                       string `json:"WDTK_Org_Page_URL"`
-	WDTKJSONFeedURL                      string `json:"WDTK_JSON_Feed_URL"`
-	DisclosureLogURL                     string `json:"Disclosure_Log_URL"`
-	HomePageURL                          string `json:"Home_Page_URL"`
-	Name                                 string `json:"Name"`
-	PublicationSchemeURL                 string `json:"Publication_Scheme_URL"`
-	DataProtectionRegistrationIdentifier string `json:"Data_Protection_Registration_Identifier"`
-	WikiDataIdentifier                   string `json:"WikiData_Identifier"`
-	LoCAuthorityID                       string `json:"LoC_Authority_ID"`
-	FOIEmailAddress                      string `json:"FOI_Email_Address"`
-	TelephoneGeneral                     string `json:"Telephone_General"`
-	TelephoneFOI                         string `json:"Telephone_FOI"`
-	EmailGeneral                         string `json:"Email_General"`
-	PostalAddress                        string `json:"Postal_Address"`
-}
-
-// JSONResponse is a JSON object from the authority page on the WDTK website.
-type JSONResponse struct {
-	Id                int
-	UrlName           string     `json:"wdtk_id"`
-	Name              string     `json:"name"`
-	ShortName         string     `json:"WDTK_ID"`
-	CreatedAt         string     `json:"created_At"`
-	UpdatedAt         string     `json:"updated_at"`
-	HomePage          string     `json:"home_page"`
-	Notes             string     `json:"notes"`
-	PublicationScheme string     `json:"publication_scheme"`
-	DisclosureLog     string     `json:"disclosure_log"`
-	Tags              [][]string `json:"tags"`
-}
 
 var green = color.New(color.FgHiGreen)
 var red = color.New(color.FgHiRed)
 var magenta = color.New(color.FgHiMagenta)
 var yellow = color.New(color.FgHiYellow)
 
+// CollectedDetailsEntry is a representatio of an entry in collected.json, which is a manually
+// maintained listing containing data which is not programmatically obtainable from the WDTK API.
+type CollectedDetailsEntry struct {
+	EmailFOI            string `json:"email_foi"`
+	EmailGeneral        string `json:"email_general"`
+	InspectorateProfile string `json:"inspectorate_profile"`
+	PostalAddress       string `json:"postal_address"`
+	TelephoneGeneral    string `json:"telephone_general"`
+	TelephoneFOI        string `json:"telephone_foi"`
+}
+
+// ParseCollectedDataFromJson is a WIP: Jan 2024 - it reads in the collected.json file which is
+// manually maintained.
+func ParseCollectedDataFromJson() {
+
+	// TODO: This needs to be moved somewhere that lets it only be opened and read in once per run,
+	// rather than for each new Authority that's created.
+
+	// Read emails from JSON file
+	collectedDataBytes, err := os.ReadFile("data/collected.json")
+	if err != nil {
+		Println("Error reading file collected.json:", err)
+		os.Exit(1)
+	}
+
+	var collected map[string]CollectedDetailsEntry
+	err = json.Unmarshal(collectedDataBytes, &collected)
+	if err != nil {
+		red.Println("Error decoding collected.json:", err)
+		os.Exit(1)
+	}
+
+	// TODO: Move this logic to the Authority constructor.
+	green.Printf("%# v\n", pretty.Formatter(collected))
+	for k, v := range collected {
+		Print("\n\n")
+		Println(k, ": ", v.InspectorateProfile)
+		Println("\n\nGet entry by key, in this case the General Email for the APCC")
+		Println(collected["apcc"].EmailGeneral)
+	}
+
+}
+
 func main() {
 
-	// Run test function ReadCSVFileAndConvertToJson (Builds JSON dataset from downloaded CSV)
+	// Run test function collected (Builds JSON dataset from manual CSV)
+	collectedFlag := flag.Bool(
+		"collected",
+		false,
+		"Runs collected.")
+
+	// Run test function ReadCSVFileAndConvertToJson
+	// (Builds JSON dataset from downloaded CSV)
 	testFlag := flag.Bool(
 		"test",
 		false,
@@ -210,7 +213,10 @@ func main() {
 		Cleanup(*retainFlag)
 		os.Exit(0)
 	}
-
+	if *collectedFlag {
+		ParseCollectedDataFromJson()
+		os.Exit(0)
+	}
 	red.Println("No options provided. Exiting.")
 
 }
@@ -292,24 +298,25 @@ func DescribeAuthority(wdtkID string) {
 
 	var p = NewAuthority(wdtkID, emails)
 
-	println("Force:               ", p.Name)
-	println("WDTK ID:             ", p.WDTKID)
-	println("Defunct:             ", p.IsDefunct)
-	println("WDTK Page:           ", p.WDTKOrgPageURL)
-	println("Home Page:           ", p.HomePageURL)
-	println("Publication Scheme:  ", p.PublicationSchemeURL)
-	println("Disclosure Log:      ", p.DisclosureLogURL)
-	println("Atom Feed:           ", p.WDTKAtomFeedURL)
-	println("JSON Feed:           ", p.WDTKJSONFeedURL)
-	println("JSON Data:           ", p.WDTKOrgJSONURL)
-	println("FOI Email:           ", p.FOIEmailAddress)
-	println("WikiData Identifier: ", p.WikiDataIdentifier)
-	println("LoC Authority ID:    ", p.LoCAuthorityID)
-	println("ICO Reg. Identifier: ", p.DataProtectionRegistrationIdentifier)
-	println("General Email:       ", p.EmailGeneral)
-	println("Telephone - General: ", p.TelephoneGeneral)
-	println("Telephone - FOI:     ", p.TelephoneFOI)
-	println("Postal Address:      ", p.PostalAddress)
+	println("Force:                ", p.Name)
+	println("WDTK ID:              ", p.WDTKID)
+	println("Defunct:              ", p.IsDefunct)
+	println("WDTK Page:            ", p.WDTKOrgPageURL)
+	println("Home Page:            ", p.HomePageURL)
+	println("Publication Scheme:   ", p.PublicationSchemeURL)
+	println("Disclosure Log:       ", p.DisclosureLogURL)
+	println("Atom Feed:            ", p.WDTKAtomFeedURL)
+	println("JSON Feed:            ", p.WDTKJSONFeedURL)
+	println("JSON Data:            ", p.WDTKOrgJSONURL)
+	println("FOI Email:            ", p.FOIEmailAddress)
+	println("WikiData Identifier:  ", p.WikiDataIdentifier)
+	println("LoC Authority ID:     ", p.LoCAuthorityID)
+	println("ICO Reg. Identifier:  ", p.DataProtectionRegistrationIdentifier)
+	println("General Email:        ", p.EmailGeneral)
+	println("Telephone - General:  ", p.TelephoneGeneral)
+	println("Telephone - FOI:      ", p.TelephoneFOI)
+	println("Postal Address:       ", p.PostalAddress)
+	println("Inspectorate Profile: ", p.InspectorateProfile)
 
 	tmpl := template.Must(template.New("Simple HTML Overview").Parse(simpleBodyOverviewPage))
 
@@ -487,10 +494,10 @@ func MakeTableFromGeneratedDataset() {
 		results = append(results, markup)
 	}
 
-	// For ease of reading
+	// For ease of reading, and it makes diffing the resulting output easier to see what changed.
 	sort.Strings(results)
 
-	// Finally write all the results to the file
+	// Finally write all the results to the file.
 	for _, rowOfMarkup := range results {
 		markdownOutputFile.WriteString(rowOfMarkup)
 	}
@@ -517,8 +524,8 @@ func Cleanup(retain bool) {
 	}
 }
 
-// NewAuthority creates a new Authority instance. It uses data from the foi-emails.json file
-// and some API calls.
+// NewAuthority creates a new Authority instance. It uses data from the foi-emails.json file, some
+// data from a manually-maintained file, and some API calls.
 func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 	var org = new(Authority)
 
@@ -602,6 +609,11 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 			} else {
 				yellow.Println("Additional data file: Postal Address not present.")
 			}
+			if i.InspectorateProfile != "" {
+				org.InspectorateProfile = i.InspectorateProfile
+			} else {
+				yellow.Println("Additional data file: Inspectorate Profile not present.")
+			}
 		}
 	}
 
@@ -682,8 +694,8 @@ func NewAuthorityFromCSV(record []string, emails map[string]string) *Authority {
 	return org
 }
 
-// GetEmailsFromJson opens the FOI emails file and returns unmarshalled JSON mapping force names to
-// their FOI email addresses.
+// GetEmailsFromJson opens the FOI emails file and returns a struct mapping force names to their FOI
+// email addresses.
 func GetEmailsFromJson() map[string]string {
 
 	// Read emails from JSON file
@@ -696,17 +708,18 @@ func GetEmailsFromJson() map[string]string {
 	var emails map[string]string
 	err = json.Unmarshal(emailsData, &emails)
 	if err != nil {
-		red.Println("Error decoding FOI emails JSON:", err)
+		red.Println("Error /decoding/ FOI emails JSON:", err)
 		os.Exit(1)
 	}
 	return emails
 }
 
-// GetExtraDetailsFromJson opens the manually curated file and returns unmarshalled JSON,
-// providing information not provided by WDTK.
+// GetExtraDetailsFromJson opens the manually curated file (collected.json) and returns unmarshalled
+// JSON, providing information not provided by WDTK.
 func GetExtraDetailsFromJson() []Record {
 
 	// Read emails from JSON file
+	// TODO: This is deprecated.
 	extraData, err := os.ReadFile("data/manual.json")
 	if err != nil {
 		Println("Error reading manual.json JSON:", err)
@@ -716,14 +729,16 @@ func GetExtraDetailsFromJson() []Record {
 	var records []Record
 	err = json.Unmarshal(extraData, &records)
 	if err != nil {
-		red.Println("Error decoding FOI emails JSON:", err)
+		red.Println("//Error decoding FOI emails JSON//:", err)
 		os.Exit(1)
 	}
 	return records
 }
 
 // RebuildDataset recreates the generated-dataset.json file, which is a subset of the bodies that
-// MySociety knows about -- it exists to have a source of information which includes FOI emails.
+// MySociety knows about -- it exists to have a source of information which includes both the data
+// that WDTK provides plus additional data like email addresses, postal addresses, and telephone
+// numbers.
 func RebuildDataset() {
 	// Generates a JSON dataset from two pieces of information - the WDTK url_name and the list
 	// of FOI email addresses. The rest of the information can be either be derived from the
@@ -755,7 +770,7 @@ func RebuildDataset() {
 	// foi-emails.json file.
 	for entry := range emails {
 		_ = rl.Take()
-		// todo: The Authority constructors could probably better read in the emails data rather
+		// TODO: The Authority constructors could probably better read in the emails data rather
 		//       having to open and parse it to pass it in every time.
 		var force = NewAuthority(entry, emails)
 		listOfForces = append(listOfForces, *force)
@@ -813,7 +828,7 @@ func FormatMarkdownFile(filePath string) {
 }
 
 // ReadCSVFileAndConvertToJson is used to convert CSV data exported from the spreadsheet MySociety
-// publishes. It provides more information than the CSV file they make available to download
+// publishes. It provides more information than does their API.
 // programmatically.
 func ReadCSVFileAndConvertToJson(filePath string) {
 	file, err := os.Open(filePath)
@@ -860,8 +875,9 @@ func ReadCSVFileAndConvertToJson(filePath string) {
 
 }
 
-// GenerateHeader is used by the code that makes the table of police forces but could be used for
-// producing more general overviews for other sets of authorities.
+// GenerateHeader returns a markdown table header and is used by the code that
+// makes the table of police forces but could be used for producing more general
+// overviews for other sets of authorities.
 func GenerateHeader() string {
 	body := "# Generated List of Police Forces (WhatDoTheyKnow)\n\n\n"
 	body += "**Generated from data provided by WhatDoTheyKnow. please contact\n"
@@ -873,7 +889,8 @@ func GenerateHeader() string {
 	return body
 }
 
-// GenerateReportHeader produces a very brief header of only a name, link to the page, and email.
+// GenerateReportHeader produces a very brief markdown table header of only a
+// name, link to the page, and email.
 func GenerateReportHeader(title string) string {
 	header := Sprintf("## %s\n\n|Name|Org Page|Email|\n|-|-|-|\n", title)
 	return header
@@ -911,7 +928,7 @@ func GenerateProblemReports() {
 	var emails map[string]string
 	err = json.Unmarshal(emailsData, &emails)
 	if err != nil {
-		Println("Error decoding FOI emails JSON:", err)
+		Println("Error unmarshalling FOI emails JSON:", err)
 		os.Exit(1)
 	}
 
