@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repo contains a tool that work with data provided by [MySociety](https://www.mysociety.org/). Among other things, it generates an overview of police forces in the United Kingdom.
+This repo contains a tool that works with data provided by [MySociety](https://www.mysociety.org/). Among other things, it generates an overview of police forces in the United Kingdom.
 
 There is also some code in here that can generate overview tables of the entire WDTK list of public bodies, or a subset.
 
@@ -24,6 +24,7 @@ This tool was written for a specific project and will likely not be maintained. 
 
 - data/foi-emails.json: Maps FOI email addresses to WDTK organisations by their 'URL Names'. Manually curated and
   required to regenerate the `generated-dataset.json` file.
+- data/manual.json: Manually curated file containing additional information to augment what we can get from WDTK.
 - data/police.json: Data from WikiData on UK Police Forces in JSON format.
 - data/wdtk-police.csv: Mapping of full names of police forces to the `URL Name` (Unmaintained).
 - data/wikidata-police-forces.json: Simple JSON mapping WikiData IDs to WDTK `URL Name`s (Unmaintained).

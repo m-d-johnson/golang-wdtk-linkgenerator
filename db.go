@@ -1,6 +1,6 @@
 /*
  *
- *  * Copyright (c) Mike Johnson 2023.
+ *  * Copyright (c) Mike Johnson 2024.
  *  *
  *  * Redistribution and use in source and binary forms, with or without
  *  * modification, are permitted provided that the following conditions
@@ -114,7 +114,7 @@ create table body
 	//}
 
 	queryStringBuilder := strings.Builder{}
-	queryStringBuilder.WriteString("insert into body(")
+	//queryStringBuilder.WriteString("insert into body")
 	queryStringBuilder.WriteString("short_name, name, url_name, tags, ")
 	queryStringBuilder.WriteString("home_page, publication_scheme, disclosure_log,")
 	queryStringBuilder.WriteString(" notes, created_at, updated_at, version, defunct, ")

@@ -1,6 +1,6 @@
 /*
  *
- *  * Copyright (c) Mike Johnson 2023.
+ *  * Copyright (c) Mike Johnson 2024.
  *  *
  *  * Redistribution and use in source and binary forms, with or without
  *  * modification, are permitted provided that the following conditions
@@ -66,7 +66,10 @@ type Record struct {
 }
 
 // Authority is a public body on the WDTK website. Here, it contains additional fields which are not
-// provided by WhatDoTheyKnow. These fields are added from a manually maintained list.
+// provided by WhatDoTheyKnow. These fields are added from a manually maintained list. This struct
+// is essentially how we aggregate information from different sources and bring it together to use.
+// That be by outputting it in a human (Markdown) or machine-readable (JSON) format, for example.
+// See also the `NewAuthority` function below, which is the constructor for this type.
 type Authority struct {
 	IsDefunct                            bool   `json:"Is_Defunct"`
 	WDTKID                               string `json:"WDTK_ID"`
@@ -88,7 +91,8 @@ type Authority struct {
 	PostalAddress                        string `json:"Postal_Address"`
 }
 
-// JSONResponse is a JSON object from the authority page on the WDTK website.
+// JSONResponse is a JSON object we get back when we ask for the JSON from the authority page on the
+// WDTK website.  It's the API response from WDTK.
 type JSONResponse struct {
 	Id                int
 	UrlName           string     `json:"wdtk_id"`
@@ -103,6 +107,8 @@ type JSONResponse struct {
 	Tags              [][]string `json:"tags"`
 }
 
+// Convenience functions that aid (and prettify) the console output. Successes in Green, warnings in
+// Yellow, errors in Red, etc.
 var green = color.New(color.FgHiGreen)
 var red = color.New(color.FgHiRed)
 var magenta = color.New(color.FgHiMagenta)
@@ -116,6 +122,7 @@ func main() {
 		false,
 		"Runs ReadCSVFileAndConvertToJson.")
 
+	// Used for the experiments I've been doing around creating/writing/manipulating SQLite DBs.
 	createDbFlag := flag.Bool(
 		"createdb",
 		false,
@@ -149,8 +156,8 @@ func main() {
 	describeFlag := flag.String(
 		"describe",
 		"",
-		"Requires the wdtk url_name. Describe an authority - returns links and metadata.")
-
+		"Requires the wdtk url_name. Describe an authority - returns links and metadata. Intended for use on the console.")
+	// TODO: This flag needs a better name, in line with the others.
 	qtag := flag.String(
 		"query",
 		"",
@@ -216,11 +223,13 @@ func main() {
 }
 
 func MakeMarkdownLinkToWdtkBodyPage(urlName string, label string) string {
+	// TODO: I'd prefer these to use string builders.
 	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ")"}
 	markup := strings.Join(markupElements, "")
 	return markup
 }
 func MakeMarkdownLinkToWdtkBodyJson(urlName string, label string) string {
+	// TODO: I'd prefer this use string builders.
 	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ".json)"}
 	markup := strings.Join(markupElements, "")
 	return markup
@@ -253,7 +262,7 @@ func BuildWDTKJSONFeedURL(wdtkID string) string {
 }
 
 // DescribeAuthority shows information on a user-specified authority and creates a simple HTML page.
-// Invoke with -describe
+// Invoke with `-describe`
 func DescribeAuthority(wdtkID string) {
 	// Attributes obtained from querying the site API:
 	green.Println("Showing information for ", wdtkID)
@@ -323,6 +332,7 @@ func DescribeAuthority(wdtkID string) {
 	defer outputHTMLFile.Close()
 
 	err = tmpl.Execute(outputHTMLFile, p)
+
 }
 
 // GetCSVDatasetFromMySociety downloads a CSV dataset of all bodies that WhatDoTheyKnow tracks.
@@ -333,16 +343,16 @@ func GetCSVDatasetFromMySociety() {
 	client := grab.NewClient()
 	req, _ := grab.NewRequest(".", "https://www.whatdotheyknow.com/body/all-authorities.csv")
 
-	// start download
+	// Start download
 	green.Printf("Downloading %v...\n", req.URL())
 	resp := client.Do(req)
 	green.Printf("  %v\n", resp.HTTPResponse.Status)
 
-	// start UI loop
+	// Start UI loop
 	t := time.NewTicker(500 * time.Millisecond)
 	defer t.Stop()
 
-	// check for errors
+	// Handle errors
 	if err := resp.Err(); err != nil {
 		Fprintf(os.Stderr, "Download failed: %v\n", err)
 		os.Exit(1)
@@ -467,6 +477,7 @@ func MakeTableFromGeneratedDataset() {
 		if force["Is_Defunct"].(bool) {
 			continue // Skip defunct organisations. Move to next record.
 		}
+		// TODO: This is a mess, needs to be more readable. String builder.
 		markup := Sprintf("|%v | [Website](%v)| [wdtk page](%v)| [wdtk json](%v)| [atom feed](%v)| [json feed](%v)|",
 			force["Name"], force["Home_Page_URL"], force["WDTK_Org_Page_URL"],
 			force["WDTK_Org_JSON_URL"], force["WDTK_Atom_Feed_URL"], force["WDTK_JSON_Feed_URL"])
