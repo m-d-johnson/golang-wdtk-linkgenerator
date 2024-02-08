@@ -55,6 +55,18 @@ import (
 	"go.uber.org/ratelimit"
 )
 
+// TODO: There's too much in this file, it needs to be carved up into smaller chunks.
+//       This has started with Templates stuff but perhaps:
+//       - utils & markdown-related stuff
+//       - ingest
+//       - report generation
+//       - query
+//
+
+// TODO: There are far too many hardcoded file paths in here, and by now I should be doing something
+//       about it.
+
+// TODO: This needs a better name, it's too ambiguous.
 // Record is an entry in the manually curated file which provides data that WDTK does not.
 type Record struct {
 	WDTKID           string `json:"wdtk_id"`
@@ -68,7 +80,8 @@ type Record struct {
 // Authority is a public body on the WDTK website. Here, it contains additional fields which are not
 // provided by WhatDoTheyKnow. These fields are added from a manually maintained list. This struct
 // is essentially how we aggregate information from different sources and bring it together to use.
-// That be by outputting it in a human (Markdown) or machine-readable (JSON) format, for example.
+// That may by outputting it in a human (Markdown) or machine-readable (JSON) format, for example.
+// Of course, we can also create these structs from the JSON we generated in the first place.
 // See also the `NewAuthority` function below, which is the constructor for this type.
 type Authority struct {
 	IsDefunct                            bool   `json:"Is_Defunct"`
@@ -93,12 +106,13 @@ type Authority struct {
 
 // JSONResponse is a JSON object we get back when we ask for the JSON from the authority page on the
 // WDTK website.  It's the API response from WDTK.
+// Example: https://www.whatdotheyknow.com/body/the_met.json
 type JSONResponse struct {
 	Id                int
 	UrlName           string     `json:"wdtk_id"`
 	Name              string     `json:"name"`
 	ShortName         string     `json:"WDTK_ID"`
-	CreatedAt         string     `json:"created_At"`
+	CreatedAt         string     `json:"created_At"` // TODO: Inconsistent capitalisation. Fix.
 	UpdatedAt         string     `json:"updated_at"`
 	HomePage          string     `json:"home_page"`
 	Notes             string     `json:"notes"`
@@ -107,8 +121,8 @@ type JSONResponse struct {
 	Tags              [][]string `json:"tags"`
 }
 
-// Convenience functions that aid (and prettify) the console output. Successes in Green, warnings in
-// Yellow, errors in Red, etc.
+// Convenience functions that aid (and prettify) the console output.
+// Green: Successes Yellow: Warnings. Red: Error. Magenta: Informational.
 var green = color.New(color.FgHiGreen)
 var red = color.New(color.FgHiRed)
 var magenta = color.New(color.FgHiMagenta)
@@ -177,19 +191,21 @@ func main() {
 		os.Exit(0)
 	}
 
-	// Generate a report of bodies that are missing certain metadata.
+	// Grabs a CSV file from MySociety.
+	// TODO: There are two files they provide, and this needs to be clearer as to which it gets.
 	if *downloadFlag {
 		GetCSVDatasetFromMySociety()
 		os.Exit(0)
 	}
 
-	// Generate a report of bodies that are missing certain metadata.
+	// Generate a report of bodies that are missing FOIA Publication Schemes and Disclosure Logs.
 	if *reportFlag {
 		GenerateProblemReports()
 		os.Exit(0)
 	}
 
-	// Describe user-supplied organisation.
+	// Describe an organisation which the user supplies on the CLI.
+	//
 	if len(*describeFlag) > 0 {
 		green.Println("Authority to describe: ", *describeFlag)
 		DescribeAuthority(*describeFlag)
@@ -204,14 +220,14 @@ func main() {
 		os.Exit(0)
 	}
 
-	// Regenerate the dataset, includes downloading new information from WDTK.
+	// Regenerate the dataset and overview table, includes downloading new information from WDTK.
 	if *refreshFlag {
 		RebuildDataset()
 		MakeTableFromGeneratedDataset()
 		Cleanup(*retainFlag)
 		os.Exit(0)
 	}
-
+	// Just regenerate the overview table, without downloading new information from WDTK.
 	if *tableFlag {
 		MakeTableFromGeneratedDataset()
 		Cleanup(*retainFlag)
@@ -264,9 +280,24 @@ func BuildWDTKJSONFeedURL(wdtkID string) string {
 // DescribeAuthority shows information on a user-specified authority and creates a simple HTML page.
 // Invoke with `-describe`
 func DescribeAuthority(wdtkID string) {
+	// TODO: This whole function needs to be violently refactored - it does things that are also
+	// done elsewhere and just repeats what we're already doing when we generate a dataset.
+	// It doesn't even do it as thoroughly as it's done elsewhere and it really just needs to:
+	// - Check the local JSON we generate elsewhere and read details out from that, or
+	// - Just create a new Authority object and let the constructor do the work.
+	//
+	// With that said, this was really only added as an excuse to play around with Go Templates for
+	// the first time in years. At least it did that.
+	//
+	// It also generates console (stdout) and HTML (to a file) in the same function so at the very
+	// least it needs to split that in two and have a function per output format.
+	//
 	// Attributes obtained from querying the site API:
 	green.Println("Showing information for ", wdtkID)
 
+	// TODO: Feels like there's repeated code here from where we get data while in the constructor
+	// for Authority (NewAuthority) so this needs its own function otherwise we're eventually
+	// going to change one and not the other and have odd behaviour.
 	req, err := http.NewRequest("GET", BuildWDTKBodyJSONURL(wdtkID), nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
 	resp, err := http.DefaultClient.Do(req)
@@ -300,7 +331,7 @@ func DescribeAuthority(wdtkID string) {
 	}
 
 	var p = NewAuthority(wdtkID, emails)
-
+	// TODO: Find a prettyprinter module for this, there has to be a better way.
 	println("Force:               ", p.Name)
 	println("WDTK ID:             ", p.WDTKID)
 	println("Defunct:             ", p.IsDefunct)
@@ -322,6 +353,7 @@ func DescribeAuthority(wdtkID string) {
 
 	tmpl := template.Must(template.New("Simple HTML Overview").Parse(simpleBodyOverviewPage))
 
+	// TODO: I hate this, do something about it and don't do it again.
 	var outputFilePathBuilder strings.Builder
 	outputFilePathBuilder.WriteString("output/")
 	outputFilePathBuilder.WriteString("summary-")
@@ -331,7 +363,11 @@ func DescribeAuthority(wdtkID string) {
 	outputHTMLFile, _ := os.Create(outputFilePath)
 	defer outputHTMLFile.Close()
 
+	// This is the bit that actually executes the template
 	err = tmpl.Execute(outputHTMLFile, p)
+	if err != nil {
+		red.Println("Failed to output a HTML file based on this name: ", err)
+	}
 
 }
 
@@ -366,10 +402,12 @@ func GetCSVDatasetFromMySociety() {
 // downloaded CSV file in order to have access to all the bodies they know about (and it saves a
 // load of API calls).
 func RunCustomQuery(tag *string) {
+	// TODO: This whole thing needs looking at for how strings are built.
 	print(Sprintf("Query MySociety dataset for a custom tag: %s", *tag))
 	var csvFile, _ = os.Open("output/all-authorities.csv")
 	reader := csv.NewReader(csvFile)
 
+	// TODO: I hate this
 	resultsFileNameElements := []string{"output/", "custom-query-", *tag, ".md"}
 	resultsFileName := strings.Join(resultsFileNameElements, "")
 	resultsTable, err := os.Create(resultsFileName)
@@ -418,11 +456,12 @@ func RunCustomQuery(tag *string) {
 	var markdownRow strings.Builder
 
 	for _, row := range rows {
+		// TODO: This is duplicated functionality and also needs to use the Authority constructor.
 		tagsList := strings.Split(row[3], " ")
 		if slices.Contains(tagsList, *tag) && !slices.Contains(tagsList, "defunct") {
 			var name = row[0]
 			var urlName = row[2]
-			// todo: Replace with string builder
+			// TODO: Replace with string builder
 			markdownRow.WriteString("| ") // Markdown row start delimiter
 			markdownRow.WriteString(MakeMarkdownLinkToWdtkBodyPage(urlName, name))
 			markdownRow.WriteString(" | ") // Markdown row column separator
@@ -439,8 +478,8 @@ func RunCustomQuery(tag *string) {
 
 }
 
-// MakeTableFromGeneratedDataset creates a table of UK police forces from the generated JSON dataset
-// and the foi-emails.txt files. The table it creates is rendered in Markdown and stored in output/.
+// MakeTableFromGeneratedDataset creates a Markdown table of UK police forces from the generated
+// JSON dataset and the foi-emails.txt files. The table it creates is stored in `output/`.
 func MakeTableFromGeneratedDataset() {
 	magenta.Println("Generating table from the generated JSON dataset...")
 
@@ -531,6 +570,9 @@ func Cleanup(retain bool) {
 // NewAuthority creates a new Authority instance. It uses data from the foi-emails.json file
 // and some API calls.
 func NewAuthority(wdtkID string, emails map[string]string) *Authority {
+	// TODO: There needs to be more input sanitisation here.
+	// TODO: When the manually curated JSON is ready, this function needs to use it as input.
+	// TODO: When that's done, code needs to be deleted in here.
 	var org = new(Authority)
 
 	// Defaults
@@ -696,6 +738,9 @@ func NewAuthorityFromCSV(record []string, emails map[string]string) *Authority {
 // GetEmailsFromJson opens the FOI emails file and returns unmarshalled JSON mapping force names to
 // their FOI email addresses.
 func GetEmailsFromJson() map[string]string {
+	// TODO: This needs to be refactored and deleted. There needs to just be a function that takes
+	// a wtdk_id and returns the email instead of passing in the foi-emails.json file all over the
+	// place.
 
 	// Read emails from JSON file
 	emailsData, err := os.ReadFile("data/foi-emails.json")
@@ -757,7 +802,8 @@ func RebuildDataset() {
 	}
 
 	var listOfForces []Authority
-	// Important to rate-limit for the sake of MySociety's service.
+	// Important to rate-limit because I want to be polite with MySociety's service (and they'll
+	// ratelimit me and I won't get data).
 	var qps = 4
 	Println(Sprintf("Rate-limiting to %d queries/sec", qps))
 	var rl = ratelimit.New(qps) // per second
@@ -766,8 +812,8 @@ func RebuildDataset() {
 	// foi-emails.json file.
 	for entry := range emails {
 		_ = rl.Take()
-		// todo: The Authority constructors could probably better read in the emails data rather
-		//       having to open and parse it to pass it in every time.
+		// TODO: The Authority constructor should be reading or looking up the emails data rather
+		//       having to open and parse it to pass it in every time. There's too much inefficiency
 		var force = NewAuthority(entry, emails)
 		listOfForces = append(listOfForces, *force)
 	}
@@ -775,6 +821,9 @@ func RebuildDataset() {
 	// Sorting because it makes diffing the dataset file much easier.
 	sort.Slice(listOfForces, func(i, j int) bool { return listOfForces[i].Name < listOfForces[j].Name })
 
+	// TODO: I really want to have JSON schema against which I can validate this.
+	// TODO: Make JSON schema.
+	// TODO: Use JSON schema.
 	// Write dataset to JSON file
 	outFile, err := os.Create("data/generated-dataset.json")
 	if err != nil {
@@ -800,7 +849,8 @@ func RebuildDataset() {
 }
 
 func FormatMarkdownFile(filePath string) {
-
+	// TODO: This never worked right and when I look at it I feel guilty of a crime. It's hack upon
+	// hack to try to get around some problem with file handles not being released.
 	tmpFilePath := filePath + "-tmp"
 
 	err := os.Rename(filePath, tmpFilePath)
@@ -874,6 +924,7 @@ func ReadCSVFileAndConvertToJson(filePath string) {
 // GenerateHeader is used by the code that makes the table of police forces but could be used for
 // producing more general overviews for other sets of authorities.
 func GenerateHeader() string {
+	// TODO: String Builder to make this a little less messy. I hate doing things like this.
 	body := "# Generated List of Police Forces (WhatDoTheyKnow)\n\n\n"
 	body += "**Generated from data provided by WhatDoTheyKnow. please contact\n"
 	body += "them with corrections. This table will be corrected when the "
@@ -886,12 +937,14 @@ func GenerateHeader() string {
 
 // GenerateReportHeader produces a very brief header of only a name, link to the page, and email.
 func GenerateReportHeader(title string) string {
+	// TODO: String Builder to get rid of this sprintf
 	header := Sprintf("## %s\n\n|Name|Org Page|Email|\n|-|-|-|\n", title)
 	return header
 }
 
-// GenerateProblemReports generates reports based on data/generated-dataset.json - it's used for
-// finding authorities that are missing disclosure log and publication scheme links.
+// GenerateProblemReports generates Markdown reports (written to a file) based on
+// `data/generated-dataset.json` - it's used for finding authorities that are missing disclosure log
+// and publication scheme links.
 func GenerateProblemReports() {
 	// Open the dataset of police forces.
 	datasetFile, err := os.ReadFile("data/generated-dataset.json")

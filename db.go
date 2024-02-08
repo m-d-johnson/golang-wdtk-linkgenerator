@@ -44,6 +44,12 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+// In a sensible world, I'd have put my works-in-progress on a dev branch like any professional
+// would do. Alas.
+
+// CreateAndPopulateSQLiteDatabaseAll is a work in progress, it doesn't work but this code path
+// doesn't run unless you explicitly tell it to do so. It's also totally lacking in any sort of
+// design as I really just want to play around with SQLite.
 func CreateAndPopulateSQLiteDatabaseAll() {
 	db, err := sql.Open("sqlite3", "./body.sqlite")
 	if err != nil {

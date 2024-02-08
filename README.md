@@ -4,11 +4,13 @@
 
 This repo contains a tool that works with data provided by [MySociety](https://www.mysociety.org/). Among other things, it generates an overview of police forces in the United Kingdom.
 
-There is also some code in here that can generate overview tables of the entire WDTK list of public bodies, or a subset.
+There is also some code in here that can generate overview tables of the entire WDTK list of public bodies, or a subset of them.
 
-It also generates an OPML file which can be imported to a feed reader to monitor all FOI requests and updates that the WDTK site knows about.
+It also generates an OPML file which can be imported to a feed reader to monitor all UK Police FOI requests and updates tracked by WDTK.
 
-This tool was written for a specific project and will likely not be maintained. This is why it has odd functionality and why some parts are a bit messy.
+This tool was written for a specific project, and will likely not be maintained.
+
+This is why it has odd functionality and why some parts are messy - it's very much a toy project and I have used it as a way to learn things. There are no warranties and while I'll try to make fixes, they may take some time.
 
 ## Usage
 
@@ -43,3 +45,7 @@ Much of the information listed in the tables is simply derived from the unique I
 
 - Tags are available from the JSON data available per-body and also in the CSV that's downloaded from MySociety.
 - FOI Emails are not programmatically available and are kept in a file.
+
+# A note on testing
+
+You'll note that there aren't tests. I am aware that good software engineering means testing your code is mandatory, but also aware that this code isn't really meant to be good software engineering as its very narrow use case means that errors are tolerable and the time spent creating tests needed to be spent organising data :)
