@@ -239,93 +239,6 @@ func main() {
 
 }
 
-func MakeMarkdownLink(linkType string, urlName string, label string) string {
-	// Valid linkTypes are: authority_web, authority_json, feed_json, or feed_atom
-
-	// If this is called with a missing label, we don't necessarily want
-	// this to crash the program. It's to be expected that data may be
-	// incomplete because of the nature of what this tool does.Instead,
-	// we should log to console that there was an attempt to create a link
-	// where there might be data missing, then we should return something
-	// that's still valid markdown so it doesn't break the rendering of
-	// whatever the return value of this function is inserted into.
-	if len(label) == 0 {
-		magenta.Println("Tried to make a markdown link but was missing the label!")
-		label = "Link label unknown"
-	}
-	// Calling this function with a missing urlName is different as the whole
-	// point of making a link is that you have a functioning link, so we just
-	// warn and return something that won't break the rest of the Markdown.
-	if len(urlName) == 0 {
-		magenta.Println("Tried to make a markdown link but was missing the link!")
-		return "[]()"
-	}
-	var urlStem = "https://www.whatdotheyknow.com/"
-	// Link differs depending on the type of URL we want:
-	// There are the following types of URL (associated linkType parenthesised):
-	// - Body Page: https://www.whatdotheyknow.com/body/wdtk_id (authority_web)
-	// - Body JSON  https://www.whatdotheyknow.com/body/wdtk_id (authority_json)
-	// - Body Atom Feed: https://www.whatdotheyknow.com/feed/body/wdtk_id (feed_atom)
-	// - Body JSON Feed: https://www.whatdotheyknow.com/feed/body/wdtk_id (feed_json)
-
-	if linkType == "authority_web" || linkType == "authority_json" {
-		urlStem = "https://www.whatdotheyknow.com/body/"
-	} else if linkType == "feed_json" || linkType == "feed_atom" {
-		urlStem = "https://www.whatdotheyknow.com/feed/body/"
-	} else {
-		log.Fatal("Tried to make a Markdown link without specifying the link type")
-	}
-
-	var urlSuffix = ""
-	if linkType == "feed_json" || linkType == "authority_json" {
-		urlSuffix = ".json"
-	}
-
-	// Now that's been set, we can begin writing the link:
-	var sb strings.Builder
-	sb.WriteString("[")
-	sb.WriteString(label)
-	sb.WriteString("](")
-	sb.WriteString(urlStem)
-	sb.WriteString(urlName)
-	sb.WriteString(urlSuffix)
-	sb.WriteString(")")
-
-	return sb.String()
-}
-func MakeMarkdownLinkToWdtkBodyJson(urlName string, label string) string {
-	// TODO: I'd prefer this use string builders.
-	markupElements := []string{"[", label, "](", "https://www.whatdotheyknow.com/body/", urlName, ".json)"}
-	markup := strings.Join(markupElements, "")
-	return markup
-}
-func BuildWDTKBodyURL(wdtkID string) string {
-	var sb strings.Builder
-	sb.WriteString("https://www.whatdotheyknow.com/body/")
-	sb.WriteString(wdtkID)
-	return sb.String()
-}
-func BuildWDTKBodyJSONURL(wdtkID string) string {
-	var sb strings.Builder
-	sb.WriteString("https://www.whatdotheyknow.com/body/")
-	sb.WriteString(wdtkID)
-	sb.WriteString(".json")
-	return sb.String()
-}
-func BuildWDTKAtomFeedURL(wdtkID string) string {
-	var sb strings.Builder
-	sb.WriteString("https://www.whatdotheyknow.com/feed/body/")
-	sb.WriteString(wdtkID)
-	return sb.String()
-}
-func BuildWDTKJSONFeedURL(wdtkID string) string {
-	var sb strings.Builder
-	sb.WriteString("https://www.whatdotheyknow.com/feed/body/")
-	sb.WriteString(wdtkID)
-	sb.WriteString(".json")
-	return sb.String()
-}
-
 // DescribeAuthority shows information on a user-specified authority and creates a simple HTML page.
 // Invoke with `-describe`
 func DescribeAuthority(wdtkID string) {
@@ -510,11 +423,13 @@ func RunCustomQuery(tag *string) {
 		if slices.Contains(tagsList, *tag) && !slices.Contains(tagsList, "defunct") {
 			var name = row[0]
 			var urlName = row[2]
+			var weblink, _ = MakeMarkdownLink("authority_web", urlName, name)
+			var bodyjsonlink, _ = MakeMarkdownLink("authority_json", urlName, name)
 			// TODO: Replace with string builder
 			markdownRow.WriteString("| ") // Markdown row start delimiter
-			markdownRow.WriteString(MakeMarkdownLinkToWdtkBodyPage(urlName, name))
+			markdownRow.WriteString(weblink)
 			markdownRow.WriteString(" | ") // Markdown row column separator
-			markdownRow.WriteString(MakeMarkdownLinkToWdtkBodyJson(urlName, "JSON"))
+			markdownRow.WriteString(bodyjsonlink)
 			markdownRow.WriteString(" |\n") // Markdown row end delimiter
 			_, err = resultsTable.WriteString(markdownRow.String())
 			if err != nil {
@@ -968,27 +883,6 @@ func ReadCSVFileAndConvertToJson(filePath string) {
 		green.Println("Dataset generated and saved to", outFile.Name())
 	}
 
-}
-
-// GenerateHeader is used by the code that makes the table of police forces but could be used for
-// producing more general overviews for other sets of authorities.
-func GenerateHeader() string {
-	// TODO: String Builder to make this a little less messy. I hate doing things like this.
-	body := "# Generated List of Police Forces (WhatDoTheyKnow)\n\n\n"
-	body += "**Generated from data provided by WhatDoTheyKnow. please contact\n"
-	body += "them with corrections. This table will be corrected when the "
-	body += "script next runs.**\n\n"
-	body += "[OPML File](police.opml)\n\n"
-	body += "|Body|Website|WDTK Page|JSON|Feed: Atom|Feed: JSON|Publication Scheme|Disclosure Log|Email|\n"
-	body += "|-|-|-|-|-|-|-|-|-|\n"
-	return body
-}
-
-// GenerateReportHeader produces a very brief header of only a name, link to the page, and email.
-func GenerateReportHeader(title string) string {
-	// TODO: String Builder to get rid of this sprintf
-	header := Sprintf("## %s\n\n|Name|Org Page|Email|\n|-|-|-|\n", title)
-	return header
 }
 
 // GenerateProblemReports generates Markdown reports (written to a file) based on

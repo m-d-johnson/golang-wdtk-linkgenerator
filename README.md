@@ -1,5 +1,17 @@
 # WhatDoTheyKnow data munge tool: Generate overviews of certain organisations that [WhatDoTheyKnow](https://whatdotheyknow.com) monitors
 
+## Foreword
+
+This is not a well-engineered piece of software - it was assembled organically (read: scope creep) as the needs of a now-complete project evolved.
+
+It was also used as an excuse to learn some more Go outside of work and to develop some other skills elsewhere.
+
+For these reasons, please be assured that I do know better than to have code like this in production :) This tool should be:
+
+- A library that does some operations on data, and
+- Some tools that either collect and assemble data into JSON, or
+- use the data from that JSON to do other things with it.
+
 ## Purpose
 
 This repo contains a tool that works with data provided by [MySociety](https://www.mysociety.org/). Among other things, it generates an overview of police forces in the United Kingdom.

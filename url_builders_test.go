@@ -35,70 +35,45 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"os"
 	"testing"
 )
 
-// TestCleanupWithRetainFalse calls main.Cleanup with a bool retain=false after creating a file
-//
-//	called `output/all-authorities.csv`. The expected behaviour is that the file will be deleted.
-//
-// The test must fail if the file isn't deleted.
-func TestCleanup_RetainFalse(t *testing.T) {
-	// Create output/ directory
-	if _, err := os.Stat("output"); os.IsNotExist(err) {
-		err := os.Mkdir("output", 0755)
-		if err != nil {
-			fmt.Println("Error creating an output/ directory: ", err)
-		}
-	}
-
-	// Create all-authorities.csv file
-	if _, err := os.Stat("output"); !os.IsNotExist(err) {
-		f, err := os.Create("output/all-authorities.csv")
-		if err != nil {
-			log.Fatalln("Failed to create file output/all-authorities.csv", err)
-		}
-		f.Close()
-	}
-
+// This test calls BuildWDTKBodyURL with valid input and expects a well-formed result.
+func TestBuildWDTKBodyURL_ValidParameters(t *testing.T) {
+	want := "https://www.whatdotheyknow.com/body/valid_wdtk_id"
 	// Call function under test
-	Cleanup(false)
-
-	// Check if file still exists
-	if _, e := os.Stat("output/all-authorities.csv"); !os.IsNotExist(e) {
-		t.Errorf("error path output/all-authorities still exists: %v", e)
+	result := BuildWDTKBodyURL("valid_wdtk_id")
+	if result != want {
+		t.Errorf("got %s but expected %s", result, want)
 	}
 }
 
-func TestCleanup_RetainTrue(t *testing.T) {
-	// Create output/ directory
-	if _, err := os.Stat("output"); os.IsNotExist(err) {
-		err := os.Mkdir("output", 0755)
-		if err != nil {
-			fmt.Println("Error creating an output/ directory: ", err)
-		}
-	}
-
-	// Create all-authorities.csv file
-	if _, err := os.Stat("output"); !os.IsNotExist(err) {
-		f, err := os.Create("output/all-authorities.csv")
-		if err != nil {
-			log.Fatalln("Failed to create file output/all-authorities.csv", err)
-		}
-		f.Close()
-	}
-
+// This test calls BuildWDTKBodyJSONURL with valid input and expects a well-formed result.
+func TestBuildWDTKBodyJSONURL_ValidParameters(t *testing.T) {
+	want := "https://www.whatdotheyknow.com/body/valid_wdtk_id.json"
 	// Call function under test
-	Cleanup(true)
-
-	// Check if file still exists
-	if _, e := os.Stat("output/all-authorities.csv"); os.IsNotExist(e) {
-		t.Errorf("error path output/all-authorities.csv does not exist: %v", e)
+	result := BuildWDTKBodyJSONURL("valid_wdtk_id")
+	if result != want {
+		t.Errorf("got %s but expected %s", result, want)
 	}
+}
 
-	// Cleaning up the file that we retained
-	os.Remove("output/all-authorities.csv")
+// This test calls BuildWDTKAtomFeedURL with valid input and expects a well-formed result.
+func TestBuildWDTKBodyAtomFeedURL_ValidParameters(t *testing.T) {
+	want := "https://www.whatdotheyknow.com/feed/body/valid_wdtk_id"
+	// Call function under test
+	result := BuildWDTKAtomFeedURL("valid_wdtk_id")
+	if result != want {
+		t.Errorf("got %s but expected %s", result, want)
+	}
+}
+
+// This test calls BuildWDTKJSONFeedURL with valid input and expects a well-formed result.
+func TestBuildWDTKBodyJSONFeedURL_ValidParameters(t *testing.T) {
+	want := "https://www.whatdotheyknow.com/feed/body/valid_wdtk_id.json"
+	// Call function under test
+	result := BuildWDTKJSONFeedURL("valid_wdtk_id")
+	if result != want {
+		t.Errorf("got %s but expected %s", result, want)
+	}
 }

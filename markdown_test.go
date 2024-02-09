@@ -35,70 +35,47 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"os"
 	"testing"
 )
 
-// TestCleanupWithRetainFalse calls main.Cleanup with a bool retain=false after creating a file
-//
-//	called `output/all-authorities.csv`. The expected behaviour is that the file will be deleted.
-//
-// The test must fail if the file isn't deleted.
-func TestCleanup_RetainFalse(t *testing.T) {
-	// Create output/ directory
-	if _, err := os.Stat("output"); os.IsNotExist(err) {
-		err := os.Mkdir("output", 0755)
-		if err != nil {
-			fmt.Println("Error creating an output/ directory: ", err)
-		}
-	}
-
-	// Create all-authorities.csv file
-	if _, err := os.Stat("output"); !os.IsNotExist(err) {
-		f, err := os.Create("output/all-authorities.csv")
-		if err != nil {
-			log.Fatalln("Failed to create file output/all-authorities.csv", err)
-		}
-		f.Close()
-	}
-
+// This test calls MakeMarkdownLink with valid inputs and checks that we get a well-formed result.
+func TestMakeMarkdownLink_ValidParameters(t *testing.T) {
+	want := "[A Valid Label](https://www.whatdotheyknow.com/body/valid_wdtk_id)"
 	// Call function under test
-	Cleanup(false)
-
-	// Check if file still exists
-	if _, e := os.Stat("output/all-authorities.csv"); !os.IsNotExist(e) {
-		t.Errorf("error path output/all-authorities still exists: %v", e)
+	result, err := MakeMarkdownLink("authority_web", "valid_wdtk_id", "A Valid Label")
+	if result != want || err != 0 {
+		t.Errorf("got %s but expected %s", result, want)
 	}
 }
 
-func TestCleanup_RetainTrue(t *testing.T) {
-	// Create output/ directory
-	if _, err := os.Stat("output"); os.IsNotExist(err) {
-		err := os.Mkdir("output", 0755)
-		if err != nil {
-			fmt.Println("Error creating an output/ directory: ", err)
-		}
-	}
-
-	// Create all-authorities.csv file
-	if _, err := os.Stat("output"); !os.IsNotExist(err) {
-		f, err := os.Create("output/all-authorities.csv")
-		if err != nil {
-			log.Fatalln("Failed to create file output/all-authorities.csv", err)
-		}
-		f.Close()
-	}
-
+// This test calls MakeMarkdownLink with valid inputs
+func TestMakeMarkdownLink_MissingLabel(t *testing.T) {
+	want := "[Link label unknown](https://www.whatdotheyknow.com/body/valid_wdtk_id)"
 	// Call function under test
-	Cleanup(true)
-
-	// Check if file still exists
-	if _, e := os.Stat("output/all-authorities.csv"); os.IsNotExist(e) {
-		t.Errorf("error path output/all-authorities.csv does not exist: %v", e)
+	result, err := MakeMarkdownLink("authority_web", "valid_wdtk_id", "")
+	if result != want || err != 0 {
+		t.Errorf("got %s but expected %s", result, want)
 	}
+}
 
-	// Cleaning up the file that we retained
-	os.Remove("output/all-authorities.csv")
+// This test calls MakeMarkdownLink with valid inputs
+func TestMakeMarkdownLink_LinkTypeInvalid(t *testing.T) {
+	want := 1
+	// Call function under test
+	_, err := MakeMarkdownLink("web", "valid_wdtk_id", "A Valid Label")
+	if err == 1 {
+		return
+	}
+	if err != 1 {
+		t.Errorf("got %d but expected %d", err, want)
+	}
+}
+
+func TestMakeMarkdownLink_EmptyWdtkId(t *testing.T) {
+	want := "[]()"
+	// Call function under test
+	result, err := MakeMarkdownLink("authority_web", "", "A Valid Label")
+	if result != want || err != 1 {
+		t.Errorf("got %s but expected %s", result, want)
+	}
 }
