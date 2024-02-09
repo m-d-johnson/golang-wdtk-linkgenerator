@@ -5,9 +5,3 @@ build/
 
 # Downloadable with the tool
 all-authorities.csv
-
-
-# The tool is meant to generate this
-data/generated-dataset.json
-data/generated-dataset-offline.json
-

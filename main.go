@@ -334,7 +334,6 @@ func DescribeAuthority(wdtkID string) {
 }
 
 // GetCSVDatasetFromMySociety downloads a CSV dataset of all bodies that WhatDoTheyKnow tracks.
-// Invoke with -download
 func GetCSVDatasetFromMySociety() {
 	Cleanup(false)
 	// create client
