@@ -35,9 +35,16 @@
 package main
 
 import (
+	"log"
+	"os"
 	"strings"
+
+	formatter "github.com/mdigger/goldmark-formatter"
 )
 
+// MakeMarkdownLink generates a snippet of Markdown with a functioning link. It can point to various
+// resources on the WDTK site (indicated with linkType) and needs only the WDTK URL name (urlName)
+// and the link label text (label).
 func MakeMarkdownLink(linkType string, urlName string, label string) (output string, err int) {
 	// Valid linkTypes are: authority_web, authority_json, feed_json, or feed_atom
 
@@ -46,16 +53,16 @@ func MakeMarkdownLink(linkType string, urlName string, label string) (output str
 	// incomplete because of the nature of what this tool does.Instead,
 	// we should log to console that there was an attempt to create a link
 	// where there might be data missing, then we should return something
-	// that's still valid markdown, so it doesn't break the rendering of
-	// whatever the return value of this function is inserted into.
+	// that's still valid markdown so it doesn't break the rendering of
+	// whatever the returned Markdown is inserted into.
 	if len(label) == 0 {
-		magenta.Println("Tried to make a markdown link but was missing the label!")
+		magenta.Println("Tried to make a markdown link but no label was provided!")
 		label = "Link label unknown"
 	}
-	// Calling this function with a missing urlName is different as the whole
+	// Calling this function with a missing urlName is different, as the whole
 	// point of making a link is that you have a functioning link, and the WDTK
 	// URL Name should never be missing in normal operation. Thus, it indicates
-	// that there is a logic error and so we log it and return an error.
+	// that there is a logic error, and so we log it and return an error.
 	if len(urlName) == 0 {
 		red.Println("Tried to make a markdown link but was missing the link!")
 		return "[]()", 1
@@ -88,18 +95,24 @@ func MakeMarkdownLink(linkType string, urlName string, label string) (output str
 	return sb.String(), 0
 }
 
-// GenerateHeader is used by code that makes tables of authorities.
+// GenerateHeader is used by code that makes tables of authorities. It's generic enough that it's
+// not just limited to police forces.
 func GenerateHeader() string {
-	var sb strings.Builder
-	sb.WriteString("# Generated List of Police Forces (WhatDoTheyKnow)\n\n\n")
-	sb.WriteString("# Generated List of Police Forces (WhatDoTheyKnow)\n\n\n")
-	sb.WriteString("**Generated from data provided by WhatDoTheyKnow. please contact\n")
-	sb.WriteString("them with corrections. This table will be corrected when the ")
-	sb.WriteString("script next runs.**\n\n")
-	sb.WriteString("[OPML File](police.opml)\n\n")
-	sb.WriteString("| Body | Website | WDTK Page | JSON | Feed: Atom | Feed: JSON | Publication Scheme | Disclosure Log | Email |\n")
-	sb.WriteString("|-|-|-|-|-|-|-|-|-|\n")
-	return sb.String()
+	const (
+		placeholderString = `# Generated List of Police Forces (WhatDoTheyKnow)
+
+
+**Generated from data provided by WhatDoTheyKnow. please contact
+them with corrections. This table will be corrected when the 
+script next runs.**
+
+[OPML File](police.opml)
+
+| Body | Website | WDTK Page | JSON | Feed: Atom | Feed: JSON | Publication Scheme | Disclosure Log | Email |
+|-|-|-|-|-|-|-|-|-|
+`
+	)
+	return placeholderString
 }
 
 // GenerateReportHeader produces a very brief header of only a name, link to the page, and email.
@@ -110,4 +123,52 @@ func GenerateReportHeader(title string) string {
 	sb.WriteString("\n| Name | Org Page | Email |\n")
 	sb.WriteString("|-|-|-|\n")
 	return sb.String()
+}
+
+// FormatMarkdownFile runs a formatter on generated Markdown files
+func FormatMarkdownFile(filePath string) {
+	// TODO: This never worked right and when I look at it I feel guilty of a crime.
+	// It's hack upon hack to try to get around some problem with file handles not
+	// being released. What should really happen is Markdown should be stored in
+	// memory while it's being generated, passed to the formatter, and then the
+	// formatted Markdown written to disk. However, elsewhere in this tool, we do
+	// write to disk as Markdown is being generated. This is largely because the data
+	// used isn't perfect and it's useful to be able to see what was generated if a
+	// run fails part- way through. This means we have to read the file contents back
+	// in from disk, then re-write the formatted output back to disk. Next best
+	// option is probably to write the output (while generating it) to
+	// `output.md.unformatted`, then read that in here, then output it to
+	// `output.md`, then do some basic sanity check before deciding to delete the
+	// temp file or leave it in place.
+	tmpFilePath := filePath + "-tmp"
+
+	err := os.Rename(filePath, tmpFilePath)
+	if err != nil {
+		log.Fatal("Failure while renaming original file: ", err)
+	}
+
+	inFile, err := os.ReadFile(tmpFilePath)
+	if err != nil {
+		log.Fatal("Failure while reading in original file: ", err)
+	}
+
+	outFile, err := os.Create(filePath)
+	if err != nil {
+		log.Fatal("Failure while creating output file for reformatted Markdown: ", err)
+	}
+
+	err = formatter.Format(inFile, outFile)
+	if err != nil {
+		log.Fatal("The Markdown formatter failed to reformat it's input: ", err)
+	}
+
+	err = outFile.Close()
+	if err != nil {
+		log.Fatal("Failure while closing reformatted Markdown file: ", err)
+	}
+
+	err = os.Remove(tmpFilePath)
+	if err != nil {
+		yellow.Println("Failure while removing temporary file:", err)
+	}
 }

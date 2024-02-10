@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+message WDTK_Authority {
+  bool Is_Defunct = 1;
+  string WDTK_ID = 2;
+  string WDTK_Org_JSON_URL = 3;
+  string WDTK_Atom_Feed_URL = 4;
+  string WDTK_Org_Page_URL = 5;
+  string WDTK_JSON_Feed_URL = 6;
+  string Disclosure_Log_URL = 7;
+  string Home_Page_URL = 8;
+  string Name = 9;
+  string Publication_Scheme_URL = 10;
+  string Data_Protection_Registration_Identifier = 11;
+  string WikiData_Identifier = 12;
+  string LoC_Authority_ID = 13;
+  string FOI_Email_Address = 14;
+  string Telephone_General = 15;
+  string Telephone_FOI = 16;
+  string Email_General = 17;
+  string Postal_Address = 18;
+}

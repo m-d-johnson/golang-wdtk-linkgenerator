@@ -39,7 +39,6 @@ import (
 	"encoding/json"
 	. "fmt"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"slices"
@@ -50,7 +49,6 @@ import (
 
 	"github.com/cavaliergopher/grab/v3"
 	"github.com/fatih/color"
-	formatter "github.com/mdigger/goldmark-formatter"
 	flag "github.com/spf13/pflag"
 	"go.uber.org/ratelimit"
 )
@@ -745,11 +743,21 @@ func GetExtraDetailsFromJson() []Record {
 // RebuildDataset recreates the generated-dataset.json file, which is a subset of the bodies that
 // MySociety knows about -- it exists to have a source of information which includes FOI emails.
 func RebuildDataset() {
-	// Generates a JSON dataset from two pieces of information - the WDTK url_name and the list
-	// of FOI email addresses. The rest of the information can be either be derived from the
-	// WDTK ID (url_name) or scraped using the WDTK ID when the object is created. This is done
-	// by the Authority object constructor. This function only creates records for authorities
-	// listed in the foi-emails.json file.
+	// Generates a JSON dataset from two pieces of information - the WDTK url_name
+	// and the FOI email address. These are both contained in data/foi-emails.json,
+	// which maps the wdtk_id to the corresponding email address. The rest of the
+	// information can be either be derived from the WDTK ID (url_name) or scraped
+	// using the WDTK ID when the object is created. This is done by the Authority
+	// object constructor. This function only creates records for authorities listed
+	// in the data/foi-emails.json file, which means that it's the foi-emails file
+	// that defines what subset of WDTK's whole corpus gets put into our generated
+	// JSON. In due course, this function (or whatever it's refactored into) will use
+	// the manual.json file as the list of forces, removing the dependency on a
+	// separate list and also removing the need to have email addresses stored
+	// outside that manual file. Regenerating the dataset will then simply involve
+	// reading the manual.json into a new Authority struct, augmenting that with what data
+	// WDTK provides, then writing the union of those two sources into the
+	// generated-dataset.json file.
 
 	// Read emails from JSON file
 	emailsData, err := os.ReadFile("data/foi-emails.json")
@@ -810,31 +818,6 @@ func RebuildDataset() {
 		green.Println("Dataset generated and saved to", outFile.Name())
 	}
 
-}
-
-func FormatMarkdownFile(filePath string) {
-	// TODO: This never worked right and when I look at it I feel guilty of a crime. It's hack upon
-	// hack to try to get around some problem with file handles not being released.
-	tmpFilePath := filePath + "-tmp"
-
-	err := os.Rename(filePath, tmpFilePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	inFile, err := os.ReadFile(tmpFilePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	outFile, _ := os.Create(filePath)
-	_ = formatter.Format(inFile, outFile)
-	err = outFile.Close()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	os.Remove(tmpFilePath)
 }
 
 // ReadCSVFileAndConvertToJson is used to convert CSV data exported from the spreadsheet MySociety
