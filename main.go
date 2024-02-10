@@ -68,6 +68,7 @@ import (
 //       about it.
 
 // TODO: This needs a better name, it's too ambiguous.
+
 // Record is an entry in the manually curated file which provides data that WDTK does not.
 type Record struct {
 	WDTKID           string `json:"wdtk_id"`
@@ -81,7 +82,7 @@ type Record struct {
 // Authority is a public body on the WDTK website. Here, it contains additional fields which are not
 // provided by WhatDoTheyKnow. These fields are added from a manually maintained list. This struct
 // is essentially how we aggregate information from different sources and bring it together to use.
-// That may by outputting it in a human (Markdown) or machine-readable (JSON) format, for example.
+// That may be by outputting it in a human (Markdown) or machine-readable (JSON) form for example.
 // Of course, we can also create these structs from the JSON we generated in the first place.
 // See also the `NewAuthority` function below, which is the constructor for this type.
 type Authority struct {
@@ -293,7 +294,7 @@ func DescribeAuthority(wdtkID string) {
 	}
 
 	var p = NewAuthority(wdtkID, emails)
-	// TODO: Find a prettyprinter module for this, there has to be a better way.
+	// TODO: Find a pretty printer module for this, there has to be a better way.
 	println("Force:               ", p.Name)
 	println("WDTK ID:             ", p.WDTKID)
 	println("Defunct:             ", p.IsDefunct)
@@ -422,13 +423,13 @@ func RunCustomQuery(tag *string) {
 		if slices.Contains(tagsList, *tag) && !slices.Contains(tagsList, "defunct") {
 			var name = row[0]
 			var urlName = row[2]
-			var weblink, _ = MakeMarkdownLink("authority_web", urlName, name)
-			var bodyjsonlink, _ = MakeMarkdownLink("authority_json", urlName, name)
+			var webLink, _ = MakeMarkdownLink("authority_web", urlName, name)
+			var bodyJsonLink, _ = MakeMarkdownLink("authority_json", urlName, name)
 			// TODO: Replace with string builder
 			markdownRow.WriteString("| ") // Markdown row start delimiter
-			markdownRow.WriteString(weblink)
+			markdownRow.WriteString(webLink)
 			markdownRow.WriteString(" | ") // Markdown row column separator
-			markdownRow.WriteString(bodyjsonlink)
+			markdownRow.WriteString(bodyJsonLink)
 			markdownRow.WriteString(" |\n") // Markdown row end delimiter
 			_, err = resultsTable.WriteString(markdownRow.String())
 			if err != nil {
@@ -561,10 +562,10 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	println(org.WDTKOrgJSONURL)
-	responsestr := string(bodyBytes)
+	responseStr := string(bodyBytes)
 	var wdtkData map[string]interface{}
 
-	err = json.Unmarshal([]byte(responsestr), &wdtkData)
+	err = json.Unmarshal([]byte(responseStr), &wdtkData)
 	if err != nil {
 		red.Println("Error decoding WDTK data:", err)
 		return nil
@@ -702,7 +703,7 @@ func NewAuthorityFromCSV(record []string, emails map[string]string) *Authority {
 // their FOI email addresses.
 func GetEmailsFromJson() map[string]string {
 	// TODO: This needs to be refactored and deleted. There needs to just be a function that takes
-	// a wtdk_id and returns the email instead of passing in the foi-emails.json file all over the
+	// a wdtk_id and returns the email instead of passing in the foi-emails.json file all over the
 	// place.
 
 	// Read emails from JSON file
@@ -766,7 +767,7 @@ func RebuildDataset() {
 
 	var listOfForces []Authority
 	// Important to rate-limit because I want to be polite with MySociety's service (and they'll
-	// ratelimit me and I won't get data).
+	// rate limit me and I won't get data).
 	var qps = 4
 	Println(Sprintf("Rate-limiting to %d queries/sec", qps))
 	var rl = ratelimit.New(qps) // per second
@@ -888,13 +889,13 @@ func ReadCSVFileAndConvertToJson(filePath string) {
 // `data/generated-dataset.json` - it's used for finding authorities that are missing disclosure log
 // and publication scheme links.
 func GenerateProblemReports() {
+
 	// Open the dataset of police forces.
 	datasetFile, err := os.ReadFile("data/generated-dataset.json")
 	if err != nil {
 		Println("Error reading FOI emails JSON:", err)
 		os.Exit(1)
 	}
-
 	// and unmarshal that dataset into slice containing Authority objects
 	var listOfForces []Authority
 	err = json.Unmarshal(datasetFile, &listOfForces)
@@ -906,20 +907,6 @@ func GenerateProblemReports() {
 		os.Exit(1)
 	}
 	defer reportMarkdownFile.Close()
-
-	// Read emails from JSON file.
-	emailsData, err := os.ReadFile("data/foi-emails.json")
-	if err != nil {
-		Println("Error reading FOI emails JSON:", err)
-		os.Exit(1)
-	}
-	// and unmarshal authority/email data into a slice of maps.
-	var emails map[string]string
-	err = json.Unmarshal(emailsData, &emails)
-	if err != nil {
-		Println("Error decoding FOI emails JSON:", err)
-		os.Exit(1)
-	}
 
 	// Query for Police and Crime Commissioners
 	reportMarkdownFile.WriteString(GenerateReportHeader("Police and Crime Commissioners"))
