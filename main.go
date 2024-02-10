@@ -38,7 +38,9 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	. "fmt"
+	formatter "github.com/mdigger/goldmark-formatter"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"slices"
@@ -53,22 +55,22 @@ import (
 	"go.uber.org/ratelimit"
 )
 
-// TODO: There's too much in this file, it needs to be carved up into smaller chunks.
+// TODO: There's too much in this file, it needs to be carved up.
 //       This has started with Templates stuff but perhaps:
-//       - utils & markdown-related stuff
+//       - markdown-related stuff
 //       - ingest
 //       - report generation
 //       - query
-// TODO: The functions are too large and need to be carved up, particularly so it's
+// TODO: The functions are too large and need to be carved up
 //
 
-// TODO: There are far too many hardcoded file paths in here, and by now I should be doing something
-//       about it.
+// TODO: There are far too many hardcoded file paths in here, and by now I
+// should be doing something about it.
 
-// TODO: This needs a better name, it's too ambiguous.
-
-// Record is an entry in the manually curated file which provides data that WDTK does not.
+// Record is an entry in the manually curated file which provides data that
+// WDTK does not.
 type Record struct {
+	// TODO: This needs a better name, it's too ambiguous.
 	WDTKID           string `json:"wdtk_id"`
 	TelephoneGeneral string `json:"telephone_general"`
 	TelephoneFOI     string `json:"telephone_foi"`
@@ -77,12 +79,14 @@ type Record struct {
 	PostalAddress    string `json:"postal_address"`
 }
 
-// Authority is a public body on the WDTK website. Here, it contains additional fields which are not
-// provided by WhatDoTheyKnow. These fields are added from a manually maintained list. This struct
-// is essentially how we aggregate information from different sources and bring it together to use.
-// That may be by outputting it in a human (Markdown) or machine-readable (JSON) form for example.
-// Of course, we can also create these structs from the JSON we generated in the first place.
-// See also the `NewAuthority` function below, which is the constructor for this type.
+// Authority is a public body on the WDTK website. Here, it contains additional
+// fields which are not provided by WhatDoTheyKnow. These fields are added from
+// a manually maintained list. This struct is essentially how we aggregate
+// information from different sources and bring it together to use.
+// That may be by outputting it in a human (Markdown) or machine-readable (JSON)
+// form for example. Of course, we can also create these structs from the JSON
+// we generated in the first place.
+// See also `NewAuthority` below, which is the constructor for this type.
 type Authority struct {
 	IsDefunct                            bool   `json:"Is_Defunct"`
 	WDTKID                               string `json:"WDTK_ID"`
@@ -104,15 +108,15 @@ type Authority struct {
 	PostalAddress                        string `json:"Postal_Address"`
 }
 
-// JSONResponse is a JSON object we get back when we ask for the JSON from the authority page on the
-// WDTK website.  It's the API response from WDTK.
+// JSONResponse is a JSON object we get back when we ask for the JSON from the
+// authority page on the WDTK website.  It's the API response from WDTK.
 // Example: https://www.whatdotheyknow.com/body/the_met.json
 type JSONResponse struct {
 	Id                int
 	UrlName           string     `json:"wdtk_id"`
 	Name              string     `json:"name"`
 	ShortName         string     `json:"WDTK_ID"`
-	CreatedAt         string     `json:"created_At"` // TODO: Inconsistent capitalisation. Fix.
+	CreatedAt         string     `json:"created_At"` // TODO: Capitalisation. Fix.
 	UpdatedAt         string     `json:"updated_at"`
 	HomePage          string     `json:"home_page"`
 	Notes             string     `json:"notes"`
@@ -130,13 +134,15 @@ var yellow = color.New(color.FgHiYellow)
 
 func main() {
 
-	// Run test function ReadCSVFileAndConvertToJson (Builds JSON dataset from downloaded CSV)
+	// Run test function ReadCSVFileAndConvertToJson
+	// (Builds JSON dataset from downloaded CSV)
 	testFlag := flag.Bool(
 		"test",
 		false,
 		"Runs ReadCSVFileAndConvertToJson.")
 
-	// Used for the experiments I've been doing around creating/writing/manipulating SQLite DBs.
+	// Used for the experiments I've been doing around
+	// creating/writing/manipulating SQLite DBs.
 	createDbFlag := flag.Bool(
 		"createdb",
 		false,
@@ -198,7 +204,7 @@ func main() {
 		os.Exit(0)
 	}
 
-	// Generate a report of bodies that are missing FOIA Publication Schemes and Disclosure Logs.
+	// Generate report of bodies missing Publication Schemes and Disclosure Logs
 	if *reportFlag {
 		GenerateProblemReports()
 		os.Exit(0)
@@ -227,7 +233,8 @@ func main() {
 		Cleanup(*retainFlag)
 		os.Exit(0)
 	}
-	// Just regenerate the overview table, without downloading new information from WDTK.
+	// Just regenerate the overview table, without downloading
+	// new information from WDTK.
 	if *tableFlag {
 		MakeTableFromGeneratedDataset()
 		Cleanup(*retainFlag)
@@ -238,27 +245,32 @@ func main() {
 
 }
 
-// DescribeAuthority shows information on a user-specified authority and creates a simple HTML page.
+// DescribeAuthority shows information on a user-specified authority and creates
+// a simple HTML page.
 // Invoke with `-describe`
 func DescribeAuthority(wdtkID string) {
-	// TODO: This whole function needs to be violently refactored - it does things that are also
-	// done elsewhere and just repeats what we're already doing when we generate a dataset.
-	// It doesn't even do it as thoroughly as it's done elsewhere and it really just needs to:
-	// - Check the local JSON we generate elsewhere and read details out from that, or
+	// TODO: This whole function needs to be violently refactored - it does
+	// things that are also done elsewhere and just repeats what we're already
+	// doing when we generate a dataset.
+	// It doesn't even do it as thoroughly as it's done elsewhere and it really
+	// just needs to:
+	// - Check the JSON we generate elsewhere and read details out from that, or
 	// - Just create a new Authority object and let the constructor do the work.
 	//
-	// With that said, this was really only added as an excuse to play around with Go Templates for
-	// the first time in years. At least it did that.
+	// With that said, this was really only added as an excuse to play around
+	// with Go Templates for the first time in years. At least it did that.
 	//
-	// It also generates console (stdout) and HTML (to a file) in the same function so at the very
-	// least it needs to split that in two and have a function per output format.
+	// It also generates console (stdout) and HTML (to a file) in the same
+	// function so at the very least it needs to split that in two and have a
+	// function per output format.
 	//
 	// Attributes obtained from querying the site API:
 	green.Println("Showing information for ", wdtkID)
 
-	// TODO: Feels like there's repeated code here from where we get data while in the constructor
-	// for Authority (NewAuthority) so this needs its own function otherwise we're eventually
-	// going to change one and not the other and have odd behaviour.
+	// TODO: Feels like there's repeated code here from where we get data while
+	// in the constructor for Authority (NewAuthority) so this needs its own
+	// function otherwise we're eventually going to change one and not the other
+	// and have odd behaviour.
 	req, err := http.NewRequest("GET", BuildWDTKBodyJSONURL(wdtkID), nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36")
 	resp, err := http.DefaultClient.Do(req)
@@ -292,7 +304,7 @@ func DescribeAuthority(wdtkID string) {
 	}
 
 	var p = NewAuthority(wdtkID, emails)
-	// TODO: Find a pretty printer module for this, there has to be a better way.
+	// TODO: Find a pretty printer module for this, there has to be a better way
 	println("Force:               ", p.Name)
 	println("WDTK ID:             ", p.WDTKID)
 	println("Defunct:             ", p.IsDefunct)
@@ -332,7 +344,8 @@ func DescribeAuthority(wdtkID string) {
 
 }
 
-// GetCSVDatasetFromMySociety downloads a CSV dataset of all bodies that WhatDoTheyKnow tracks.
+// GetCSVDatasetFromMySociety downloads a CSV dataset of
+// all bodies that WhatDoTheyKnow tracks.
 func GetCSVDatasetFromMySociety() {
 	Cleanup(false)
 	// create client
@@ -358,9 +371,9 @@ func GetCSVDatasetFromMySociety() {
 
 }
 
-// RunCustomQuery creates a Markdown table of bodies matching a user-specified tag. It uses the
-// downloaded CSV file in order to have access to all the bodies they know about (and it saves a
-// load of API calls).
+// RunCustomQuery creates a Markdown table of bodies matching a user-specified
+// tag. It uses the downloaded CSV file in order to have access to all the
+// bodies they know about (and it saves a load of API calls).
 func RunCustomQuery(tag *string) {
 	// TODO: This whole thing needs looking at for how strings are built.
 	print(Sprintf("Query MySociety dataset for a custom tag: %s", *tag))
@@ -412,7 +425,7 @@ func RunCustomQuery(tag *string) {
 	       10: version							int
 	*/
 
-	// Can use same StringBuilder for all rows to avoid having to re-instantiate it.
+	// Use same StringBuilder for all rows to avoid having to re-instantiate it.
 	var markdownRow strings.Builder
 
 	for _, row := range rows {
@@ -440,8 +453,9 @@ func RunCustomQuery(tag *string) {
 
 }
 
-// MakeTableFromGeneratedDataset creates a Markdown table of UK police forces from the generated
-// JSON dataset and the foi-emails.txt files. The table it creates is stored in `output/`.
+// MakeTableFromGeneratedDataset creates a Markdown table of UK police forces
+// from the generated JSON dataset and the foi-emails.txt files. The table it
+// creates is stored in `output/`.
 func MakeTableFromGeneratedDataset() {
 	magenta.Println("Generating table from the generated JSON dataset...")
 
@@ -516,8 +530,8 @@ func MakeTableFromGeneratedDataset() {
 	}
 }
 
-// Cleanup deletes the existing output/all-authorities.csv file (if retain==true). If retain==false,
-// then it does nothing and returns.
+// Cleanup deletes the existing output/all-authorities.csv file (if
+// retain==true). If retain==false, then it does nothing and returns.
 func Cleanup(retain bool) {
 	if fileInfo, err := os.Stat("output/all-authorities.csv"); err == nil && fileInfo.Mode().IsRegular() && retain {
 		yellow.Println("As requested, not deleting the output/all-authorities.csv file.")
@@ -529,8 +543,8 @@ func Cleanup(retain bool) {
 	}
 }
 
-// NewAuthority creates a new Authority instance. It uses data from the foi-emails.json file
-// and some API calls.
+// NewAuthority creates a new Authority instance. It uses data from the
+// foi-emails.json file and some remote API requests.
 func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 	// TODO: There needs to be more input sanitisation here.
 	// TODO: When the manually curated JSON is ready, this function needs to use it as input.
@@ -626,8 +640,9 @@ func NewAuthority(wdtkID string, emails map[string]string) *Authority {
 	return org
 }
 
-// NewAuthorityFromCSV does the same as NewAuthority, except it does it from a CSV file which is
-// generated by the user. The user must download this spreadsheet and export it as CSV.
+// NewAuthorityFromCSV does the same as NewAuthority, except it does it from a
+// CSV file which is generated by the user. The user must download this
+// spreadsheet and export it as CSV.
 func NewAuthorityFromCSV(record []string, emails map[string]string) *Authority {
 	var org = new(Authority)
 
@@ -697,12 +712,12 @@ func NewAuthorityFromCSV(record []string, emails map[string]string) *Authority {
 	return org
 }
 
-// GetEmailsFromJson opens the FOI emails file and returns unmarshalled JSON mapping force names to
-// their FOI email addresses.
+// GetEmailsFromJson opens the FOI emails file and returns unmarshalled JSON
+// mapping force names to their FOI email addresses.
 func GetEmailsFromJson() map[string]string {
-	// TODO: This needs to be refactored and deleted. There needs to just be a function that takes
-	// a wdtk_id and returns the email instead of passing in the foi-emails.json file all over the
-	// place.
+	// TODO: This needs to be refactored and deleted. There needs to just be a
+	// function that takes a wdtk_id and returns the email instead of passing
+	// in the foi-emails.json file all over the place.
 
 	// Read emails from JSON file
 	emailsData, err := os.ReadFile("data/foi-emails.json")
@@ -720,8 +735,8 @@ func GetEmailsFromJson() map[string]string {
 	return emails
 }
 
-// GetExtraDetailsFromJson opens the manually curated file and returns unmarshalled JSON,
-// providing information not provided by WDTK.
+// GetExtraDetailsFromJson opens the manually curated file and returns
+// unmarshalled JSON, providing information not provided by WDTK.
 func GetExtraDetailsFromJson() []Record {
 
 	// Read emails from JSON file
@@ -793,7 +808,7 @@ func RebuildDataset() {
 	// Sorting because it makes diffing the dataset file much easier.
 	sort.Slice(listOfForces, func(i, j int) bool { return listOfForces[i].Name < listOfForces[j].Name })
 
-	// TODO: I really want to have JSON schema against which I can validate this.
+	// TODO: I want to have JSON schema against which I can validate this.
 	// TODO: Make JSON schema.
 	// TODO: Use JSON schema.
 	// Write dataset to JSON file
@@ -823,6 +838,35 @@ func RebuildDataset() {
 // ReadCSVFileAndConvertToJson is used to convert CSV data exported from the spreadsheet MySociety
 // publishes. It provides more information than the CSV file they make available to download
 // programmatically.
+func FormatMarkdownFile(filePath string) {
+	// TODO: This never worked right and when I look at it I feel guilty of a crime.
+	// It's hack upon hack to try to get around some problem with file handles
+	// not being released.
+	tmpFilePath := filePath + "-tmp"
+
+	err := os.Rename(filePath, tmpFilePath)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	inFile, err := os.ReadFile(tmpFilePath)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	outFile, _ := os.Create(filePath)
+	_ = formatter.Format(inFile, outFile)
+	err = outFile.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	os.Remove(tmpFilePath)
+}
+
+// ReadCSVFileAndConvertToJson is used to convert CSV data exported from the
+// spreadsheet MySociety publishes. It provides more information than the CSV
+// file they make available to download programmatically.
 func ReadCSVFileAndConvertToJson(filePath string) {
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -868,9 +912,9 @@ func ReadCSVFileAndConvertToJson(filePath string) {
 
 }
 
-// GenerateProblemReports generates Markdown reports (written to a file) based on
-// `data/generated-dataset.json` - it's used for finding authorities that are missing disclosure log
-// and publication scheme links.
+// GenerateProblemReports generates Markdown reports (written to a file)
+// based on `data/generated-dataset.json` - it's used for finding authorities
+// that are missing disclosure log and publication scheme links.
 func GenerateProblemReports() {
 
 	// Open the dataset of police forces.
@@ -879,9 +923,14 @@ func GenerateProblemReports() {
 		Println("Error reading FOI emails JSON:", err)
 		os.Exit(1)
 	}
-	// and unmarshal that dataset into slice containing Authority objects
+	// and unmarshal that dataset into slice containing Authority objects.
 	var listOfForces []Authority
 	err = json.Unmarshal(datasetFile, &listOfForces)
+	if err != nil {
+		Println("Error unmarshalling FOI emails JSON:", err)
+		os.Exit(1)
+
+	}
 
 	// Prepare output files: Markdown page
 	reportMarkdownFile, err := os.Create("output/missing-data.md")
