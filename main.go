@@ -38,9 +38,7 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	. "fmt"
-	formatter "github.com/mdigger/goldmark-formatter"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"slices"
@@ -833,35 +831,6 @@ func RebuildDataset() {
 		green.Println("Dataset generated and saved to", outFile.Name())
 	}
 
-}
-
-// ReadCSVFileAndConvertToJson is used to convert CSV data exported from the spreadsheet MySociety
-// publishes. It provides more information than the CSV file they make available to download
-// programmatically.
-func FormatMarkdownFile(filePath string) {
-	// TODO: This never worked right and when I look at it I feel guilty of a crime.
-	// It's hack upon hack to try to get around some problem with file handles
-	// not being released.
-	tmpFilePath := filePath + "-tmp"
-
-	err := os.Rename(filePath, tmpFilePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	inFile, err := os.ReadFile(tmpFilePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	outFile, _ := os.Create(filePath)
-	_ = formatter.Format(inFile, outFile)
-	err = outFile.Close()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	os.Remove(tmpFilePath)
 }
 
 // ReadCSVFileAndConvertToJson is used to convert CSV data exported from the
