@@ -26,7 +26,7 @@ This is why it has odd functionality and why some parts are messy - it's very mu
 
 ## Usage
 
-- `go build .`
+- Check the code out, `cd` to the directory containing `main.go` and run `go build .`
 
 ## Output Files
 

@@ -185,6 +185,7 @@ func main() {
 
 	if *testFlag {
 		GetCSVDatasetFromMySociety()
+		// TODO: Hard-coded filename/path
 		ReadCSVFileAndConvertToJson("data/whatdotheyknow_authorities_dataset.csv")
 		os.Exit(0)
 	}
@@ -287,7 +288,7 @@ func DescribeAuthority(wdtkID string) {
 		red.Println("API JSON unmarshalling failed. Malformed?: ", err)
 		return
 	}
-
+	// TODO: Hard-coded filename/path
 	emailsData, err := os.ReadFile("data/foi-emails.json")
 	if err != nil {
 		red.Println("Error reading data/foi-emails.json file:", err)
@@ -375,6 +376,7 @@ func GetCSVDatasetFromMySociety() {
 func RunCustomQuery(tag *string) {
 	// TODO: This whole thing needs looking at for how strings are built.
 	print(Sprintf("Query MySociety dataset for a custom tag: %s", *tag))
+	// TODO: Hard-coded filename/path
 	var csvFile, _ = os.Open("output/all-authorities.csv")
 	reader := csv.NewReader(csvFile)
 
@@ -456,7 +458,7 @@ func RunCustomQuery(tag *string) {
 // creates is stored in `output/`.
 func MakeTableFromGeneratedDataset() {
 	magenta.Println("Generating table from the generated JSON dataset...")
-
+	// TODO: Hard-coded filename/path
 	os.Create("output/overview.md")
 	markdownOutputFile, err := os.OpenFile(
 		"output/overview.md", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0660)
@@ -464,7 +466,7 @@ func MakeTableFromGeneratedDataset() {
 		red.Println("Error opening output markdown file:", err)
 		os.Exit(1)
 	}
-
+	// TODO: Hard-coded filename/path
 	jsonInputFile, err := os.Open("data/generated-dataset.json")
 	if err != nil {
 		red.Println("Error opening JSON file:", err)
@@ -531,10 +533,12 @@ func MakeTableFromGeneratedDataset() {
 // Cleanup deletes the existing output/all-authorities.csv file (if
 // retain==true). If retain==false, then it does nothing and returns.
 func Cleanup(retain bool) {
+	// TODO: Hard-coded filename/path
 	if fileInfo, err := os.Stat("output/all-authorities.csv"); err == nil && fileInfo.Mode().IsRegular() && retain {
 		yellow.Println("As requested, not deleting the output/all-authorities.csv file.")
 	} else if err == nil {
 		println("Removing output/all-authorities.csv file.")
+		// TODO: Hard-coded filename/path
 		os.Remove("output/all-authorities.csv")
 	} else {
 		magenta.Println("output/all-authorities.csv does not exist, so could not be deleted.")
@@ -718,6 +722,7 @@ func GetEmailsFromJson() map[string]string {
 	// in the foi-emails.json file all over the place.
 
 	// Read emails from JSON file
+	// TODO: Hard-coded filename/path
 	emailsData, err := os.ReadFile("data/foi-emails.json")
 	if err != nil {
 		Println("Error reading FOI emails JSON:", err)
@@ -738,6 +743,7 @@ func GetEmailsFromJson() map[string]string {
 func GetExtraDetailsFromJson() []Record {
 
 	// Read emails from JSON file
+	// TODO: Hard-coded filename/path
 	extraData, err := os.ReadFile("data/manual.json")
 	if err != nil {
 		Println("Error reading manual.json JSON:", err)
@@ -773,6 +779,7 @@ func RebuildDataset() {
 	// generated-dataset.json file.
 
 	// Read emails from JSON file
+	// TODO: Hard-coded filename/path
 	emailsData, err := os.ReadFile("data/foi-emails.json")
 	if err != nil {
 		Println("Error reading FOI emails JSON:", err)
@@ -810,6 +817,7 @@ func RebuildDataset() {
 	// TODO: Make JSON schema.
 	// TODO: Use JSON schema.
 	// Write dataset to JSON file
+	// TODO: Hard-coded filename/path
 	outFile, err := os.Create("data/generated-dataset.json")
 	if err != nil {
 		red.Println("Error creating output JSON file:", err)
@@ -887,6 +895,7 @@ func ReadCSVFileAndConvertToJson(filePath string) {
 func GenerateProblemReports() {
 
 	// Open the dataset of police forces.
+	// TODO: Hard-coded filename/path
 	datasetFile, err := os.ReadFile("data/generated-dataset.json")
 	if err != nil {
 		Println("Error reading FOI emails JSON:", err)
@@ -902,6 +911,7 @@ func GenerateProblemReports() {
 	}
 
 	// Prepare output files: Markdown page
+	// TODO: Hard-coded filename/path
 	reportMarkdownFile, err := os.Create("output/missing-data.md")
 	if err != nil {
 		Println("Error creating report markdown file:", err)
